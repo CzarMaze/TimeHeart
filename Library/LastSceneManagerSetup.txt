@@ -1,0 +1,4 @@
+sceneSetups:
+- path: "Assets/scan/Animation/\u5C45\u5BB6\u5BA4\u5916.unity"
+  isLoaded: 1
+  isActive: 1

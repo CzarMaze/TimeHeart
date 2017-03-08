@@ -1,0 +1,115 @@
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEditor.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Mono.Cecil.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Unity.DataContract.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.xml
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEditor.xml
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Unity\test2\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Unity\test2\New Unity Project\obj\Debug\Assembly-CSharp.dll
+D:\Unity\test2\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\Mono.Data.Sqlite.dll
+D:\Unity\test2\New Unity Project\Temp\bin\Debug\System.Data.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\System.Data.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEditor.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.xml
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEditor.xml
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\CzarMaze\Desktop\New Unity Project\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\CzarMaze\Desktop\New Unity Project\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\CzarMaze\Desktop\New Unity Project\obj\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\New Unity Project\obj\Debug\Assembly-CSharp.pdb
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Assembly-CSharp.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Assembly-CSharp.pdb
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Mono.Data.Sqlite.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\System.Data.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEditor.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.Networking.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.UI.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Mono.Cecil.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Unity.SerializationLogic.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Unity.DataContract.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Unity.UNetWeaver.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Unity.CecilTools.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.xml
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEditor.xml
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.UI.xml
+D:\Unity\TimeHeart\TimeHeart\Temp\bin\Debug\UnityEngine.Networking.xml
+D:\Unity\TimeHeart\TimeHeart\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+D:\Unity\TimeHeart\TimeHeart\obj\Debug\Assembly-CSharp.dll
+D:\Unity\TimeHeart\TimeHeart\obj\Debug\Assembly-CSharp.pdb
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\System.Data.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEditor.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.xml
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEditor.xml
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\CzarMaze\Desktop\TimeHeart2\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\CzarMaze\Desktop\TimeHeart2\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\CzarMaze\Desktop\TimeHeart2\obj\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\TimeHeart2\obj\Debug\Assembly-CSharp.pdb
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Assembly-CSharp.pdb
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Mono.Data.Sqlite.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\System.Data.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEditor.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.Networking.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.UI.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Mono.Cecil.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Unity.SerializationLogic.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Unity.DataContract.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\ICSharpCode.NRefactory.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Unity.UNetWeaver.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Unity.CecilTools.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Mono.Cecil.Pdb.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\Mono.Cecil.Mdb.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.xml
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEditor.xml
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.UI.xml
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\Temp\bin\Debug\UnityEngine.Networking.xml
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\obj\Debug\Assembly-CSharp.csprojResolveAssemblyReference.cache
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\obj\Debug\Assembly-CSharp.dll
+C:\Users\CzarMaze\Desktop\別人的專案\TimeHeart\obj\Debug\Assembly-CSharp.pdb

@@ -1,0 +1,23 @@
+Microsoft Visual Studio Solution File, Format Version 11.00
+# Visual Studio 2008
+
+Project("{1A185941-4AF1-4663-487B-2C6E79C916B1}") = "TimeHeart", "Assembly-CSharp.csproj", "{099233B8-8739-6727-320B-85D709BFA936}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{099233B8-8739-6727-320B-85D709BFA936}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{099233B8-8739-6727-320B-85D709BFA936}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{099233B8-8739-6727-320B-85D709BFA936}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{099233B8-8739-6727-320B-85D709BFA936}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(MonoDevelopProperties) = preSolution
+		StartupItem = Assembly-CSharp.csproj
+	EndGlobalSection
+EndGlobal

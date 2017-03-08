@@ -1,0 +1,759 @@
+fileFormatVersion: 2
+guid: 31d002fc02ba31b4bb1cded4f7cbb265
+timeCreated: 1481203016
+licenseType: Free
+TextureImporter:
+  fileIDToRecycleName:
+    21300000: Kaisvo (Run+Breathe)_0
+    21300002: Kaisvo (Run+Breathe)_1
+    21300004: Kaisvo (Run+Breathe)_2
+    21300006: Kaisvo (Run+Breathe)_3
+    21300008: Kaisvo (Run+Breathe)_4
+    21300010: Kaisvo (Run+Breathe)_5
+    21300012: Kaisvo (Run+Breathe)_6
+    21300014: Kaisvo (Run+Breathe)_7
+    21300016: Kaisvo (Run+Breathe)_8
+    21300018: Kaisvo (Run+Breathe)_9
+    21300020: Kaisvo (Run+Breathe)_10
+    21300022: Kaisvo (Run+Breathe)_11
+    21300024: Kaisvo (Run+Breathe)_12
+    21300026: Kaisvo (Run+Breathe)_13
+    21300028: Kaisvo (Run+Breathe)_14
+    21300030: Kaisvo (Run+Breathe)_15
+    21300032: Kaisvo (Run+Breathe)_16
+    21300034: Kaisvo (Run+Breathe)_17
+    21300036: Kaisvo (Run+Breathe)_18
+    21300038: Kaisvo (Run+Breathe)_19
+    21300040: Kaisvo (Run+Breathe)_20
+    21300042: Kaisvo (Run+Breathe)_21
+    21300044: Kaisvo (Run+Breathe)_22
+    21300046: Kaisvo (Run+Breathe)_23
+    21300048: Kaisvo (Run+Breathe)_24
+    21300050: Kaisvo (Run+Breathe)_25
+    21300052: Kaisvo (Run+Breathe)_26
+    21300054: Kaisvo (Run+Breathe)_27
+    21300056: Kaisvo (Run+Breathe)_28
+    21300058: Kaisvo (Run+Breathe)_29
+    21300060: Kaisvo (Run+Breathe)_30
+    21300062: Kaisvo (Run+Breathe)_31
+    21300064: Kaisvo (Run+Breathe)_32
+    21300066: Kaisvo (Run+Breathe)_33
+    21300068: Kaisvo (Run+Breathe)_34
+    21300070: Kaisvo (Run+Breathe)_35
+    21300072: Kaisvo (Run+Breathe)_36
+    21300074: Kaisvo (Run+Breathe)_37
+    21300076: Kaisvo (Run+Breathe)_38
+    21300078: Kaisvo (Run+Breathe)_39
+    21300080: Kaisvo (Run+Breathe)_40
+    21300082: Kaisvo (Run+Breathe)_41
+    21300084: Kaisvo (Run+Breathe)_42
+    21300086: Kaisvo (Run+Breathe)_43
+    21300088: Kaisvo (Run+Breathe)_44
+    21300090: Kaisvo (Run+Breathe)_45
+    21300092: Kaisvo (Run+Breathe)_46
+    21300094: Kaisvo (Run+Breathe)_47
+    21300096: Kaisvo (Run+Breathe)_48
+    21300098: Kaisvo (Run+Breathe)_49
+  serializedVersion: 2
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 1
+    linearTexture: 0
+    correctGamma: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+  isReadable: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 0
+  cubemapConvolution: 0
+  cubemapConvolutionSteps: 7
+  cubemapConvolutionExponent: 1.5
+  seamlessCubemap: 0
+  textureFormat: -1
+  maxTextureSize: 2048
+  textureSettings:
+    filterMode: 0
+    aniso: 16
+    mipBias: -1
+    wrapMode: 1
+  nPOTScale: 0
+  lightmap: 0
+  rGBM: 0
+  compressionQuality: 50
+  allowsAlphaSplitting: 0
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spritePixelsToUnits: 100
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  buildTargetSettings: []
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 567
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_1
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 567
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_2
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 567
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_3
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 567
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_4
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 567
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_5
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_6
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_7
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_8
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_9
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_10
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_11
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_12
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 486
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_13
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 405
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_14
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 405
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_15
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 405
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_16
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 405
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_17
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 405
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_18
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_19
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_20
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_21
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_22
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_23
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_24
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_25
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 324
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_26
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 243
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_27
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 243
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_28
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 243
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_29
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 243
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_30
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 243
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_31
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_32
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_33
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_34
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_35
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_36
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_37
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_38
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 162
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 81
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_40
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 81
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_41
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 81
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_42
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_43
+      rect:
+        serializedVersion: 2
+        x: 81
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_44
+      rect:
+        serializedVersion: 2
+        x: 162
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_45
+      rect:
+        serializedVersion: 2
+        x: 243
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_46
+      rect:
+        serializedVersion: 2
+        x: 324
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_47
+      rect:
+        serializedVersion: 2
+        x: 405
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_48
+      rect:
+        serializedVersion: 2
+        x: 486
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    - serializedVersion: 2
+      name: Kaisvo (Run+Breathe)_49
+      rect:
+        serializedVersion: 2
+        x: 567
+        y: 0
+        width: 81
+        height: 81
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      tessellationDetail: 0
+    outline: []
+  spritePackingTag: 
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
