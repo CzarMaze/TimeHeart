@@ -207,6 +207,10 @@ public abstract class Story : MonoBehaviour
             {
                 s.text += Z.getsay(road).Substring(i, 1);
                 yield return new WaitForSeconds(0.1f);//文字顯示速度
+                if(Input.GetKeyUp(KeyCode.Space)){
+                    s.text=Z.getsay(road);
+                    break;
+                }
             }
         }
         //-------------------------------------------------------
