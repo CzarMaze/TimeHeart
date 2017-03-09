@@ -7,12 +7,15 @@ public class loadLevel : MonoBehaviour {
 	public Vector3 b;
 	public string c;
     int i;
+    void Start()
+    {
+        wx = GameObject.Find("sendtoblack").GetComponent<CanvasGroup>();
+        i = Random.Range(1, 3);
+    }
     void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.name == "Player") {
-            wx = GameObject.Find ("sendtoblack").GetComponent<CanvasGroup> ();
 			SumVariable.keyboardopen = false;
 			Invoke ("nexts", 0.5f);
-            i = Random.Range(1, 3);
 		}
 	}
 	void nexts(){

@@ -7,9 +7,11 @@ public class animate : Story {
     {
         Animateraction = GameObject.Find("Animateraction").GetComponentsInChildren<Animator>();
     }
-    public void Print()
+    public void Print(string t)
     {
-        open("AnimationHome1", "AnimationHomeA1");
+        string[] a;
+        a=t.Split(',');
+        open(a[0], a[1]);
         SumVariable.keyboardopen = false;
         StartCoroutine(Sumthing.view(box, 0, 1, 0.0625, 0.005f));
         StartCoroutine(word());
