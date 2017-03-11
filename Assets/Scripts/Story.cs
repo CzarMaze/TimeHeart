@@ -123,7 +123,7 @@ public abstract class Story : MonoBehaviour
 	protected IEnumerator meet(string a,string s)
 	{
 		yield return new WaitForSeconds(0.01f);
-		if (Input.GetKeyUp(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl))
 		{
 			StopAllCoroutines();
 			open(a,s);
@@ -207,7 +207,7 @@ public abstract class Story : MonoBehaviour
             {
                 s.text += Z.getsay(road).Substring(i, 1);
                 yield return new WaitForSeconds(0.1f);//文字顯示速度
-                if(Input.GetKeyUp(KeyCode.Space)){
+                if(Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl)){
                     s.text=Z.getsay(road);
                     break;
                 }
@@ -227,7 +227,7 @@ public abstract class Story : MonoBehaviour
             }
             else
             {
-				if (Input.GetKeyDown(KeyCode.Space))//需縮減
+				if (Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl))//需縮減
                 {
                     break;
                 }
