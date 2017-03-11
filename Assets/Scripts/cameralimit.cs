@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 using System;
 public class cameralimit : MonoBehaviour {
 	CanvasGroup wx;
@@ -10,8 +9,8 @@ public class cameralimit : MonoBehaviour {
     float nx, ny;
 	void Awake(){
 		wx = GameObject.Find ("sendtoblack").GetComponent<CanvasGroup> ();
-		cameranow = GameObject.Find ("Camera").GetComponent<Transform> ();
 		player= GameObject.Find("Player");
+
 	}
     void Start() {
         player.transform.position = SumVariable.nextad;
@@ -21,12 +20,12 @@ public class cameralimit : MonoBehaviour {
 	}
 
 	void Update()
-	{
-		cameranow.transform.position = transform.position;
+	{		
 		transform.position = new Vector3(xx, yy, -20);
 		if (x)
 		{
 			xx = player.transform.position.x;
+
 		}else
 		{
 			if (Math.Abs(player.transform.position.x) <= Math.Abs(xx))
@@ -57,8 +56,35 @@ public class cameralimit : MonoBehaviour {
 			y = false;
         }
     }
+	void OnTriggerStay2D(Collider2D other){
+		if(other.name == "limitup_right"){
+			xx=(float)(xx-0.001);
+		}
+		if(other.name == "limitup_left"){
+			xx=(float)(xx+0.001);
+		}
+		if(other.name == "limitup_up"){
+			yy=(float)(yy-0.001);
+		}
+		if(other.name == "limitup_down"){
+			yy=(float)(yy+0.001);
+		}
+
+	}
     void OnTriggerExit2D(Collider2D other)
     {
+		/*if(other.tag == "backgroundlimit" && (other.name == "limitup_right")){
+			xx=(float)(xx-0.001);
+		}
+		if(other.tag == "backgroundlimit" && (other.name == "limitup_left")){
+			xx=(float)(xx+0.001);
+		}
+		if(other.tag == "backgroundlimit" && (other.name == "limitup_up")){
+			yy=(float)(yy-0.001);
+		}
+		if(other.tag == "backgroundlimit" && (other.name == "limitup_down")){
+			yy=(float)(yy+0.001);
+		}*/
         if(other.tag == "backgroundlimit" && (other.name == "limit_right" || other.name == "limit_left"))
         {
 			x = true;
