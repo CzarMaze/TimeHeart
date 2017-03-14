@@ -18,11 +18,11 @@ public class loadLevel : MonoBehaviour {
 			Invoke ("nexts", 0.5f);
 		}
 	}
-	void nexts(){
+	public void nexts(){
 		StartCoroutine(Sumthing.view (wx,0, 1, 0.0625,0.03f));
 		Invoke ("nexts2", 0.5f);
 	}
-	void nexts2(){
+	public void nexts2(){
 		SumVariable.nextlevel = a;
 		SumVariable.nextad = b;
 		SumVariable.nextdt = c;
