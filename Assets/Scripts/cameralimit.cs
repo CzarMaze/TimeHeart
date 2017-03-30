@@ -26,7 +26,7 @@ public class cameralimit : MonoBehaviour {
 
 	void Update()
 	{		
-		transform.position = new Vector3(xx, yy, -20);
+		transform.position = new Vector3(xx, yy, -30);
 		if (x)
 		{
 			xx = player.transform.position.x;
