@@ -1,6 +1,6 @@
 fileFormatVersion: 2
 guid: b919f91125ae07f4fa09dcf52c529ae4
-timeCreated: 1490756828
+timeCreated: 1490855866
 licenseType: Free
 TextureImporter:
   fileIDToRecycleName:
@@ -68,12 +68,12 @@ TextureImporter:
       name: TeamCH_0
       rect:
         serializedVersion: 2
-        x: 20
+        x: 0
         y: 243
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -81,12 +81,12 @@ TextureImporter:
       name: TeamCH_1
       rect:
         serializedVersion: 2
-        x: 101
+        x: 81
         y: 243
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -94,12 +94,12 @@ TextureImporter:
       name: TeamCH_2
       rect:
         serializedVersion: 2
-        x: 182
+        x: 162
         y: 243
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -107,12 +107,12 @@ TextureImporter:
       name: TeamCH_3
       rect:
         serializedVersion: 2
-        x: 20
+        x: 0
         y: 162
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -120,12 +120,12 @@ TextureImporter:
       name: TeamCH_4
       rect:
         serializedVersion: 2
-        x: 101
+        x: 81
         y: 162
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -133,12 +133,12 @@ TextureImporter:
       name: TeamCH_5
       rect:
         serializedVersion: 2
-        x: 182
+        x: 162
         y: 162
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -146,12 +146,12 @@ TextureImporter:
       name: TeamCH_6
       rect:
         serializedVersion: 2
-        x: 20
+        x: 0
         y: 81
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -159,12 +159,12 @@ TextureImporter:
       name: TeamCH_7
       rect:
         serializedVersion: 2
-        x: 101
+        x: 81
         y: 81
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -172,12 +172,12 @@ TextureImporter:
       name: TeamCH_8
       rect:
         serializedVersion: 2
-        x: 182
+        x: 162
         y: 81
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -185,12 +185,12 @@ TextureImporter:
       name: TeamCH_9
       rect:
         serializedVersion: 2
-        x: 20
+        x: 0
         y: 0
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -198,12 +198,12 @@ TextureImporter:
       name: TeamCH_10
       rect:
         serializedVersion: 2
-        x: 101
+        x: 81
         y: 0
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
@@ -211,12 +211,12 @@ TextureImporter:
       name: TeamCH_11
       rect:
         serializedVersion: 2
-        x: 182
+        x: 162
         y: 0
-        width: 40
+        width: 81
         height: 81
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       tessellationDetail: 0
