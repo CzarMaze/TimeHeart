@@ -50,15 +50,16 @@ public class menu : MonoBehaviour {
 			}
 			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && upcharactor[0].GetComponent<Button>().interactable==true){
 				StopAllCoroutines();
+				
 				StartCoroutine(upcharselect());
 			}
 			
 		}
 
 		protected IEnumerator Imagechange(){
-			if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4)) as Sprite ){
-				statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4)) as Sprite;
-				Debug.Log("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4));
+			if(statusUI.sprite != Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(4)) as Sprite ){
+				statusUI.sprite=Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(4)) as Sprite;
+				Debug.Log(es.currentSelectedGameObject.name.Substring(4));
 			}
 			yield return new WaitForSeconds(0.01f);
 			StartCoroutine(Imagechange());
@@ -84,6 +85,7 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(upcharactor,true);
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
+		statusUI.sprite=Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(7)) as Sprite;
 	}
 
 
