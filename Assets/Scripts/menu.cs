@@ -10,13 +10,13 @@ public class menu : MonoBehaviour {
 	protected GameObject NPC;
 	protected GameObject [] leftlist,upcharactor;
 	protected EventSystem es;
-
-	protected
+	protected Image statusUI;
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
 		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
+		statusUI=GameObject.Find("statusUI").GetComponent<Image>();
 
 		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
 		//player = GameObject.Find ("Player");
@@ -32,35 +32,69 @@ public class menu : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0) {
-				es.firstSelectedGameObject=leftlist[0];
-				es.SetSelectedGameObject(null);
- 				es.SetSelectedGameObject(es.firstSelectedGameObject);
+		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
+				backgroundUI.interactable=true;
+				loadselected(leftlist[2]);
+				es.sendNavigationEvents=true;
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 				SumVariable.keyboardopen = false;
-				backgroundUI.interactable=true;
-				UnityEngine.EventSystems.EventSystem.current.sendNavigationEvents=true;
-				for(int i=0;i<upcharactor.Length;i++){
-					upcharactor[i].GetComponent<Button> ().interactable = false;
-				}
+				arraygameobjectbutton(leftlist,true);
 				//checkbutton ();
-		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1){
+		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
 				StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
 				SumVariable.keyboardopen = true;
+				arraygameobjectbutton(leftlist,false);
+				es.sendNavigationEvents=false;
 				backgroundUI.interactable=false;
-				UnityEngine.EventSystems.EventSystem.current.sendNavigationEvents=false;
-				es.SetSelectedGameObject(null);
+				loadselected(null);
 			}
+			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && upcharactor[0].GetComponent<Button>().interactable==true){
+				StopAllCoroutines();
+				StartCoroutine(upcharselect());
+			}
+			
 		}
 
+		protected IEnumerator Imagechange(){
+			if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4)) as Sprite ){
+				statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4)) as Sprite;
+				Debug.Log("chatboxpicture/statusUI"+es.currentSelectedGameObject.name.Substring(4));
+			}
+			yield return new WaitForSeconds(0.01f);
+			StartCoroutine(Imagechange());
+			yield return null;
+		}
+		protected IEnumerator upcharselect(){
+			yield return new WaitForSeconds(0.01f);
+			for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
+			}
+			arraygameobjectbutton(leftlist,true);
+			arraygameobjectbutton(upcharactor,false);
+			loadselected(leftlist[0]);
+			yield return null;
+		}
 	public void Statusmode(){
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Status"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+				}
 		}
-		for(int i=0;i<upcharactor.Length;i++){
-				upcharactor[i].GetComponent<Button> ().interactable = true;
+		arraygameobjectbutton(upcharactor,true);
+		loadselected(upcharactor[0]);
+		StartCoroutine(Imagechange());
+	}
+
+
+	void arraygameobjectbutton(GameObject [] a,bool b){
+		for(int i=0;i<a.Length;i++){
+				a[i].GetComponent<Button> ().interactable = b;
 		}
-		es.firstSelectedGameObject=upcharactor[0];
+
+	}
+	void loadselected(GameObject a){
+		es.firstSelectedGameObject=a;
 		es.SetSelectedGameObject(null);
  		es.SetSelectedGameObject(es.firstSelectedGameObject);
 	}
