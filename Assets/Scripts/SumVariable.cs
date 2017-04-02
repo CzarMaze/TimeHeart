@@ -12,12 +12,12 @@ public static class SumVariable{
 	public static string nextdt = "down";
 	public static AudioClip nextmuc=null;
 	public static float nextmucpth=1;
-	public static string [] charactorname={null,"艾憐娜","薩雷諾","凱斯伏","伊莉雅","希恩","勇帝","隊長","櫻","列爾","蒙德士","孟妮","薩豪"};
+	public static string [] charactorname={null,"艾憐娜","薩雷諾","凱斯伏","伊莉雅","希恩","勇帝","隊長","櫻","烈爾","蒙德士","孟妮","薩豪"};
 	public static int [] [] charactorlv=new int[][]
 	{
 		new int [] {0,0,0,0,0,0,0,0,0,0,0,0,0},
 		new int [] {24,985,887,1295,995,13200,12200,67,285,42,251,425,395},
-		new int [] {22,2585,2585,355,355,15428,10245,358,415,225,50,122,70},
+		new int [] {22,2585,2585,355,300,15428,10245,358,50,415,122,255,70},
 		new int [] {20,2052,1820,985,658,16852,7558,275,421,202,254,154,65},
 		new int [] {25,1421,1224,765,245,13577,2208,88,300,100,268,276,384},
 		new int [] {23,1376,1195,658,345,9887,5220,122,145,187,205,402,321},

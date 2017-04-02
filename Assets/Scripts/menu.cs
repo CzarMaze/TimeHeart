@@ -28,10 +28,10 @@ public class menu : MonoBehaviour {
 		MPStatus=GameObject.Find("MPStatus").GetComponent<Text>(); //魔力
 		EXPStatus=GameObject.Find("EXPStatus").GetComponent<Text>(); //經驗值
 		STRStatus=GameObject.Find("STRStatus").GetComponent<Text>(); //力量
-		MDEFStatus=GameObject.Find("MDEFStatus").GetComponent<Text>(); //智力
-		INTStatus=GameObject.Find("INTStatus").GetComponent<Text>(); //物防
-		SPDStatus=GameObject.Find("SPDStatus").GetComponent<Text>(); //魔防
-		DEFStatus=GameObject.Find("DEFStatus").GetComponent<Text>(); //速度
+		MDEFStatus=GameObject.Find("MDEFStatus").GetComponent<Text>(); //魔防
+		INTStatus=GameObject.Find("INTStatus").GetComponent<Text>(); //智力
+		SPDStatus=GameObject.Find("SPDStatus").GetComponent<Text>(); //速度
+		DEFStatus=GameObject.Find("DEFStatus").GetComponent<Text>(); //物防
 		AGIStatus=GameObject.Find("AGIStatus").GetComponent<Text>(); //靈敏
 
 		valueStatusHP=GameObject.Find("valueStatusHP").GetComponent<RectTransform>();
@@ -93,11 +93,11 @@ public class menu : MonoBehaviour {
 			StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
 			LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
 			HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
-			valueStatusHP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1])*500-500,0,0);
+			valueStatusHP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1]),0,0);
 			MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
-			valueStatusMP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3])*500-500,0,0);
+		valueStatusMP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3]),0,0);
 			EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
-			valueStatusEXP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5])*500-500,0,0);
+		valueStatusEXP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5]),0,0);
 			STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
 			INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
 			DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
