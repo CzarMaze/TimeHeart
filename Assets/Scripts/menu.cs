@@ -71,17 +71,17 @@ public class menu : MonoBehaviour {
 			}
 			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && upcharactor[0].GetComponent<Button>().interactable==true){
 				StopAllCoroutines();
-				
 				StartCoroutine(upcharselect());
 			}
 			
 		}
 
 		protected IEnumerator Imagechange(){
+			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
-			if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
-				charactormenu(s);
-
+				if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
+					charactormenu(s);
+				}
 			}
 			yield return new WaitForSeconds(0.01f);
 			StartCoroutine(Imagechange());
@@ -123,6 +123,7 @@ public class menu : MonoBehaviour {
 				}
 		}
 		arraygameobjectbutton(upcharactor,true);
+		arraygameobjectbutton(leftlist,false);
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
 		statusUI.sprite=Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(7)) as Sprite;
