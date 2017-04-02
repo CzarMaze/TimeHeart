@@ -13,6 +13,8 @@ public class menu : MonoBehaviour {
 	protected EventSystem es;
 	protected Image statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
+
+	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
@@ -32,6 +34,9 @@ public class menu : MonoBehaviour {
 		DEFStatus=GameObject.Find("DEFStatus").GetComponent<Text>(); //速度
 		AGIStatus=GameObject.Find("AGIStatus").GetComponent<Text>(); //靈敏
 
+		valueStatusHP=GameObject.Find("valueStatusHP").GetComponent<RectTransform>();
+		valueStatusMP=GameObject.Find("valueStatusMP").GetComponent<RectTransform>();
+		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
 		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
@@ -47,13 +52,14 @@ public class menu : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
+				charactormenu(1.ToString());
 				backgroundUI.interactable=true;
 				loadselected(leftlist[2]);
 				es.sendNavigationEvents=true;
-				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 				SumVariable.keyboardopen = false;
 				arraygameobjectbutton(upcharactor,false);
 				arraygameobjectbutton(leftlist,true);
+				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 				//checkbutton ();
 		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
 				StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
@@ -74,22 +80,30 @@ public class menu : MonoBehaviour {
 		protected IEnumerator Imagechange(){
 			string s=es.currentSelectedGameObject.name.Substring(4);
 			if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
-				statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
-				StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
-				LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
-				HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
-				MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
-				EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
-				STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
-				INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
-				DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
-				MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
-				SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
-				AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
+				charactormenu(s);
+
 			}
 			yield return new WaitForSeconds(0.01f);
 			StartCoroutine(Imagechange());
 			yield return null;
+		}
+
+		protected void charactormenu(string s){
+			statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
+			StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
+			LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
+			HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
+			valueStatusHP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1])*500-500,0,0);
+			MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
+			valueStatusMP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3])*500-500,0,0);
+			EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
+			valueStatusEXP.localPosition=new Vector3(((float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5])*500-500,0,0);
+			STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
+			INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
+			DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
+			MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
+			SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
+			AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
 		}
 		protected IEnumerator upcharselect(){
 			yield return new WaitForSeconds(0.01f);
