@@ -13,7 +13,7 @@ public class menu : MonoBehaviour {
 	protected EventSystem es;
 	protected Image statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
-
+	protected int mode=0;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
@@ -69,7 +69,8 @@ public class menu : MonoBehaviour {
 				backgroundUI.interactable=false;
 				loadselected(null);
 			}
-			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && upcharactor[0].GetComponent<Button>().interactable==true){
+			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==1){
+				mode=0;
 				StopAllCoroutines();
 				StartCoroutine(upcharselect());
 			}
@@ -88,7 +89,7 @@ public class menu : MonoBehaviour {
 			yield return null;
 		}
 
-		protected void charactormenu(string s){
+		protected void charactormenu(string s){//--------------角色選單資料讀取
 			statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 			StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
 			LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
@@ -105,7 +106,7 @@ public class menu : MonoBehaviour {
 			SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
 			AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
 		}
-		protected IEnumerator upcharselect(){
+		protected IEnumerator upcharselect(){//----------------------上方角色選擇
 			yield return new WaitForSeconds(0.01f);
 			for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
@@ -115,7 +116,10 @@ public class menu : MonoBehaviour {
 			loadselected(leftlist[0]);
 			yield return null;
 		}
-	public void Statusmode(){
+
+
+	public void Statusmode(){//-----------------------------狀態模式(按鈕)
+		mode=1;
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Status"){
@@ -126,15 +130,24 @@ public class menu : MonoBehaviour {
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
 	}
+	public void teammode(){//-----------------------隊伍模式
+		mode=1;
+		for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Team"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+				}
+		}
 
+	}
 
-	void arraygameobjectbutton(GameObject [] a,bool b){
+	void arraygameobjectbutton(GameObject [] a,bool b){//----------------------------關閉/開啟系列按鈕功能
 		for(int i=0;i<a.Length;i++){
 				a[i].GetComponent<Button> ().interactable = b;
 		}
 
 	}
-	void loadselected(GameObject a){
+	void loadselected(GameObject a){// -----------------------------------設定第一選項
 		es.firstSelectedGameObject=a;
 		es.SetSelectedGameObject(null);
  		es.SetSelectedGameObject(es.firstSelectedGameObject);
