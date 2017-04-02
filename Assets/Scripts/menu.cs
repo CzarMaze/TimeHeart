@@ -37,6 +37,7 @@ public class menu : MonoBehaviour {
 		valueStatusHP=GameObject.Find("valueStatusHP").GetComponent<RectTransform>();
 		valueStatusMP=GameObject.Find("valueStatusMP").GetComponent<RectTransform>();
 		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
+		
 		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
@@ -52,6 +53,12 @@ public class menu : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
+				for(int i=0;i<upcharactor.Length;i++){
+					string a=upcharactor[i].name.Substring(4);
+					upcharactor[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=SumVariable.charactorlv[Int32.Parse(a)][0].ToString();
+					upcharactor[i].transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][2]/(float)SumVariable.charactorlv[Int32.Parse(a)][1]),0,0);
+					upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);	
+				}
 				charactormenu(1.ToString());
 				backgroundUI.interactable=true;
 				loadselected(leftlist[2]);
@@ -60,7 +67,6 @@ public class menu : MonoBehaviour {
 				arraygameobjectbutton(upcharactor,false);
 				arraygameobjectbutton(leftlist,true);
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
-				//checkbutton ();
 		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
 				StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
 				SumVariable.keyboardopen = true;
@@ -81,6 +87,7 @@ public class menu : MonoBehaviour {
 			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
 				if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
+					statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 					charactormenu(s);
 				}
 			}
@@ -90,15 +97,14 @@ public class menu : MonoBehaviour {
 		}
 
 		protected void charactormenu(string s){//--------------角色選單資料讀取
-			statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 			StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
 			LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
 			HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
 			valueStatusHP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1]),0,0);
 			MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
-		valueStatusMP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3]),0,0);
+			valueStatusMP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3]),0,0);
 			EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
-		valueStatusEXP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5]),0,0);
+			valueStatusEXP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5]),0,0);
 			STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
 			INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
 			DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
