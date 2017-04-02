@@ -123,10 +123,8 @@ public class menu : MonoBehaviour {
 				}
 		}
 		arraygameobjectbutton(upcharactor,true);
-		arraygameobjectbutton(leftlist,false);
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
-		statusUI.sprite=Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(7)) as Sprite;
 	}
 
 
