@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
@@ -11,12 +12,25 @@ public class menu : MonoBehaviour {
 	protected GameObject [] leftlist,upcharactor;
 	protected EventSystem es;
 	protected Image statusUI;
+	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
 		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-		statusUI=GameObject.Find("statusUI").GetComponent<Image>();
+
+		statusUI=GameObject.Find("statusUI").GetComponent<Image>();    //角色大圖
+		StatusName=GameObject.Find("StatusName").GetComponent<Text>();     //姓名
+		LVStatus=GameObject.Find("LVStatus").GetComponent<Text>(); //等級
+		HPStatus=GameObject.Find("HPStatus").GetComponent<Text>(); //血量
+		MPStatus=GameObject.Find("MPStatus").GetComponent<Text>(); //魔力
+		EXPStatus=GameObject.Find("EXPStatus").GetComponent<Text>(); //經驗值
+		STRStatus=GameObject.Find("STRStatus").GetComponent<Text>(); //力量
+		MDEFStatus=GameObject.Find("MDEFStatus").GetComponent<Text>(); //智力
+		INTStatus=GameObject.Find("INTStatus").GetComponent<Text>(); //物防
+		SPDStatus=GameObject.Find("SPDStatus").GetComponent<Text>(); //魔防
+		DEFStatus=GameObject.Find("DEFStatus").GetComponent<Text>(); //速度
+		AGIStatus=GameObject.Find("AGIStatus").GetComponent<Text>(); //靈敏
 
 		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
 		//player = GameObject.Find ("Player");
@@ -38,6 +52,7 @@ public class menu : MonoBehaviour {
 				es.sendNavigationEvents=true;
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 				SumVariable.keyboardopen = false;
+				arraygameobjectbutton(upcharactor,false);
 				arraygameobjectbutton(leftlist,true);
 				//checkbutton ();
 		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
@@ -57,9 +72,20 @@ public class menu : MonoBehaviour {
 		}
 
 		protected IEnumerator Imagechange(){
-			if(statusUI.sprite != Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(4)) as Sprite ){
-				statusUI.sprite=Resources.Load<Sprite>(es.currentSelectedGameObject.name.Substring(4)) as Sprite;
-				Debug.Log(es.currentSelectedGameObject.name.Substring(4));
+			string s=es.currentSelectedGameObject.name.Substring(4);
+			if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
+				statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
+				StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
+				LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
+				HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
+				MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
+				EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
+				STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
+				INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
+				DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
+				MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
+				SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
+				AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
 			}
 			yield return new WaitForSeconds(0.01f);
 			StartCoroutine(Imagechange());
