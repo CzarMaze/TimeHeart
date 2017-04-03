@@ -46,12 +46,12 @@ public class animeaction : MonoBehaviour
 
 	public void reselection ()
 	{
-		if (SumVariable.key == SumVariable.add.Length) {
+		if (SumVariable.key == SumVariable.team.Length) {
 			SumVariable.key = 0;
 		}
-		if (!SumVariable.ban [SumVariable.key]) {
-			charactoranime (SumVariable.add [SumVariable.key]);
-			SumVariable.charactor = SumVariable.add [SumVariable.key];
+		if (SumVariable.teamban [SumVariable.key]) {
+			charactoranime (SumVariable.team [SumVariable.key].ToString());
+			SumVariable.charactor = SumVariable.team [SumVariable.key].ToString();
 			SumVariable.key++;
 		} else {
 			SumVariable.key++;
@@ -61,20 +61,7 @@ public class animeaction : MonoBehaviour
 
 	public void charactoranime (string k)
 	{
-		if (k == "1") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/1")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/1/1charactor") as RuntimeAnimatorController;
-		} else if (k == "2") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/2")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/2/2charactor") as RuntimeAnimatorController;
-		} else if (k == "3") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/3")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/3/3charactor") as RuntimeAnimatorController;
-
-		}
+		this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/"+k)as Sprite;
+		animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/"+k+"/"+k+"charactor") as RuntimeAnimatorController;
 	}
-    public void PrintEvent(string s)
-    {
-        Debug.Log("PrintEvent: " + s + " called at: " + Time.time);
-    }
 }

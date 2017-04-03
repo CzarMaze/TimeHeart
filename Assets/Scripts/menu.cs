@@ -133,7 +133,6 @@ public class menu : MonoBehaviour {
 			}
 		}
 		SetSelectedGameObjects(q,j-1,0);
-
 		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		for(int i=0;i<upcharactor.Length;i++){
 			string a=upcharactor[i].name.Substring(4);
@@ -165,7 +164,7 @@ public class menu : MonoBehaviour {
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
 	}
-	public void teammode(){//-----------------------隊伍模式
+	public void teammode(){//-----------------------隊伍模式(按鈕)
 		mode=1;
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;

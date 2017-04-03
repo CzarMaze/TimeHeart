@@ -13,9 +13,9 @@ public class Sharenold : Story {
 		}
 	}
 	protected override void otherthing(){
-		for (int i = 0; i < SumVariable.add.Length; i++) {
-			if (SumVariable.add[i]==this.gameObject.name) {
-				SumVariable.ban [i] = false;
+		for (int i = 0; i < SumVariable.team.Length; i++) {
+			if (SumVariable.team[i].ToString()==this.gameObject.name) {
+				SumVariable.teamban [i] = false;
 			}
 		}
 		Invoke ("logindele", 0.4f);
