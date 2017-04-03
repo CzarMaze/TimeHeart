@@ -61,15 +61,15 @@ public class animeaction : MonoBehaviour
 
 	public void charactoranime (string k)
 	{
-		if (k == "aleana") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/Aleana")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/Aleana/charactor") as RuntimeAnimatorController;
-		} else if (k == "sharenold") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/Sharenold")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/Sharenold/Sharenold charactor") as RuntimeAnimatorController;
-		} else if (k == "kaisvo") {
-			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/Kaisvo")as Sprite;
-			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/Kaisvo/Kaisvo charactor") as RuntimeAnimatorController;
+		if (k == "1") {
+			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/1")as Sprite;
+			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/1/1charactor") as RuntimeAnimatorController;
+		} else if (k == "2") {
+			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/2")as Sprite;
+			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/2/2charactor") as RuntimeAnimatorController;
+		} else if (k == "3") {
+			this.GetComponent<SpriteRenderer> ().sprite = Resources.Load<Sprite> ("anime/3")as Sprite;
+			animator.runtimeAnimatorController = Resources.Load<RuntimeAnimatorController> ("Animator Controller/3/3charactor") as RuntimeAnimatorController;
 
 		}
 	}

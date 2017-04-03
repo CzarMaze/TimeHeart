@@ -1,8 +1,8 @@
 ﻿using UnityEngine;
 public static class SumVariable{
 	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
-	public static string charactor="aleana";//角色名字
-	public static string [] add={"aleana","sharenold","kaisvo"};
+	public static string charactor="1";//角色名字
+	public static string [] add={"1","2","3"};
 	public static int [] team={1,2,3,4,5,6,7,8,9,10,11,12};
 	public static bool [] teamban={true,true,true,true,true,false,true,true,true,true,true,true};
 	public static bool[] ban = { false, false, false };
