@@ -8,7 +8,7 @@ public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject [] selectonchr;
 	protected GameObject player;
-	protected GameObject NPC;
+	protected GameObject NPC,Icon;
 	protected GameObject [] leftlist,upcharactor;
 	protected EventSystem es;
 	protected Image statusUI;
@@ -18,7 +18,6 @@ public class menu : MonoBehaviour {
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
-		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
 		statusUI=GameObject.Find("statusUI").GetComponent<Image>();    //角色大圖
@@ -38,6 +37,7 @@ public class menu : MonoBehaviour {
 		valueStatusMP=GameObject.Find("valueStatusMP").GetComponent<RectTransform>();
 		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
 		
+		Icon=GameObject.Find("Icon");
 		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
@@ -53,12 +53,7 @@ public class menu : MonoBehaviour {
 
 	void Update () {
 		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
-				for(int i=0;i<upcharactor.Length;i++){
-					string a=upcharactor[i].name.Substring(4);
-					upcharactor[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=SumVariable.charactorlv[Int32.Parse(a)][0].ToString();
-					upcharactor[i].transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][2]/(float)SumVariable.charactorlv[Int32.Parse(a)][1]),0,0);
-					upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);	
-				}
+				startmenu();
 				charactormenu(1.ToString());
 				backgroundUI.interactable=true;
 				loadselected(leftlist[2]);
@@ -122,6 +117,26 @@ public class menu : MonoBehaviour {
 			loadselected(leftlist[0]);
 			yield return null;
 		}
+
+	protected void startmenu(){//-----隊伍偵測
+		int j=0;
+		for(int i=0;i<SumVariable.team.Length;i++){
+			if(SumVariable.teamban[i]){
+				GameObject q=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-1026.5f+187*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
+				q.transform.SetParent (Icon.gameObject.transform,false);
+				q.name = "icon"+SumVariable.team[i];
+				j++;
+			}
+		}
+		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
+		for(int i=0;i<upcharactor.Length;i++){
+			string a=upcharactor[i].name.Substring(4);
+			upcharactor[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=SumVariable.charactorlv[Int32.Parse(a)][0].ToString();
+			upcharactor[i].transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][2]/(float)SumVariable.charactorlv[Int32.Parse(a)][1]),0,0);
+			upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);	
+		}
+	}
+
 
 
 	public void Statusmode(){//-----------------------------狀態模式(按鈕)
