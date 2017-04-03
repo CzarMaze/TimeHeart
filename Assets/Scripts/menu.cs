@@ -120,14 +120,20 @@ public class menu : MonoBehaviour {
 
 	protected void startmenu(){//-----隊伍偵測
 		int j=0;
+		GameObject [] q=new GameObject [SumVariable.team.Length];
 		for(int i=0;i<SumVariable.team.Length;i++){
 			if(SumVariable.teamban[i]){
-				GameObject q=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-1026.5f+187*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
-				q.transform.SetParent (Icon.gameObject.transform,false);
-				q.name = "icon"+SumVariable.team[i];
+				q[j]=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-1026.5f+187*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
+				q[j].transform.SetParent (Icon.gameObject.transform,false);
+				q[j].name = "icon"+SumVariable.team[i];
+				if(j>0){
+					SetSelectedGameObjects(q,j-1,j);
+				}
 				j++;
 			}
 		}
+		SetSelectedGameObjects(q,j-1,0);
+
 		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		for(int i=0;i<upcharactor.Length;i++){
 			string a=upcharactor[i].name.Substring(4);
@@ -137,7 +143,15 @@ public class menu : MonoBehaviour {
 		}
 	}
 
-
+	protected void SetSelectedGameObjects(GameObject [] q,int a,int b){//-----------------設定創建按鈕/選項後左右鍵指向其他按鈕/選項
+		Navigation r,s;
+		r=q[a].gameObject.GetComponent<Button>().navigation;
+		r.selectOnRight=q[b].gameObject.GetComponent<Button>();
+		q[a].gameObject.GetComponent<Button>().navigation=r;
+		s=q[b].gameObject.GetComponent<Button>().navigation;
+		s.selectOnLeft=q[a].gameObject.GetComponent<Button>();
+		q[b].gameObject.GetComponent<Button>().navigation=s;
+	}
 
 	public void Statusmode(){//-----------------------------狀態模式(按鈕)
 		mode=1;
