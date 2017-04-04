@@ -1,12 +1,15 @@
 ﻿using UnityEngine;
 public static class SumVariable{
-	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
+
+	//---------------------------------Save
 	public static string charactor="1";//角色名字
-	public static int [] team={1,2,3,4,5,6,7,8,9,10,11,12};
 	public static int [] battleteam={0,0,0};
 	public static bool [] teamban={true,true,true,false,false,false,false,false,false,false,false,false};
-	public static Vector3 [] charactorxyz={new Vector3(0,0,0),new Vector3(1.131f,-0.336f,0),new Vector3(-0.53f,-0.323f,0)};
 	public static int key=1;
+	//---------------------------------Variable
+	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
+	public static int [] team={1,2,3,4,5,6,7,8,9,10,11,12};
+	public static Vector3 [] charactorxyz={new Vector3(0,0,0),new Vector3(1.131f,-0.336f,0),new Vector3(-0.53f,-0.323f,0)};
 	public static string nextlevel=null;
 	public static Vector3 nextad=new Vector3(0,0,0);
 	public static string nextdt = "down";
