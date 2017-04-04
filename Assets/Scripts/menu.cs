@@ -9,9 +9,9 @@ public class menu : MonoBehaviour {
 	protected GameObject [] selectonchr;
 	protected GameObject player;
 	protected GameObject NPC,Icon;
-	protected GameObject [] leftlist,upcharactor;
+	protected GameObject [] leftlist,upcharactor,battleteam;
 	protected EventSystem es;
-	protected Image statusUI;
+	protected GameObject statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
 	protected int mode=0;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
@@ -20,7 +20,7 @@ public class menu : MonoBehaviour {
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 
-		statusUI=GameObject.Find("statusUI").GetComponent<Image>();    //角色大圖
+		statusUI=GameObject.Find("statusUI");   //角色大圖
 		StatusName=GameObject.Find("StatusName").GetComponent<Text>();     //姓名
 		LVStatus=GameObject.Find("LVStatus").GetComponent<Text>(); //等級
 		HPStatus=GameObject.Find("HPStatus").GetComponent<Text>(); //血量
@@ -38,7 +38,7 @@ public class menu : MonoBehaviour {
 		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
 		
 		Icon=GameObject.Find("Icon");
-		//selectonchr = GameObject.FindGameObjectsWithTag ("menubuttons");
+		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
 	/*	for(int i=0;i<selectonchr.Length;i++){
@@ -52,7 +52,7 @@ public class menu : MonoBehaviour {
 	}
 
 	void Update () {
-		if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
+			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
 				startmenu();
 				charactormenu(1.ToString());
 				backgroundUI.interactable=true;
@@ -62,27 +62,30 @@ public class menu : MonoBehaviour {
 				arraygameobjectbutton(upcharactor,false);
 				arraygameobjectbutton(leftlist,true);
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
-		}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
-				StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
-				SumVariable.keyboardopen = true;
-				arraygameobjectbutton(leftlist,false);
-				es.sendNavigationEvents=false;
-				backgroundUI.interactable=false;
-				loadselected(null);
-			}
+			}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
+					StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
+					SumVariable.keyboardopen = true;
+					arraygameobjectbutton(leftlist,false);
+					es.sendNavigationEvents=false;
+					backgroundUI.interactable=false;
+					loadselected(null);
+				}
 			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==1){
 				mode=0;
 				StopAllCoroutines();
-				StartCoroutine(upcharselect());
+				StartCoroutine(exitupchar(leftlist,upcharactor));
+			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==2){
+				mode=0;
+				StopAllCoroutines();
+				StartCoroutine(exitupchar(leftlist,battleteam));
 			}
-			
 		}
 
-		protected IEnumerator Imagechange(){
+		protected IEnumerator Imagechange(){//----------------------上方角色選擇
 			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
-				if(statusUI.sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
-					statusUI.sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
+				if(statusUI.GetComponent<Image>().sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
+					statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 					charactormenu(s);
 				}
 			}
@@ -107,13 +110,13 @@ public class menu : MonoBehaviour {
 			SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
 			AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
 		}
-		protected IEnumerator upcharselect(){//----------------------上方角色選擇
+		protected IEnumerator exitupchar(GameObject [] a,GameObject [] b){
 			yield return new WaitForSeconds(0.01f);
 			for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
 			}
-			arraygameobjectbutton(leftlist,true);
-			arraygameobjectbutton(upcharactor,false);
+			arraygameobjectbutton(a,true);
+			arraygameobjectbutton(b,false);
 			loadselected(leftlist[0]);
 			yield return null;
 		}
@@ -165,14 +168,21 @@ public class menu : MonoBehaviour {
 		StartCoroutine(Imagechange());
 	}
 	public void teammode(){//-----------------------隊伍模式(按鈕)
-		mode=1;
+		mode=2;
+		statusUI.GetComponent<CanvasGroup>().alpha=0;
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Team"){
 					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
 				}
 		}
-
+		for(int i=0;i<battleteam.Length;i++){
+			battleteam[i].GetComponent<Button> ().interactable =true;
+			battleteam[i].GetComponentInParent<CanvasGroup>().alpha=1;
+			if(battleteam[i].name=="Team1"){
+				loadselected(battleteam[i]);
+			}
+		}
 	}
 
 	void arraygameobjectbutton(GameObject [] a,bool b){//----------------------------關閉/開啟系列按鈕功能
