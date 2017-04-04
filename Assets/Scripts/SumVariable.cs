@@ -3,7 +3,7 @@ public static class SumVariable{
 
 	//---------------------------------Save
 	public static string charactor="1";//角色名字
-	public static int [] battleteam={0,0,0};
+	public static int [] battleteam={1,2,3};
 	public static bool [] teamban={true,true,true,false,false,false,false,false,false,false,false,false};
 	public static int key=1;
 	//---------------------------------Variable

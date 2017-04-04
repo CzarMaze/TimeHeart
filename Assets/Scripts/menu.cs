@@ -38,6 +38,17 @@ public class menu : MonoBehaviour {
 		
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
+		Sprite [] a=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
+		for(int i=0;i<battleteam.Length;i++){
+			if(battleteam[i].name=="STeam1"||battleteam[i].name=="STeam2"||battleteam[i].name=="STeam3"){
+				for(int j=0;j<a.Length;j++){
+					if(a[j].name==battleteam[i].name.Substring(5)){
+						battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=a[j];
+						break;
+					}
+				}
+			}
+		}
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
 	/*	for(int i=0;i<selectonchr.Length;i++){
@@ -93,9 +104,12 @@ public class menu : MonoBehaviour {
 						statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 						charactormenu(s);
 					}else if(mode==2){
-						Debug.Log(es.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name.Substring(7));
-						statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusImage1") as Sprite;
-						charactormenu(es.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name.Substring(7));
+						statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusUI") as Sprite;
+						if(es.currentSelectedGameObject.GetComponent<Image>().sprite.name!="teamDark"){
+							charactormenu(es.currentSelectedGameObject.GetComponent<Image>().sprite.name);
+						}else{
+							charactormenu(es.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name);
+						}
 					}
 				}
 			}
@@ -105,20 +119,22 @@ public class menu : MonoBehaviour {
 		}
 
 		protected void charactormenu(string s){//--------------角色選單資料讀取
-			StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
-			LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
-			HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
-			valueStatusHP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1]),0,0);
-			MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
-			valueStatusMP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3]),0,0);
-			EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
-			valueStatusEXP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5]),0,0);
-			STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
-			INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
-			DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
-			MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
-			SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
-			AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
+			if(Int32.Parse(s)!=0){
+				StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
+				LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
+				HPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][1].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][2].ToString();
+				valueStatusHP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][2]/(float)SumVariable.charactorlv[Int32.Parse(s)][1]),0,0);
+				MPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][3].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][4].ToString();
+				valueStatusMP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][4]/(float)SumVariable.charactorlv[Int32.Parse(s)][3]),0,0);
+				EXPStatus.text=SumVariable.charactorlv[Int32.Parse(s)][5].ToString()+"/"+SumVariable.charactorlv[Int32.Parse(s)][6].ToString();
+				valueStatusEXP.localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(s)][6]/(float)SumVariable.charactorlv[Int32.Parse(s)][5]),0,0);
+				STRStatus.text=SumVariable.charactorlv[Int32.Parse(s)][7].ToString();
+				INTStatus.text=SumVariable.charactorlv[Int32.Parse(s)][8].ToString();
+				DEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][9].ToString();
+				MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
+				SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
+				AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
+			}
 		}
 		protected IEnumerator exitupchar(GameObject [] a,GameObject [] b){
 			yield return new WaitForSeconds(0.01f);
@@ -189,7 +205,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<battleteam.Length;i++){
 			arraygameobjectbutton(battleteam,true);
 			battleteam[i].GetComponentInParent<CanvasGroup>().alpha=1;
-			if(battleteam[i].name=="Team1"){
+			if(battleteam[i].name=="STeam1"){
 				loadselected(battleteam[i]);
 			}
 		}
