@@ -46,7 +46,7 @@ public class animeaction : MonoBehaviour
 
 	public void reselection ()
 	{
-		if (SumVariable.key == SumVariable.team.Length) {
+		if (SumVariable.key == 3) {
 			SumVariable.key = 0;
 		}
 		if (SumVariable.teamban [SumVariable.key]) {
