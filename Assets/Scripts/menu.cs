@@ -13,6 +13,7 @@ public class menu : MonoBehaviour {
 	protected GameObject statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
 	protected int mode=0;
+	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	void Start () {
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
@@ -38,17 +39,21 @@ public class menu : MonoBehaviour {
 		
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
-		Sprite [] a=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
+
+
+		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
 		for(int i=0;i<battleteam.Length;i++){
 			if(battleteam[i].name=="STeam1"||battleteam[i].name=="STeam2"||battleteam[i].name=="STeam3"){
-				for(int j=0;j<a.Length;j++){
-					if(a[j].name==battleteam[i].name.Substring(5)){
-						battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=a[j];
+				for(int j=0;j<ass.Length;j++){
+					if(ass[j].name==SumVariable.battleteam[Int32.Parse(battleteam[i].name.Substring(5))-1].ToString()){
+						battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=ass[j];
 						break;
 					}
 				}
 			}
 		}
+
+
 		//player = GameObject.Find ("Player");
 		//NPC = GameObject.Find ("NPC");
 	/*	for(int i=0;i<selectonchr.Length;i++){
@@ -100,16 +105,12 @@ public class menu : MonoBehaviour {
 			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
 				if(statusUI.GetComponent<Image>().sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
-					if(mode!=2){
+					if(mode==1){
 						statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite;
 						charactormenu(s);
 					}else if(mode==2){
 						statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusUI") as Sprite;
-						if(es.currentSelectedGameObject.GetComponent<Image>().sprite.name!="teamDark"){
-							charactormenu(es.currentSelectedGameObject.GetComponent<Image>().sprite.name);
-						}else{
-							charactormenu(es.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name);
-						}
+						charactormenu(es.currentSelectedGameObject.transform.GetChild(0).GetComponent<Image>().sprite.name);
 					}
 				}
 			}
@@ -134,16 +135,31 @@ public class menu : MonoBehaviour {
 				MDEFStatus.text=SumVariable.charactorlv[Int32.Parse(s)][10].ToString();
 				SPDStatus.text=SumVariable.charactorlv[Int32.Parse(s)][11].ToString();
 				AGIStatus.text=SumVariable.charactorlv[Int32.Parse(s)][12].ToString();
+			}else{
+				StatusName.text="";
+				LVStatus.text="";
+				HPStatus.text="";
+				valueStatusHP.localPosition=new Vector3(0,0,0);
+				MPStatus.text="";
+				valueStatusMP.localPosition=new Vector3(0,0,0);
+				EXPStatus.text="";
+				valueStatusEXP.localPosition=new Vector3(0,0,0);
+				STRStatus.text="";
+				INTStatus.text="";
+				DEFStatus.text="";
+				MDEFStatus.text="";
+				SPDStatus.text="";
+				AGIStatus.text="";
 			}
 		}
 		protected IEnumerator exitupchar(GameObject [] a,GameObject [] b){
 			yield return new WaitForSeconds(0.01f);
-			for(int i=0;i<leftlist.Length;i++){
-				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
+			for(int i=0;i<a.Length;i++){
+				a[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
 			}
 			arraygameobjectbutton(a,true);
 			arraygameobjectbutton(b,false);
-			loadselected(leftlist[0]);
+			loadselected(a[0]);
 			yield return null;
 		}
 
@@ -202,8 +218,8 @@ public class menu : MonoBehaviour {
 					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
 				}
 		}
+		arraygameobjectbutton(battleteam,true);
 		for(int i=0;i<battleteam.Length;i++){
-			arraygameobjectbutton(battleteam,true);
 			battleteam[i].GetComponentInParent<CanvasGroup>().alpha=1;
 			if(battleteam[i].name=="STeam1"){
 				loadselected(battleteam[i]);
@@ -211,7 +227,89 @@ public class menu : MonoBehaviour {
 		}
 		StartCoroutine(Imagechange());
 	}
-
+	public void teammodeselectchar(string s){
+		mode=3;
+		for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name==s){
+					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamLight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(battleteam,false);
+		arraygameobjectbutton(upcharactor,true);
+		for(int i=0;i<upcharactor.Length;i++){
+			if(upcharactor[i].name.Substring(4)==SumVariable.battleteam[0].ToString()){
+				upcharactor[i].GetComponent<Button>().interactable=false;
+			}
+			if(upcharactor[i].name.Substring(4)==SumVariable.battleteam[1].ToString()){
+				upcharactor[i].GetComponent<Button>().interactable=false;
+			}
+			if(upcharactor[i].name.Substring(4)==SumVariable.battleteam[2].ToString()){
+				upcharactor[i].GetComponent<Button>().interactable=false;
+			}
+		}
+		for(int i=0;i<upcharactor.Length;i++){
+			if(es.currentSelectedGameObject==null){
+				loadselected(upcharactor[i]);
+			}
+		}
+		
+		StartCoroutine(teammodeselectcharIE(s));
+	}
+	protected IEnumerator teammodeselectcharIE(string s){
+		yield return new WaitForSeconds(0.01f);
+		StartCoroutine(teammodeselectcharIE(s));
+		if(es.currentSelectedGameObject!=null){
+			string a=es.currentSelectedGameObject.name.Substring(4);
+			charactormenu(a);
+		}
+		if(Input.GetKeyUp(KeyCode.Escape)){
+			for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name==s){
+					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
+				}
+			}
+			arraygameobjectbutton(battleteam,true);
+			arraygameobjectbutton(upcharactor,false);
+			for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name=="STeam1"){
+					loadselected(battleteam[i]);
+				}
+			}
+			mode=2;
+			StopAllCoroutines();
+		}
+		if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.KeypadEnter)){
+			if(es.currentSelectedGameObject.GetComponent<Button>().interactable==true){
+			for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name==s){
+					for(int j=0;j<ass.Length;j++){
+						if(ass[j].name==es.currentSelectedGameObject.name.Substring(4)){
+							battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=ass[j];
+							SumVariable.battleteam[Int32.Parse(s.Substring(5))-1]=Int32.Parse(es.currentSelectedGameObject.name.Substring(4));
+							break;
+							}
+						}
+					}	
+				}
+			}
+			/*for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name==s){
+					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
+				}
+			}
+			arraygameobjectbutton(battleteam,true);
+			arraygameobjectbutton(upcharactor,false);
+			for(int i=0;i<battleteam.Length;i++){
+				if(battleteam[i].name=="STeam1"){
+					loadselected(battleteam[i]);
+				}
+			}
+			mode=2;
+			StopAllCoroutines();
+			*/
+		}
+		yield return null;
+	}
 	void arraygameobjectbutton(GameObject [] a,bool b){//----------------------------關閉/開啟系列按鈕功能
 		for(int i=0;i<a.Length;i++){
 			if(a[i].GetComponent<Button> ()!=null){
