@@ -101,7 +101,7 @@ public class menu : MonoBehaviour {
 			}
 		}
 
-		protected IEnumerator Imagechange(){//----------------------上方角色選擇
+	protected IEnumerator Imagechange(){//----------------------上方角色選擇
 			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
 				if(statusUI.GetComponent<Image>().sprite != Resources.Load<Sprite>("chatboxpicture/statusImage"+s) as Sprite ){
@@ -232,7 +232,14 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<battleteam.Length;i++){
 				if(battleteam[i].name==s){
 					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamLight") as Sprite;
+					for(int j=0;j<ass.Length;j++){
+						if(ass[j].name=="0"){
+							battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=ass[j];
+							SumVariable.battleteam[Int32.Parse(s.Substring(5))-1]=0;
+					}
 				}
+				}
+				
 		}
 		arraygameobjectbutton(battleteam,false);
 		arraygameobjectbutton(upcharactor,true);
@@ -323,40 +330,5 @@ public class menu : MonoBehaviour {
 		es.SetSelectedGameObject(null);
  		es.SetSelectedGameObject(es.firstSelectedGameObject);
 	}
-	/*void checkbutton(){
-		for(int i=0;i<selectonchr.Length;i++){
-			if (selectonchr [i].name.Substring (0, 3) == "sel") {
-				for(int j=0;j<SumVariable.ban.Length;j++){
-					if(selectonchr [i].name.Substring (3).ToString()== SumVariable.add[j]){
-						if (SumVariable.ban [j]) {
-							selectonchr [i].GetComponent<Button> ().interactable = false;
-						} else {
-							selectonchr [i].GetComponent<Button> ().interactable = true;
-						}
-						break;
-					}
-
-				}
-			}
-		}
-	}
-	void chator(string s){
-		for (int i = 0; i < selectonchr.Length; i++) {
-			if (s == selectonchr [i].name.Substring (3).ToString ()) {
-				selectonchr [i].GetComponent<Button> ().interactable = false;
-				break;
-			}
-		}
-		for (int i = 0; i < SumVariable.ban.Length; i++) {
-			if (s == SumVariable.add [i]) {
-				GameObject q=Instantiate(Resources.Load ("prefabs/" + s),SumVariable.charactorxyz[i],Quaternion.identity) as GameObject;
-				q.transform.SetParent (NPC.gameObject.transform);
-				q.name = s;
-				SumVariable.ban [i] = true;
-				if (SumVariable.add [i] == SumVariable.charactor) {
-					player.GetComponent<animeaction> ().reselection ();
-				}
-			}
-		}*/
 
 	}
