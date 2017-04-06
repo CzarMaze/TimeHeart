@@ -4,17 +4,8 @@ public static class SumVariable{
 	//---------------------------------Save
 	public static string charactor="1";//角色名字
 	public static int [] battleteam={1,0,0};
-	public static bool [] teamban={true,true,true,false,false,false,false,false,false,false,false,false};
+	public static bool [] teamban={true,true,true,false,false,false,false,true,false,true,false,false};
 	public static int key=1;
-	//---------------------------------Variable
-	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
-	public static int [] team={1,2,3,4,5,6,7,8,9,10,11,12};
-	public static Vector3 [] charactorxyz={new Vector3(0,0,0),new Vector3(1.131f,-0.336f,0),new Vector3(-0.53f,-0.323f,0)};
-	public static string nextlevel=null;
-	public static Vector3 nextad=new Vector3(0,0,0);
-	public static string nextdt = "down";
-	public static AudioClip nextmuc=null;
-	public static float nextmucpth=1;
 	public static string [] charactorname={null,"艾憐娜","薩雷諾","凱斯伏","伊莉雅","希恩","勇帝","隊長","櫻","烈爾","蒙德士","孟妮","薩豪"};
 	public static int [] [] charactorlv=new int[][]
 	{//-----------{LV,HP(limit),HP(now),MP(limit),MP(now),EXP(limit),EXP(now),力,智,物防,魔防,速,靈敏}
@@ -32,5 +23,15 @@ public static class SumVariable{
 		new int [] {28,1768,1468,985,452,16852,5768,210,88,56,42,515,554},
 		new int [] {30,2852,2805,1585,798,20852,3335,258,481,285,352,207,30}
 	};
+	//---------------------------------Variable
+	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
+	public static int [] team={1,2,3,4,5,6,7,8,9,10,11,12};
+	public static Vector3 [] charactorxyz={new Vector3(0,0,0),new Vector3(1.131f,-0.336f,0),new Vector3(-0.53f,-0.323f,0)};
+	public static string nextlevel=null;
+	public static Vector3 nextad=new Vector3(0,0,0);
+	public static string nextdt = "down";
+	public static AudioClip nextmuc=null;
+	public static float nextmucpth=1;
+	
 }
  

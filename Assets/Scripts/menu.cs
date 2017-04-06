@@ -8,7 +8,7 @@ public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject player;
 	protected GameObject NPC,Icon;
-	protected GameObject [] leftlist,upcharactor,battleteam;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items;
 	protected EventSystem es;
 	protected GameObject statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
@@ -39,6 +39,7 @@ public class menu : MonoBehaviour {
 		
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
+		Items=GameObject.FindGameObjectsWithTag("Items");
 
 
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
@@ -74,13 +75,13 @@ public class menu : MonoBehaviour {
 				loadselected(leftlist[2]);
 				es.sendNavigationEvents=true;
 				SumVariable.keyboardopen = false;
-				arraygameobjectbutton(upcharactor,false);
-				arraygameobjectbutton(leftlist,true);
+				arraygameobjectbutton(upcharactor,false,1);
+				arraygameobjectbutton(leftlist,true,1);
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 			}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
 					StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
 					SumVariable.keyboardopen = true;
-					arraygameobjectbutton(leftlist,false);
+					arraygameobjectbutton(leftlist,false,0);
 					es.sendNavigationEvents=false;
 					backgroundUI.interactable=false;
 					loadselected(null);
@@ -88,16 +89,26 @@ public class menu : MonoBehaviour {
 			if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==1){
 				mode=0;
 				StopAllCoroutines();
-				StartCoroutine(exitupchar(leftlist,upcharactor));
+				StartCoroutine(exitupchar(upcharactor,1));
 			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==2){
 				mode=0;
 				for(int i=0;i<battleteam.Length;i++){
 					battleteam[i].GetComponentInParent<CanvasGroup>().alpha=0;
 				}
 				StopAllCoroutines();
+				statusUI.GetComponent<Image>().sprite=Resources.Load<Sprite>("chatboxpicture/statusImage"+1.ToString()) as Sprite;
 				charactormenu(1.ToString());
-				StartCoroutine(exitupchar(leftlist,battleteam));
+				StartCoroutine(exitupchar(battleteam,0));
 				
+			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==4){
+				mode=0;
+				for(int i=0;i<Items.Length;i++){
+					if(Items[i].name=="Item"){
+						Items[i].GetComponent<Canvas>().sortingOrder=0;
+					}
+				}
+				statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+				StartCoroutine(exitupchar(Items,0));
 			}
 		}
 
@@ -119,7 +130,7 @@ public class menu : MonoBehaviour {
 			yield return null;
 		}
 
-		protected void charactormenu(string s){//--------------角色選單資料讀取
+	protected void charactormenu(string s){//--------------角色選單資料讀取
 			if(Int32.Parse(s)!=0){
 				StatusName.text=SumVariable.charactorname[Int32.Parse(s)];
 				LVStatus.text=SumVariable.charactorlv[Int32.Parse(s)][0].ToString();
@@ -152,14 +163,14 @@ public class menu : MonoBehaviour {
 				AGIStatus.text="";
 			}
 		}
-		protected IEnumerator exitupchar(GameObject [] a,GameObject [] b){
+	protected IEnumerator exitupchar(GameObject [] b,int c){
 			yield return new WaitForSeconds(0.01f);
-			for(int i=0;i<a.Length;i++){
-				a[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
+			for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
 			}
-			arraygameobjectbutton(a,true);
-			arraygameobjectbutton(b,false);
-			loadselected(a[0]);
+			arraygameobjectbutton(leftlist,true,1);
+			arraygameobjectbutton(b,false,c);
+			loadselected(leftlist[0]);
 			yield return null;
 		}
 
@@ -196,7 +207,26 @@ public class menu : MonoBehaviour {
 		s.selectOnLeft=q[a].gameObject.GetComponent<Button>();
 		q[b].gameObject.GetComponent<Button>().navigation=s;
 	}
+	void arraygameobjectbutton(GameObject [] a,bool b,float c){//----------------------------關閉/開啟系列按鈕功能
+		for(int i=0;i<a.Length;i++){
+			if(a[i].GetComponent<Button> ()!=null){
+				a[i].GetComponent<Button> ().interactable = b;
+			}
+			if(a[i].GetComponent<CanvasGroup>()!=null){
+				a[i].GetComponent<CanvasGroup>().alpha=c;
+				a[i].GetComponent<CanvasGroup> ().interactable=b;
+			}
+		}
 
+	}
+	void loadselected(GameObject a){// -----------------------------------設定第一選項
+		es.firstSelectedGameObject=a;
+		es.SetSelectedGameObject(null);
+ 		es.SetSelectedGameObject(es.firstSelectedGameObject);
+	}
+//-----------------------------------------------------------------------------------------------
+//-------------------------------------------------------------------------------------------------------------------------
+//-----------------------------------------------------------------------------------------------------------------------------------
 	public void Statusmode(){//-----------------------------狀態模式(按鈕)
 		mode=1;
 		for(int i=0;i<leftlist.Length;i++){
@@ -205,7 +235,7 @@ public class menu : MonoBehaviour {
 					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
 				}
 		}
-		arraygameobjectbutton(upcharactor,true);
+		arraygameobjectbutton(upcharactor,true,1);
 		loadselected(upcharactor[0]);
 		StartCoroutine(Imagechange());
 	}
@@ -218,7 +248,7 @@ public class menu : MonoBehaviour {
 					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
 				}
 		}
-		arraygameobjectbutton(battleteam,true);
+		arraygameobjectbutton(battleteam,true,1);
 		for(int i=0;i<battleteam.Length;i++){
 			battleteam[i].GetComponentInParent<CanvasGroup>().alpha=1;
 			if(battleteam[i].name=="STeam1"){
@@ -241,8 +271,8 @@ public class menu : MonoBehaviour {
 				}
 				
 		}
-		arraygameobjectbutton(battleteam,false);
-		arraygameobjectbutton(upcharactor,true);
+		arraygameobjectbutton(battleteam,false,1);
+		arraygameobjectbutton(upcharactor,true,1);
 		for(int i=0;i<upcharactor.Length;i++){
 			if(upcharactor[i].name.Substring(4)==SumVariable.battleteam[0].ToString()){
 				upcharactor[i].GetComponent<Button>().interactable=false;
@@ -275,8 +305,8 @@ public class menu : MonoBehaviour {
 					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
 				}
 			}
-			arraygameobjectbutton(battleteam,true);
-			arraygameobjectbutton(upcharactor,false);
+			arraygameobjectbutton(battleteam,true,1);
+			arraygameobjectbutton(upcharactor,false,1);
 			for(int i=0;i<battleteam.Length;i++){
 				if(battleteam[i].name=="STeam1"){
 					loadselected(battleteam[i]);
@@ -285,7 +315,8 @@ public class menu : MonoBehaviour {
 			mode=2;
 			StopAllCoroutines();
 		}
-		if(Input.GetKeyUp(KeyCode.Space)||Input.GetKeyUp(KeyCode.KeypadEnter)){
+		
+		if(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.KeypadEnter)){
 			if(es.currentSelectedGameObject.GetComponent<Button>().interactable==true){
 			for(int i=0;i<battleteam.Length;i++){
 				if(battleteam[i].name==s){
@@ -317,18 +348,33 @@ public class menu : MonoBehaviour {
 		}
 		yield return null;
 	}
-	void arraygameobjectbutton(GameObject [] a,bool b){//----------------------------關閉/開啟系列按鈕功能
-		for(int i=0;i<a.Length;i++){
-			if(a[i].GetComponent<Button> ()!=null){
-				a[i].GetComponent<Button> ().interactable = b;
+	public void Itemsmode(){
+		mode=4;
+		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
+		for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Item"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(Items,true,1);
+		for(int i=0;i<Items.Length;i++){
+			if(Items[i].name=="Item"){
+				Items[i].GetComponent<Canvas>().sortingOrder=101;
+			}
+			if(Items[i].name=="itemUI"){
+				loadselected(Items[i]);
 			}
 		}
 
 	}
-	void loadselected(GameObject a){// -----------------------------------設定第一選項
-		es.firstSelectedGameObject=a;
-		es.SetSelectedGameObject(null);
- 		es.SetSelectedGameObject(es.firstSelectedGameObject);
-	}
+	public void ItemsitemUI(){
 
+	}
+	public void ItemsmainUI(){
+		
+	}
+	public void ItemsfriendsUI(){
+		
+	}
 	}
