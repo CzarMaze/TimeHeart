@@ -3,12 +3,12 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
-
+//menubuttons
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject player;
 	protected GameObject NPC,Icon;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI;
 	protected EventSystem es;
 	protected GameObject statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
@@ -39,9 +39,10 @@ public class menu : MonoBehaviour {
 		
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
-		Items=GameObject.FindGameObjectsWithTag("Items");
-
-
+		Items=GameObject.FindGameObjectsWithTag("Itemss");
+		itemUI=GameObject.FindGameObjectsWithTag("itemUI");
+		mainUI=GameObject.FindGameObjectsWithTag("mainUI");
+		friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
 		for(int i=0;i<battleteam.Length;i++){
 			if(battleteam[i].name=="STeam1"||battleteam[i].name=="STeam2"||battleteam[i].name=="STeam3"){
@@ -104,11 +105,25 @@ public class menu : MonoBehaviour {
 				mode=0;
 				for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="Item"){
-						Items[i].GetComponent<Canvas>().sortingOrder=0;
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="friendsUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="mainUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="itemUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=102;
 					}
 				}
 				statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+				arraygameobjectbutton(itemUI,false,1);
+				arraygameobjectbutton(mainUI,false,0);
+				arraygameobjectbutton(friendsUI,false,0);
 				StartCoroutine(exitupchar(Items,0));
+			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==5){
+				mode=0;
 			}
 		}
 
@@ -369,12 +384,54 @@ public class menu : MonoBehaviour {
 
 	}
 	public void ItemsitemUI(){
-
+		mode=5;
+		for(int i=0;i<Items.Length;i++){
+					if(Items[i].name=="friendsUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="mainUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="itemUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=102;
+					}
+				}
+		arraygameobjectbutton(itemUI,true,1);
+		arraygameobjectbutton(mainUI,false,0);
+		arraygameobjectbutton(friendsUI,false,0);
 	}
 	public void ItemsmainUI(){
-		
+		mode=5;
+		for(int i=0;i<Items.Length;i++){
+					if(Items[i].name=="friendsUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="mainUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=102;
+					}
+					if(Items[i].name=="itemUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+				}
+		arraygameobjectbutton(itemUI,false,0);
+		arraygameobjectbutton(mainUI,true,1);
+		arraygameobjectbutton(friendsUI,false,0);
 	}
 	public void ItemsfriendsUI(){
-		
+		mode=5;
+		for(int i=0;i<Items.Length;i++){
+					if(Items[i].name=="friendsUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=102;
+					}
+					if(Items[i].name=="mainUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+					if(Items[i].name=="itemUI"){
+						Items[i].GetComponent<Canvas>().sortingOrder=1;
+					}
+				}
+		arraygameobjectbutton(itemUI,false,0);
+		arraygameobjectbutton(mainUI,false,0);
+		arraygameobjectbutton(friendsUI,true,1);
 	}
 	}
