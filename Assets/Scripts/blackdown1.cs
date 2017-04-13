@@ -1,9 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
-using Mono.Data.Sqlite;
-using System.Data;
-using System;
-using UnityEngine.UI;
 public class blackdown1 : Story {
 	int i=1;//這邊先宣告資料表最小數值
 	void OnCollisionEnter2D(Collision2D other){

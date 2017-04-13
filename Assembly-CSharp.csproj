@@ -62,6 +62,7 @@
      <Compile Include="Assets\Scripts\loading.cs" />
      <Compile Include="Assets\Scripts\menu.cs" />
      <Compile Include="Assets\Scripts\musicaction.cs" />
+     <Compile Include="Assets\Scripts\testhito.cs" />
  <Reference Include="UnityEngine.UI">
  <HintPath>D:/Unity/Unity/Editor/Data/UnityExtensions/Unity/GUISystem/UnityEngine.UI.dll</HintPath>
  </Reference>

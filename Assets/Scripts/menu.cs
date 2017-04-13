@@ -6,16 +6,15 @@ using UnityEngine.EventSystems;
 //menubuttons
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
-	protected GameObject player;
-	protected GameObject NPC,Icon;
+	protected GameObject Icon,statusUI;
 	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI;
 	protected EventSystem es;
-	protected GameObject statusUI;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
 	protected int mode=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
-	void Start () {
+	public static MyjsonSQL itemSave,friendsSave,mainSave;
+	void startfind(){
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
@@ -44,6 +43,9 @@ public class menu : MonoBehaviour {
 		mainUI=GameObject.FindGameObjectsWithTag("mainUI");
 		friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
+	}
+	void Start () {
+		startfind();
 		for(int i=0;i<battleteam.Length;i++){
 			if(battleteam[i].name=="STeam1"||battleteam[i].name=="STeam2"||battleteam[i].name=="STeam3"){
 				for(int j=0;j<ass.Length;j++){
@@ -53,21 +55,11 @@ public class menu : MonoBehaviour {
 					}
 				}
 			}
-		}
-
-
-		//player = GameObject.Find ("Player");
-		//NPC = GameObject.Find ("NPC");
-	/*	for(int i=0;i<selectonchr.Length;i++){
-			if (selectonchr [i].name.Substring (0, 3) == "sel") {
-				string k = selectonchr [i].name.Substring (3).ToString ();
-				selectonchr [i].GetComponent<Button> ().onClick.AddListener (delegate {
-					chator (k);
-				});
-			}
-		}*/
+		}	
+		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem");
+		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","friendsitem");
+		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","mainitem");
 	}
-
 	void Update () {
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
 				startmenu();
@@ -127,6 +119,95 @@ public class menu : MonoBehaviour {
 			}
 		}
 
+	private void OnDisable(){
+		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
+		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
+		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
+		PlayerPrefs.Save();
+	}
+	private void OnApplicationQuit(){
+		//PlayerPrefs.DeleteKey("cacheitemSave");
+	}
+
+//----------------------------------------------------------------------------------------------------------------------
+	MyjsonSQL cachearticleread(GameObject [] UI,string cachesave,string list,string buttonnames){
+		MyjsonSQL cacheMyjsonSQL;
+		if(PlayerPrefs.GetString(cachesave)!=""){//--cacheitemSave--變數1
+			var cacheitemSave=PlayerPrefs.GetString(cachesave);//->-cacheitemSave--變數1
+			cacheMyjsonSQL=JsonUtility.FromJson<MyjsonSQL>(cacheitemSave);//--------itemSave 變數0
+			GameObject [] ites=new GameObject [cacheMyjsonSQL.gift];
+			if(cacheMyjsonSQL.gift>0){
+				for(int i=0;i<UI.Length;i++){
+					if(UI[i].name==list){//------itemList---變數2
+						for(int j=0;j<cacheMyjsonSQL.gift;j++){
+							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0.0004882813f,526.5784f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
+							ites[j].transform.SetParent (UI[i].gameObject.transform,false);
+							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
+							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
+							ites[j].transform.GetChild(1).GetComponent<Text>().text=cacheMyjsonSQL.main[j].number.ToString();
+							ites[j].tag=UI[0].tag;
+							if(j>0){
+								SetSelectedGameObjects("du",ites[j-1].gameObject.GetComponent<Button>(),ites[j].gameObject.GetComponent<Button>());
+							}
+						}
+					}
+				}
+			} 
+			PlayerPrefs.DeleteKey(cachesave);//--cacheitemSave--變數1
+		}else{
+			cacheMyjsonSQL=new MyjsonSQL();
+			cacheMyjsonSQL.gift=0;
+			cacheMyjsonSQL.main=new MyjsonSQL.Mains[0];
+		}
+		return cacheMyjsonSQL;
+	}
+	void cachearticlereadOnDisable(MyjsonSQL cacheMyjsonSQL,GameObject [] UI,string cachesave,string list){
+		int q=0;
+		if(cacheMyjsonSQL.gift>0){
+			cacheMyjsonSQL.main=new MyjsonSQL.Mains[cacheMyjsonSQL.gift];
+			for(int i=0;i<UI.Length;i++){
+					if(UI[i].name==list){
+						while(cacheMyjsonSQL.gift>q){
+							cacheMyjsonSQL.main[q].Name= UI[i].transform.GetChild(q).transform.GetChild(0).GetComponent<Text>().text;
+							cacheMyjsonSQL.main[q].number=Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text);
+							q++;
+						}
+                    break;
+					}
+			}
+		}
+		var cacheitemSave=JsonUtility.ToJson(cacheMyjsonSQL);
+		PlayerPrefs.SetString(cachesave,cacheitemSave);
+	}
+	public static int Addnewitems(MyjsonSQL cacheMyjsonSQL,GameObject [] UI,string list,string buttonnames,string addthings,int addnum){
+				for(int i=0;i<UI.Length;i++){
+					if(UI[i].name==list){
+						for(int j=0;j<=cacheMyjsonSQL.gift;j++){
+							if(cacheMyjsonSQL.gift==j||cacheMyjsonSQL.gift==0){
+								cacheMyjsonSQL.gift++;
+								GameObject ites=Instantiate(Resources.Load("prefabs/itemitem"), new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
+								ites.transform.SetParent (UI[i].gameObject.transform,false);
+								ites.name = buttonnames+(cacheMyjsonSQL.gift);
+								ites.transform.GetChild(0).GetComponent<Text>().text=addthings;
+								ites.transform.GetChild(1).GetComponent<Text>().text=addnum.ToString();
+								ites.tag=UI[0].tag;
+								if(cacheMyjsonSQL.gift!=0){
+									//SetSelectedGameObjects("du",GameObject.Find(buttonnames+(cacheMyjsonSQL.gift-1)).GetComponent<Button>(),ites.GetComponent<Button>());
+								}
+								break;
+							}else if(UI[i].transform.GetChild(j).transform.GetChild(0).GetComponent<Text>().text==addthings){
+								UI[i].transform.GetChild(j).transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(UI[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text)+addnum).ToString();
+								break;
+							}		
+						}
+					
+					break;
+				}
+
+			}
+			return cacheMyjsonSQL.gift;
+		}
+//-------------------------------------------------------------------------------------------------------------------------
 	protected IEnumerator Imagechange(){//----------------------上方角色選擇
 			if(es.currentSelectedGameObject!=null){
 			string s=es.currentSelectedGameObject.name.Substring(4);
@@ -198,12 +279,12 @@ public class menu : MonoBehaviour {
 				q[j].transform.SetParent (Icon.gameObject.transform,false);
 				q[j].name = "icon"+SumVariable.team[i];
 				if(j>0){
-					SetSelectedGameObjects(q,j-1,j);
+					SetSelectedGameObjects("rl",q[j-1].gameObject.GetComponent<Button>(),q[j].gameObject.GetComponent<Button>());
 				}
 				j++;
 			}
 		}
-		SetSelectedGameObjects(q,j-1,0);
+		SetSelectedGameObjects("rl",q[j-1].gameObject.GetComponent<Button>(),q[0].gameObject.GetComponent<Button>());
 		upcharactor=GameObject.FindGameObjectsWithTag("menuupcharactor");
 		for(int i=0;i<upcharactor.Length;i++){
 			string a=upcharactor[i].name.Substring(4);
@@ -213,14 +294,26 @@ public class menu : MonoBehaviour {
 		}
 	}
 
-	protected void SetSelectedGameObjects(GameObject [] q,int a,int b){//-----------------設定創建按鈕/選項後左右鍵指向其他按鈕/選項
+	protected void SetSelectedGameObjects(string check,Button a,Button b){//-----------------設定創建按鈕/選項後左右鍵指向其他按鈕/選項
 		Navigation r,s;
-		r=q[a].gameObject.GetComponent<Button>().navigation;
-		r.selectOnRight=q[b].gameObject.GetComponent<Button>();
-		q[a].gameObject.GetComponent<Button>().navigation=r;
-		s=q[b].gameObject.GetComponent<Button>().navigation;
-		s.selectOnLeft=q[a].gameObject.GetComponent<Button>();
-		q[b].gameObject.GetComponent<Button>().navigation=s;
+		switch(check){
+			case "rl":
+				r=a.navigation;
+				r.selectOnRight=b;
+				a.navigation=r;
+				s=b.navigation;
+				s.selectOnLeft=a;
+				b.navigation=s;
+			break;
+			case "du":
+				r=a.navigation;
+				r.selectOnDown=b;
+				a.navigation=r;
+				s=b.navigation;
+				s.selectOnUp=a;
+				b.navigation=s;
+			break;
+		}
 	}
 	void arraygameobjectbutton(GameObject [] a,bool b,float c){//----------------------------關閉/開啟系列按鈕功能
 		for(int i=0;i<a.Length;i++){
@@ -384,7 +477,7 @@ public class menu : MonoBehaviour {
 
 	}
 	public void ItemsitemUI(){
-		mode=5;
+		mode=4;
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=1;
@@ -394,6 +487,9 @@ public class menu : MonoBehaviour {
 					}
 					if(Items[i].name=="itemUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("itemitem1")!=null){
+							SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),GameObject.Find("itemitem1").GetComponent<Button>());
+						}
 					}
 				}
 		arraygameobjectbutton(itemUI,true,1);
@@ -401,13 +497,16 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(friendsUI,false,0);
 	}
 	public void ItemsmainUI(){
-		mode=5;
+		mode=4;
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=1;
 					}
 					if(Items[i].name=="mainUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("mainitem1")!=null){
+							SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),GameObject.Find("mainitem1").GetComponent<Button>());
+						}
 					}
 					if(Items[i].name=="itemUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=1;
@@ -418,10 +517,13 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(friendsUI,false,0);
 	}
 	public void ItemsfriendsUI(){
-		mode=5;
+		mode=4;
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("mainitem1")!=null){
+							SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),GameObject.Find("friendsitem1").GetComponent<Button>());
+						}
 					}
 					if(Items[i].name=="mainUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=1;
@@ -435,3 +537,21 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(friendsUI,true,1);
 	}
 	}
+
+	[System.Serializable]
+	public struct MyjsonSQL
+	{	
+    	public int gift;
+    	[System.Serializable]
+    	public struct Mains
+    	{
+       	 	public string Name;
+       	    public int number;
+            public float schedule;
+            public string image;
+            public string explanation;
+            public string friendimage;
+            public string friendname;
+        }
+        public Mains [] main;
+}
