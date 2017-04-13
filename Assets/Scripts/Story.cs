@@ -50,9 +50,9 @@ public abstract class Story : MonoBehaviour
         MUSIC = GameObject.Find("MUSIC").GetComponent<AudioSource>();
         button1.onClick.AddListener(OnClick1);
 		button2.onClick.AddListener(OnClick2);
-        L.GetComponent<Image>().sprite = Resources.Load<Sprite>("0") as Sprite;
-        M.GetComponent<Image>().sprite = Resources.Load<Sprite>("0") as Sprite;
-        R.GetComponent<Image>().sprite = Resources.Load<Sprite>("0") as Sprite;
+		L.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/0") as Sprite;
+		M.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/0") as Sprite;
+		R.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/0") as Sprite;
     }
 
     protected void open(string a,string name)
@@ -162,9 +162,9 @@ public abstract class Story : MonoBehaviour
     }
 	protected void lmralpha(GameObject lmr,string s1)
 	{
-		if (lmr.GetComponent<Image>().sprite != Resources.Load<Sprite>(s1) as Sprite)
+		if (lmr.GetComponent<Image>().sprite != Resources.Load<Sprite>("Image/"+s1) as Sprite)
 		{
-			lmr.GetComponent<Image>().sprite = Resources.Load<Sprite>(s1) as Sprite;
+			lmr.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/"+s1) as Sprite;
 			StartCoroutine(Sumthing.view (lmr.GetComponent<CanvasGroup>() ,0, 1, 0.25,0.1f));
 		}
 	}
