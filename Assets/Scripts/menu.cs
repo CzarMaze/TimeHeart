@@ -140,7 +140,7 @@ public class menu : MonoBehaviour {
 				for(int i=0;i<UI.Length;i++){
 					if(UI[i].name==list){//------itemList---變數2
 						for(int j=0;j<cacheMyjsonSQL.gift;j++){
-							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0.0004882813f,758.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
+							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0.0004882813f,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
 							ites[j].transform.SetParent (UI[i].gameObject.transform,false);//526.5784f
 							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
 							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
