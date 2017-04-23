@@ -149,7 +149,7 @@ public class menu : MonoBehaviour {
 				for(int i=0;i<UI.Length;i++){
 					if(UI[i].name==list){//------itemList---變數2
 						for(int j=0;j<cacheMyjsonSQL.gift;j++){
-							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0.0004882813f,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
+							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
 							ites[j].transform.SetParent (UI[i].gameObject.transform,false);//526.5784f
 							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
 							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
@@ -198,7 +198,7 @@ public class menu : MonoBehaviour {
 						for(int j=0;j<=cacheMyjsonSQL.gift;j++){
 							if(cacheMyjsonSQL.gift==j||cacheMyjsonSQL.gift==0){
 								cacheMyjsonSQL.gift++;
-								GameObject ites=Instantiate(Resources.Load("prefabs/itemitem"), new Vector3(0.0004882813f,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
+								GameObject ites=Instantiate(Resources.Load("prefabs/itemitem"), new Vector3(0,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
 								ites.transform.SetParent (UI[i].gameObject.transform,false);//new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0)
 								ites.name = buttonnames+(cacheMyjsonSQL.gift);
 								ites.transform.GetChild(0).GetComponent<Text>().text=addthings;

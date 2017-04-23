@@ -165,7 +165,7 @@ public abstract class Story : MonoBehaviour
 		if (lmr.GetComponent<Image>().sprite != Resources.Load<Sprite>("Image/"+s1) as Sprite)
 		{
 			lmr.GetComponent<Image>().sprite = Resources.Load<Sprite>("Image/"+s1) as Sprite;
-			StartCoroutine(Sumthing.view (lmr.GetComponent<CanvasGroup>() ,0, 1, 0.25,0.1f));
+			StartCoroutine(Sumthing.view (lmr.GetComponent<CanvasGroup>() ,1, 0, 0, 0));
 		}
 	}
     //---------------------------------------------------------------------------------
