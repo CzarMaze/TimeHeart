@@ -57,7 +57,9 @@
      <Compile Include="Assets\Scripts\animate.cs" />
      <Compile Include="Assets\Scripts\animeaction.cs" />
      <Compile Include="Assets\Scripts\blackdown1.cs" />
+     <Compile Include="Assets\Scripts\buttoneffect.cs" />
      <Compile Include="Assets\Scripts\cameralimit.cs" />
+     <Compile Include="Assets\Scripts\itemsbuttonps.cs" />
      <Compile Include="Assets\Scripts\loadLevel.cs" />
      <Compile Include="Assets\Scripts\loading.cs" />
      <Compile Include="Assets\Scripts\menu.cs" />
