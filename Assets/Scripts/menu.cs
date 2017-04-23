@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -9,7 +10,8 @@ public class menu : MonoBehaviour {
 	protected GameObject Icon,statusUI;
 	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI;
 	protected EventSystem es;
-	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus;
+	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx;
+	protected Image Itemimage;
 	protected int mode=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
@@ -36,6 +38,8 @@ public class menu : MonoBehaviour {
 		valueStatusMP=GameObject.Find("valueStatusMP").GetComponent<RectTransform>();
 		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
 		
+		Itemimage=GameObject.Find("Itemimage").GetComponent<Image>();
+		ItemEx=GameObject.Find("ItemEx").GetComponent<Text>();
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
 		Items=GameObject.FindGameObjectsWithTag("Itemss");
@@ -100,8 +104,16 @@ public class menu : MonoBehaviour {
 			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){
 				if(es.currentSelectedGameObject!=null){
 					if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){
+						
+						Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
+						Texture2D outima;
+						outima=new Texture2D(1,1);
+						outima.LoadImage(imabytes);
+						outima.filterMode=FilterMode.Point;
+						Rect rect = new Rect(0, 0, outima.width, outima.height);
+						Itemimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
 						//Debug.Log(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
-						//Debug.Log(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation);//---------道具圖片/說明
+						ItemEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
 					}
 				}
 				if(Input.GetKeyUp (KeyCode.Escape)){
