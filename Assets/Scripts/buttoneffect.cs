@@ -7,7 +7,7 @@ using UnityEngine.UI;
 public class buttoneffect : MonoBehaviour {
 	protected EventSystem es;
 	protected GameObject YN;
-	public GameObject tmp;
+	public GameObject tmp,cache;
 	void Start(){
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		YN=GameObject.Find("Selectitem");
@@ -31,12 +31,7 @@ public class buttoneffect : MonoBehaviour {
 			StartCoroutine(errbox());
 			break;
 		}
-		YN.GetComponent<CanvasGroup>().alpha=0;
-		YN.GetComponent<Canvas>().overrideSorting=false;
-		YN.transform.GetChild(1).GetComponent<Canvas>().overrideSorting=false;
-		YN.transform.GetChild(2).GetComponent<Canvas>().overrideSorting=false;
-		YN.transform.GetChild(1).GetComponent<Button>().interactable=false;
-		YN.transform.GetChild(2).GetComponent<Button>().interactable=false;
+		closemesgebox();
 	}
 	IEnumerator errbox(){
 		GameObject.Find("Erroritem").GetComponent<CanvasGroup>().alpha=1;
@@ -45,6 +40,9 @@ public class buttoneffect : MonoBehaviour {
 		yield return null;
 	}
 	public void buttoneffectsNo(){
+		closemesgebox();
+	}
+	void closemesgebox(){
 		YN.GetComponent<CanvasGroup>().alpha=0;
 		YN.GetComponent<Canvas>().overrideSorting=false;
 		YN.transform.GetChild(1).GetComponent<Canvas>().overrideSorting=false;
@@ -52,7 +50,6 @@ public class buttoneffect : MonoBehaviour {
 		YN.transform.GetChild(1).GetComponent<Button>().interactable=false;
 		YN.transform.GetChild(2).GetComponent<Button>().interactable=false;
 	}
-
 	void buttonthingmathdel(GameObject tmp,int x){
 		tmp.transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)-x).ToString();
 	}

@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
-	protected GameObject Icon,statusUI;
+	protected GameObject Icon,statusUI,YN;
 	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx;
@@ -16,6 +16,8 @@ public class menu : MonoBehaviour {
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	public static MyjsonSQL itemSave,friendsSave,mainSave;
+
+	protected String setteam;
 	void startfind(){
 		backgroundUI = GameObject.Find ("backgroundUI").GetComponent<CanvasGroup> ();
 		leftlist=GameObject.FindGameObjectsWithTag("menuleftlist");
@@ -47,6 +49,7 @@ public class menu : MonoBehaviour {
 		mainUI=GameObject.FindGameObjectsWithTag("mainUI");
 		friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
+		YN=GameObject.Find("Selectitem");
 	}
 	void Start () {
 		startfind();
@@ -101,10 +104,83 @@ public class menu : MonoBehaviour {
 					charactormenu(1.ToString());
 					StartCoroutine(exitupchar(battleteam,0));
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==3){
+				//----------
 				if(es.currentSelectedGameObject!=null){
-					if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){
-						
+					string a=es.currentSelectedGameObject.name.Substring(4);
+					charactormenu(a);
+				}
+				if(Input.GetKeyUp(KeyCode.Escape)){
+					for(int i=0;i<battleteam.Length;i++){
+						if(battleteam[i].name==setteam){
+							battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
+						}
+					}
+					arraygameobjectbutton(battleteam,true,1);
+					arraygameobjectbutton(upcharactor,false,1);
+					for(int i=0;i<battleteam.Length;i++){
+						if(battleteam[i].name=="STeam1"){
+							loadselected(battleteam[i]);
+						}
+					}
+					mode=2;
+					StopAllCoroutines();	
+				}
+		
+				if(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.KeypadEnter)){
+					if(es.currentSelectedGameObject.GetComponent<Button>().interactable==true){
+						for(int i=0;i<battleteam.Length;i++){
+							if(battleteam[i].name==setteam){
+								for(int j=0;j<ass.Length;j++){
+									if(ass[j].name==es.currentSelectedGameObject.name.Substring(4)){
+										battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=ass[j];
+										SumVariable.battleteam[Int32.Parse(setteam.Substring(5))-1]=Int32.Parse(es.currentSelectedGameObject.name.Substring(4));
+									break;
+									}
+								}
+							}	
+						}
+					}
+			
+					/*for(int i=0;i<battleteam.Length;i++){
+						if(battleteam[i].name==s){
+							battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
+						}
+					}	
+					arraygameobjectbutton(battleteam,true);
+					arraygameobjectbutton(upcharactor,false);
+					for(int i=0;i<battleteam.Length;i++){
+						if(battleteam[i].name=="STeam1"){
+							loadselected(battleteam[i]);
+						}
+					}
+					mode=2;
+					StopAllCoroutines();
+					*/
+				}
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){
+				if(YN.GetComponent<CanvasGroup>().alpha==1){
+					if(GameObject.Find("itemList").GetComponent<CanvasGroup> ().interactable==true){
+					/*arraygameobjectbutton(Items,false,1);*/
+					itemUI=GameObject.FindGameObjectsWithTag("itemUI");
+					mainUI=GameObject.FindGameObjectsWithTag("mainUI");
+					friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
+					arraygameobjectbutton(itemUI,false,1);
+					arraygameobjectbutton(mainUI,false,1);
+					arraygameobjectbutton(friendsUI,false,1);
+					}
+				}else{
+					if(GameObject.Find("itemList").GetComponent<CanvasGroup> ().interactable==false){
+					/*arraygameobjectbutton(Items,true,1);*/
+					itemUI=GameObject.FindGameObjectsWithTag("itemUI");
+					mainUI=GameObject.FindGameObjectsWithTag("mainUI");
+					friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
+					arraygameobjectbutton(itemUI,true,1);
+					arraygameobjectbutton(mainUI,true,1);
+					arraygameobjectbutton(friendsUI,true,1);
+					}
+				if(es.currentSelectedGameObject!=null){
+					if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
 						Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
 						Texture2D outima;
 						outima=new Texture2D(1,1);
@@ -112,7 +188,6 @@ public class menu : MonoBehaviour {
 						outima.filterMode=FilterMode.Point;
 						Rect rect = new Rect(0, 0, outima.width, outima.height);
 						Itemimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
-						//Debug.Log(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
 						ItemEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
 					}
 				}
@@ -135,6 +210,7 @@ public class menu : MonoBehaviour {
 					arraygameobjectbutton(friendsUI,false,0);
 					StartCoroutine(exitupchar(Items,0));
 				}
+				}
 			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==5){
 				mode=0;
 			}
@@ -148,6 +224,8 @@ public class menu : MonoBehaviour {
 	}
 	private void OnApplicationQuit(){
 		//PlayerPrefs.DeleteKey("cacheitemSave");
+		//PlayerPrefs.DeleteKey("cachefriendsSave");
+		//PlayerPrefs.DeleteKey("cachemainSave");
 	}
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -395,10 +473,9 @@ public class menu : MonoBehaviour {
 				loadselected(battleteam[i]);
 			}
 		}
-		//StartCoroutine(Imagechange());
 	}
 	public void teammodeselectchar(string s){
-		mode=3;
+		
 		for(int i=0;i<battleteam.Length;i++){
 				if(battleteam[i].name==s){
 					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamLight") as Sprite;
@@ -408,7 +485,7 @@ public class menu : MonoBehaviour {
 							SumVariable.battleteam[Int32.Parse(s.Substring(5))-1]=0;
 					}
 				}
-				}
+			}
 				
 		}
 		arraygameobjectbutton(battleteam,false,1);
@@ -429,62 +506,16 @@ public class menu : MonoBehaviour {
 				loadselected(upcharactor[i]);
 			}
 		}
+		setteam=s;
+		StartCoroutine(delayteam());
 		
-		StartCoroutine(teammodeselectcharIE(s));
 	}
-	protected IEnumerator teammodeselectcharIE(string s){
-		if(es.currentSelectedGameObject!=null){
-			string a=es.currentSelectedGameObject.name.Substring(4);
-			charactormenu(a);
-		}
-		if(Input.GetKeyUp(KeyCode.Escape)){
-			for(int i=0;i<battleteam.Length;i++){
-				if(battleteam[i].name==s){
-					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
-				}
-			}
-			arraygameobjectbutton(battleteam,true,1);
-			arraygameobjectbutton(upcharactor,false,1);
-			for(int i=0;i<battleteam.Length;i++){
-				if(battleteam[i].name=="STeam1"){
-					loadselected(battleteam[i]);
-				}
-			}
-			mode=2;
-		}
-		
-		if(Input.GetKeyDown(KeyCode.Space)||Input.GetKeyDown(KeyCode.KeypadEnter)){
-			if(es.currentSelectedGameObject.GetComponent<Button>().interactable==true){
-			for(int i=0;i<battleteam.Length;i++){
-				if(battleteam[i].name==s){
-					for(int j=0;j<ass.Length;j++){
-						if(ass[j].name==es.currentSelectedGameObject.name.Substring(4)){
-							battleteam[i].transform.GetChild(0).GetComponent<Image>().sprite=ass[j];
-							SumVariable.battleteam[Int32.Parse(s.Substring(5))-1]=Int32.Parse(es.currentSelectedGameObject.name.Substring(4));
-							break;
-							}
-						}
-					}	
-				}
-			}
-			/*for(int i=0;i<battleteam.Length;i++){
-				if(battleteam[i].name==s){
-					battleteam[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/teamDark") as Sprite;
-				}
-			}
-			arraygameobjectbutton(battleteam,true);
-			arraygameobjectbutton(upcharactor,false);
-			for(int i=0;i<battleteam.Length;i++){
-				if(battleteam[i].name=="STeam1"){
-					loadselected(battleteam[i]);
-				}
-			}
-			mode=2;
-			StopAllCoroutines();
-			*/
-		}
+	IEnumerator delayteam(){
+		yield return new WaitForSeconds(0.05f);
+		mode=3;
 		yield return null;
 	}
+	
 	public void Itemsmode(){
 		mode=4;
 		itemUI=GameObject.FindGameObjectsWithTag("itemUI");
