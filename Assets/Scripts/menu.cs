@@ -160,8 +160,11 @@ public class menu : MonoBehaviour {
 				}
 			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){
 				if(YN.GetComponent<CanvasGroup>().alpha==1){
-					if(GameObject.Find("itemList").GetComponent<CanvasGroup> ().interactable==true){
+					if(GameObject.Find("itemUI").GetComponent<CanvasGroup> ().interactable==true){
 					/*arraygameobjectbutton(Items,false,1);*/
+					GameObject.Find("friendsUI").GetComponent<Button>().interactable=false;
+					GameObject.Find("itemUI").GetComponent<Button>().interactable=false;
+					GameObject.Find("mainUI").GetComponent<Button>().interactable=false;
 					itemUI=GameObject.FindGameObjectsWithTag("itemUI");
 					mainUI=GameObject.FindGameObjectsWithTag("mainUI");
 					friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
@@ -172,6 +175,9 @@ public class menu : MonoBehaviour {
 				}else{
 					if(GameObject.Find("itemList").GetComponent<CanvasGroup> ().interactable==false){
 					/*arraygameobjectbutton(Items,true,1);*/
+					GameObject.Find("friendsUI").GetComponent<Button>().interactable=true;
+					GameObject.Find("itemUI").GetComponent<Button>().interactable=true;
+					GameObject.Find("mainUI").GetComponent<Button>().interactable=true;
 					itemUI=GameObject.FindGameObjectsWithTag("itemUI");
 					mainUI=GameObject.FindGameObjectsWithTag("mainUI");
 					friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
