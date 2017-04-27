@@ -197,6 +197,9 @@ public class menu : MonoBehaviour {
 						Rect rect = new Rect(0, 0, outima.width, outima.height);
 						Itemimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
 						ItemEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
+					}else{
+						Itemimage.sprite=Resources.Load<Sprite>("Image/0") as Sprite;
+						ItemEx.text="";
 					}
 				}
 				if(Input.GetKeyUp (KeyCode.Escape)){
@@ -552,9 +555,11 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="mainUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="itemUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
@@ -572,6 +577,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="mainUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
@@ -581,6 +587,7 @@ public class menu : MonoBehaviour {
 					}
 					if(Items[i].name=="itemUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(itemUI,false,0);
@@ -592,15 +599,17 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=102;
-						if(GameObject.Find("mainitem1")!=null){
+						if(GameObject.Find("friendsitem1")!=null){
 							SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),GameObject.Find("friendsitem1").GetComponent<Button>());
 						}
 					}
 					if(Items[i].name=="mainUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="itemUI"){
 						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(itemUI,false,0);
