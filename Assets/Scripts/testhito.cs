@@ -1,6 +1,4 @@
 ﻿using UnityEngine;
-using UnityEngine.UI;
-using System;
 public class testhito : MonoBehaviour {
 	GameObject [] itemUI,friendsUI,mainUI;
 	void Start(){

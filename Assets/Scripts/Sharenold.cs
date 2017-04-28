@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using System.Collections;
 
 public class Sharenold : Story {
 	void OnCollisionEnter2D(Collision2D other){

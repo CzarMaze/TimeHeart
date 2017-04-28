@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
@@ -222,8 +221,15 @@ public class menu : MonoBehaviour {
 					StartCoroutine(exitupchar(Items,0));
 				}
 				}
-			}else if(Input.GetKeyUp (KeyCode.Escape) && leftlist[0].GetComponent<Button>().interactable==false && mode==5){
-				mode=0;
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==5){
+				/*if(Input.GetKeyUp (KeyCode.Escape)){
+					arraygameobjectbutton(itemUI,false,1);
+					arraygameobjectbutton(mainUI,false,0);
+					arraygameobjectbutton(friendsUI,false,0);
+					StartCoroutine(exitupchar(Items,0));
+					mode=0;
+				}*/
+				
 			}
 		}
 
