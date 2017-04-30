@@ -6,15 +6,15 @@ using UnityEngine.EventSystems;
 
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
-	protected GameObject Icon,statusUI,YN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI;
+	protected GameObject Icon,statusUI,YN,SYN;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill;
 	protected EventSystem es;
-	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx;
-	protected Image Itemimage;
+	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx;
+	protected Image Itemimage,Skillimage;
 	protected int mode=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
-	public static MyjsonSQL itemSave,friendsSave,mainSave;
+	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave;
 
 	protected String setteam;
 	void startfind(){
@@ -39,16 +39,26 @@ public class menu : MonoBehaviour {
 		valueStatusMP=GameObject.Find("valueStatusMP").GetComponent<RectTransform>();
 		valueStatusEXP=GameObject.Find("valueStatusEXP").GetComponent<RectTransform>();
 		
-		Itemimage=GameObject.Find("Itemimage").GetComponent<Image>();
-		ItemEx=GameObject.Find("ItemEx").GetComponent<Text>();
 		Icon=GameObject.Find("Icon");
 		battleteam=GameObject.FindGameObjectsWithTag("battleteam");
+		//-----------------------------------------------------------
+		Itemimage=GameObject.Find("Itemimage").GetComponent<Image>();
+		ItemEx=GameObject.Find("ItemEx").GetComponent<Text>();
 		Items=GameObject.FindGameObjectsWithTag("Itemss");
 		itemUI=GameObject.FindGameObjectsWithTag("itemUI");
 		mainUI=GameObject.FindGameObjectsWithTag("mainUI");
 		friendsUI=GameObject.FindGameObjectsWithTag("friendsUI");
+		//------------------------------------------------------------
+		Skillimage=GameObject.Find("Skillimage").GetComponent<Image>();
+		SkillEx=GameObject.Find("SkillEx").GetComponent<Text>();
+		Skills=GameObject.FindGameObjectsWithTag("Skills");
+		AttackSkill=GameObject.FindGameObjectsWithTag("AttackSkill");
+		HelpSkill=GameObject.FindGameObjectsWithTag("HelpSkill");
+		CureSkill=GameObject.FindGameObjectsWithTag("CureSkill");
+		//------------------------------------------------------------
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
 		YN=GameObject.Find("Selectitem");
+		SYN=GameObject.Find("SkillSelect");
 	}
 	void Start () {
 		startfind();
@@ -62,9 +72,12 @@ public class menu : MonoBehaviour {
 				}
 			}
 		}	
-		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem");
-		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","friendsitem");
-		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","mainitem");
+		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
+		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","itemitem","friendsitem");
+		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","itemitem","mainitem");
+		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkill","CureList","skllskill","CureSkill");
+		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkill","HelpList","skllskill","HelpSkill");
+		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkill","AttackList","skllskill","AttackSkill");
 	}
 	void Update () {
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
@@ -186,50 +199,88 @@ public class menu : MonoBehaviour {
 						arraygameobjectbutton(friendsUI,true,1);
 						loadselected(GameObject.Find("itemUI"));
 					}
-				if(es.currentSelectedGameObject!=null){
-					if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
-						Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
-						Texture2D outima;
-						outima=new Texture2D(1,1);
-						outima.LoadImage(imabytes);
-						outima.filterMode=FilterMode.Point;
-						Rect rect = new Rect(0, 0, outima.width, outima.height);
-						Itemimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
-						ItemEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
-					}else{
-						Itemimage.sprite=Resources.Load<Sprite>("Image/0") as Sprite;
-						ItemEx.text="";
-					}
-				}
-				if(Input.GetKeyUp (KeyCode.Escape)){
-					mode=0;
-					for(int i=0;i<Items.Length;i++){
-						if(Items[i].name=="friendsUI"){
-							Items[i].GetComponent<Canvas>().sortingOrder=2;
-						}
-						if(Items[i].name=="mainUI"){
-							Items[i].GetComponent<Canvas>().sortingOrder=2;
-						}
-						if(Items[i].name=="itemUI"){
-							Items[i].GetComponent<Canvas>().sortingOrder=102;
+					if(es.currentSelectedGameObject!=null){
+						if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
+							Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
+							Texture2D outima;
+							outima=new Texture2D(1,1);
+							outima.LoadImage(imabytes);
+							outima.filterMode=FilterMode.Point;
+							Rect rect = new Rect(0, 0, outima.width, outima.height);
+							Itemimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
+							ItemEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
+						}else{
+							Itemimage.sprite=Resources.Load<Sprite>("Image/0") as Sprite;
+							ItemEx.text="";
 						}
 					}
-					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
-					arraygameobjectbutton(itemUI,false,1);
-					arraygameobjectbutton(mainUI,false,0);
-					arraygameobjectbutton(friendsUI,false,0);
-					StartCoroutine(exitupchar(Items,0));
-				}
+					if(Input.GetKeyUp (KeyCode.Escape)){
+						mode=0;
+						for(int i=0;i<Items.Length;i++){
+							Items[i].GetComponent<Canvas>().sortingOrder=0;
+						}
+						statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+						arraygameobjectbutton(itemUI,false,1);
+						arraygameobjectbutton(mainUI,false,0);
+						arraygameobjectbutton(friendsUI,false,0);
+						StartCoroutine(exitupchar(Items,0));
+					}
 				}
 			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==5){
-				/*if(Input.GetKeyUp (KeyCode.Escape)){
-					arraygameobjectbutton(itemUI,false,1);
-					arraygameobjectbutton(mainUI,false,0);
-					arraygameobjectbutton(friendsUI,false,0);
-					StartCoroutine(exitupchar(Items,0));
-					mode=0;
-				}*/
-				
+				if(SYN.GetComponent<CanvasGroup>().alpha==1){
+					if(GameObject.Find("AttackSkill").GetComponent<Button> ().interactable==true){
+						GameObject.Find("AttackSkill").GetComponent<Button>().interactable=false;
+						GameObject.Find("HelpSkill").GetComponent<Button>().interactable=false;
+						GameObject.Find("CureSkill").GetComponent<Button>().interactable=false;
+						AttackSkill=GameObject.FindGameObjectsWithTag("AttackSkill");
+						HelpSkill=GameObject.FindGameObjectsWithTag("HelpSkill");
+						CureSkill=GameObject.FindGameObjectsWithTag("CureSkill");
+						arraygameobjectbutton(AttackSkill,false,1);
+						arraygameobjectbutton(HelpSkill,false,1);
+						arraygameobjectbutton(CureSkill,false,1);
+						loadselected(GameObject.Find("SkillYes"));
+					}
+				}else{
+					
+					if(GameObject.Find("AttackSkill").GetComponent<Button> ().interactable==false){
+						GameObject.Find("AttackSkill").GetComponent<Button>().interactable=true;
+						GameObject.Find("HelpSkill").GetComponent<Button>().interactable=true;
+						GameObject.Find("CureSkill").GetComponent<Button>().interactable=true;
+						AttackSkill=GameObject.FindGameObjectsWithTag("AttackSkill");
+						HelpSkill=GameObject.FindGameObjectsWithTag("HelpSkill");
+						CureSkill=GameObject.FindGameObjectsWithTag("CureSkill");
+						arraygameobjectbutton(AttackSkill,true,1);
+						arraygameobjectbutton(HelpSkill,true,1);
+						arraygameobjectbutton(CureSkill,true,1);
+						loadselected(GameObject.Find("AttackSkill"));
+					}
+					if(es.currentSelectedGameObject!=null){
+						if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
+							Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
+							Texture2D outima;
+							outima=new Texture2D(1,1);
+							outima.LoadImage(imabytes);
+							outima.filterMode=FilterMode.Point;
+							Rect rect = new Rect(0, 0, outima.width, outima.height);
+							Skillimage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
+							SkillEx.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
+						}else{
+							Skillimage.sprite=Resources.Load<Sprite>("Image/0") as Sprite;
+							SkillEx.text="";
+						}
+					}
+					if(Input.GetKeyUp (KeyCode.Escape)){
+						mode=0;
+						for(int i=0;i<Skills.Length;i++){
+							Skills[i].GetComponent<Canvas>().sortingOrder=0;
+						}
+						statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+						arraygameobjectbutton(AttackSkill,false,1);
+						arraygameobjectbutton(HelpSkill,false,0);
+						arraygameobjectbutton(CureSkill,false,0);
+						StartCoroutine(exitupchar(Skills,0));
+					}
+				}
 			}
 		}
 
@@ -237,6 +288,9 @@ public class menu : MonoBehaviour {
 		/*cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
 		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
 		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
+		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
+		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
+		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
 		PlayerPrefs.Save();*/
 	}
 	private void OnApplicationQuit(){
@@ -246,7 +300,7 @@ public class menu : MonoBehaviour {
 	}
 
 //----------------------------------------------------------------------------------------------------------------------
-	MyjsonSQL cachearticleread(GameObject [] UI,string cachesave,string list,string buttonnames){
+	MyjsonSQL cachearticleread(GameObject [] UI,string cachesave,string list,string prefabsname,string buttonnames){
 		MyjsonSQL cacheMyjsonSQL;
 		if(PlayerPrefs.GetString(cachesave)!=""){//--cacheitemSave--變數1
 			var cacheitemSave=PlayerPrefs.GetString(cachesave);//->-cacheitemSave--變數1
@@ -256,7 +310,7 @@ public class menu : MonoBehaviour {
 				for(int i=0;i<UI.Length;i++){
 					if(UI[i].name==list){//------itemList---變數2
 						for(int j=0;j<cacheMyjsonSQL.gift;j++){
-							ites[j]=Instantiate(Resources.Load ("prefabs/itemitem"),new Vector3(0,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
+							ites[j]=Instantiate(Resources.Load ("prefabs/"+prefabsname),new Vector3(0,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
 							ites[j].transform.SetParent (UI[i].gameObject.transform,false);//526.5784f
 							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
 							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
@@ -299,13 +353,13 @@ public class menu : MonoBehaviour {
 		var cacheitemSave=JsonUtility.ToJson(cacheMyjsonSQL);
 		PlayerPrefs.SetString(cachesave,cacheitemSave);
 	}
-	public static int Addnewitems(MyjsonSQL cacheMyjsonSQL,GameObject [] UI,string list,string buttonnames,string addthings,int addnum,string im,string ex){
+	public static int Addnewitems(MyjsonSQL cacheMyjsonSQL,GameObject [] UI,string list,string prefabsname,string buttonnames,string addthings,int addnum,string im,string ex){
 				for(int i=0;i<UI.Length;i++){
 					if(UI[i].name==list){
 						for(int j=0;j<=cacheMyjsonSQL.gift;j++){
 							if(cacheMyjsonSQL.gift==j||cacheMyjsonSQL.gift==0){
 								cacheMyjsonSQL.gift++;
-								GameObject ites=Instantiate(Resources.Load("prefabs/itemitem"), new Vector3(0,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
+								GameObject ites=Instantiate(Resources.Load("prefabs/"+prefabsname), new Vector3(0,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
 								ites.transform.SetParent (UI[i].gameObject.transform,false);//new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0)
 								ites.name = buttonnames+(cacheMyjsonSQL.gift);
 								ites.transform.GetChild(0).GetComponent<Text>().text=addthings;
@@ -323,7 +377,6 @@ public class menu : MonoBehaviour {
 									s=b.navigation;
 									s.selectOnUp=a;
 									b.navigation=s;
-									//SetSelectedGameObjects("du",GameObject.Find(buttonnames+(cacheMyjsonSQL.gift-1)).GetComponent<Button>(),ites.GetComponent<Button>());
 								}
 								break;
 							}else if(UI[i].transform.GetChild(j).transform.GetChild(0).GetComponent<Text>().text==addthings){
@@ -547,11 +600,22 @@ public class menu : MonoBehaviour {
 		}
 		arraygameobjectbutton(Items,true,1);
 		for(int i=0;i<Items.Length;i++){
+			Items[i].GetComponent<Canvas>().sortingOrder=50;
 			if(Items[i].name=="Item"){
 				Items[i].GetComponent<Canvas>().sortingOrder=101;
 			}
+			if(Items[i].name=="ItemUI"){
+				Items[i].GetComponent<Canvas>().sortingOrder=1;
+			}
 			if(Items[i].name=="itemUI"){
+				Items[i].GetComponent<Canvas>().sortingOrder=102;
 				loadselected(Items[i]);
+			}
+			if(Items[i].name=="friendsUI"){
+				Items[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+			if(Items[i].name=="mainUI"){
+				Items[i].GetComponent<Canvas>().sortingOrder=2;
 			}
 		}
 
@@ -622,6 +686,113 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(mainUI,false,0);
 		arraygameobjectbutton(friendsUI,true,1);
 	}
+	public void Skillsmode(){
+		mode=5;
+		AttackSkill=GameObject.FindGameObjectsWithTag("AttackSkill");
+		HelpSkill=GameObject.FindGameObjectsWithTag("HelpSkill");
+		CureSkill=GameObject.FindGameObjectsWithTag("CureSkill");
+		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
+		for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Skill"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(Skills,true,1);
+		for(int i=0;i<Skills.Length;i++){
+			if(Skills[i].name=="Skill"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=101;
+			}
+			if(Skills[i].name=="skillUI"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=1;
+			}
+			if(Skills[i].name=="Skillimage"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+			if(Skills[i].name=="SkillEx"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+			if(Skills[i].name=="Point"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+			if(Skills[i].name=="AttackSkill"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=102;
+				loadselected(Skills[i]);
+			}
+			if(Skills[i].name=="HelpSkill"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+			if(Skills[i].name=="CureSkill"){
+				Skills[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+		}
+	}
+	public void HelpSkillmode(){
+		mode=5;
+		for(int i=0;i<Skills.Length;i++){
+					if(Skills[i].name=="AttackSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+					}
+					if(Skills[i].name=="HelpSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("HelpSkill1")!=null){
+							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("HelpSkill1").GetComponent<Button>());
+						}
+					}
+					if(Skills[i].name=="CureSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+					}
+				}
+		arraygameobjectbutton(AttackSkill,false,0);
+		arraygameobjectbutton(HelpSkill,true,1);
+		arraygameobjectbutton(CureSkill,false,0);
+	}
+	public void CureSkillmode(){
+		mode=5;
+		for(int i=0;i<Skills.Length;i++){
+					if(Skills[i].name=="AttackSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+					}
+					if(Skills[i].name=="HelpSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						
+					}
+					if(Skills[i].name=="CureSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("CureSkill1")!=null){
+							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("CureSkill1").GetComponent<Button>());
+						}
+					}
+				}
+		arraygameobjectbutton(AttackSkill,false,0);
+		arraygameobjectbutton(HelpSkill,false,0);
+		arraygameobjectbutton(CureSkill,true,1);
+	}
+	public void AttackSkillmode(){
+		mode=5;
+		for(int i=0;i<Skills.Length;i++){
+					if(Skills[i].name=="AttackSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=102;
+						if(GameObject.Find("AttackSkill1")!=null){
+							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("AttackSkill1").GetComponent<Button>());
+						}
+					}
+					if(Skills[i].name=="HelpSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+					}
+					if(Skills[i].name=="CureSkill"){
+						Skills[i].GetComponent<Canvas>().sortingOrder=2;
+						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+					}
+				}
+		arraygameobjectbutton(AttackSkill,true,1);
+		arraygameobjectbutton(HelpSkill,false,0);
+		arraygameobjectbutton(CureSkill,false,0);
 	}
 
 	[System.Serializable]
@@ -640,4 +811,5 @@ public class menu : MonoBehaviour {
             public string friendname;
         }
         public Mains [] main;
+	}
 }
