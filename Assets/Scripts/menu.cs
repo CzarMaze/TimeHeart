@@ -11,7 +11,7 @@ public class menu : MonoBehaviour {
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx;
 	protected Image Itemimage,Skillimage;
-	protected int mode=0;
+	protected int mode=0,point=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave;
@@ -75,9 +75,10 @@ public class menu : MonoBehaviour {
 		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
 		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","itemitem","friendsitem");
 		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","itemitem","mainitem");
-		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkill","CureList","skllskill","CureSkill");
-		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkill","HelpList","skllskill","HelpSkill");
-		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkill","AttackList","skllskill","AttackSkill");
+		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
+		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
+		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
+		
 	}
 	void Update () {
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
@@ -285,13 +286,13 @@ public class menu : MonoBehaviour {
 		}
 
 	private void OnDisable(){
-		/*cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
+		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
 		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
 		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
 		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
 		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
 		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
-		PlayerPrefs.Save();*/
+		PlayerPrefs.Save();
 	}
 	private void OnApplicationQuit(){
 		//PlayerPrefs.DeleteKey("cacheitemSave");
@@ -358,7 +359,7 @@ public class menu : MonoBehaviour {
 					if(UI[i].name==list){
 						for(int j=0;j<=cacheMyjsonSQL.gift;j++){
 							if(cacheMyjsonSQL.gift==j||cacheMyjsonSQL.gift==0){
-								cacheMyjsonSQL.gift++;
+								cacheMyjsonSQL.gift++;			
 								GameObject ites=Instantiate(Resources.Load("prefabs/"+prefabsname), new Vector3(0,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
 								ites.transform.SetParent (UI[i].gameObject.transform,false);//new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0)
 								ites.name = buttonnames+(cacheMyjsonSQL.gift);
@@ -379,8 +380,10 @@ public class menu : MonoBehaviour {
 									b.navigation=s;
 								}
 								break;
-							}else if(UI[i].transform.GetChild(j).transform.GetChild(0).GetComponent<Text>().text==addthings){
-								UI[i].transform.GetChild(j).transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(UI[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text)+addnum).ToString();
+							}else if(UI[i].transform.GetChild(j).transform.GetChild(0).GetComponent<Text>().text==addthings ){
+								if(prefabsname != "skllskill"){
+									UI[i].transform.GetChild(j).transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(UI[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text)+addnum).ToString();
+								}
 								break;
 							}		
 						}

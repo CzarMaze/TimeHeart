@@ -22,6 +22,7 @@ public class buttoneffect : MonoBehaviour {
 		YN.transform.GetChild(2).GetComponent<Button>().interactable=true;
 	}
 	public void buttoneffectsYes(){
+		if(tmp.transform.GetChild(1).GetComponent<Text>().text!=0.ToString()){
 		switch(tmp.transform.GetChild(0).GetComponent<Text>().text){
 			case "人之初":
 			Debug.Log("SA");
@@ -31,12 +32,13 @@ public class buttoneffect : MonoBehaviour {
 			StartCoroutine(errbox());
 			break;
 		}
+		}
 		closemesgebox();
 	}
 	IEnumerator errbox(){
 		GameObject.Find("Erroritem").GetComponent<CanvasGroup>().alpha=1;
 		GameObject.Find("Erroritem").GetComponent<Canvas>().overrideSorting=true;
-		yield return new WaitForSeconds(2);
+		yield return new WaitForSeconds(1);
 		GameObject.Find("Erroritem").GetComponent<CanvasGroup>().alpha=0;
 		GameObject.Find("Erroritem").GetComponent<Canvas>().overrideSorting=false;
 		yield return null;
