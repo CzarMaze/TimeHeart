@@ -4,7 +4,7 @@ public static class SumVariable{
 	//---------------------------------Save
 	public static string charactor="1";//角色名字
 	public static int [] battleteam={1,0,0};
-	public static bool [] teamban={true,true,true,false,false,false,false,true,false,true,false,false};
+	public static bool [] teamban={true,true,true,false,false,false,false,false,false,false,false,false};
 	public static int key=1;
 	public static string [] charactorname={null,"艾憐娜","薩雷諾","凱斯伏","伊莉雅","希恩","勇帝","隊長","櫻","烈爾","蒙德士","孟妮","薩豪"};
 	public static int [] [] charactorlv=new int[][]

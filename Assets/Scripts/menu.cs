@@ -242,7 +242,6 @@ public class menu : MonoBehaviour {
 						loadselected(GameObject.Find("SkillYes"));
 					}
 				}else{
-					
 					if(GameObject.Find("AttackSkill").GetComponent<Button> ().interactable==false){
 						GameObject.Find("AttackSkill").GetComponent<Button>().interactable=true;
 						GameObject.Find("HelpSkill").GetComponent<Button>().interactable=true;
@@ -253,9 +252,22 @@ public class menu : MonoBehaviour {
 						arraygameobjectbutton(AttackSkill,true,1);
 						arraygameobjectbutton(HelpSkill,true,1);
 						arraygameobjectbutton(CureSkill,true,1);
-						loadselected(GameObject.Find("AttackSkill"));
+						loadselected(GameObject.Find("icon1"));
 					}
 					if(es.currentSelectedGameObject!=null){
+						switch(es.currentSelectedGameObject.gameObject.name){
+							case "icon1":
+								AttackSkillmode();
+							break;
+							case "icon2":
+								HelpSkillmode();
+							break;
+							case "icon3":
+								CureSkillmode();
+							break;
+							default:
+							break;
+						}
 						if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
 							Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
 							Texture2D outima;
@@ -279,6 +291,7 @@ public class menu : MonoBehaviour {
 						arraygameobjectbutton(AttackSkill,false,1);
 						arraygameobjectbutton(HelpSkill,false,0);
 						arraygameobjectbutton(CureSkill,false,0);
+						arraygameobjectbutton(upcharactor,false,1);
 						StartCoroutine(exitupchar(Skills,0));
 					}
 				}
@@ -474,7 +487,8 @@ public class menu : MonoBehaviour {
 			string a=upcharactor[i].name.Substring(4);
 			upcharactor[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=SumVariable.charactorlv[Int32.Parse(a)][0].ToString();
 			upcharactor[i].transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][2]/(float)SumVariable.charactorlv[Int32.Parse(a)][1]),0,0);
-			upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);	
+			upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);
+			//upcharactor[i].transform.GetChild(4).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][6]/(float)SumVariable.charactorlv[Int32.Parse(a)][5]),0,0);----這行增加完經驗值後把這行註解清掉
 		}
 	}
 
@@ -702,6 +716,8 @@ public class menu : MonoBehaviour {
 				}
 		}
 		arraygameobjectbutton(Skills,true,1);
+		arraygameobjectbutton(upcharactor,true,1);
+		loadselected(upcharactor[0]);
 		for(int i=0;i<Skills.Length;i++){
 			if(Skills[i].name=="Skill"){
 				Skills[i].GetComponent<Canvas>().sortingOrder=101;
@@ -720,7 +736,6 @@ public class menu : MonoBehaviour {
 			}
 			if(Skills[i].name=="AttackSkill"){
 				Skills[i].GetComponent<Canvas>().sortingOrder=102;
-				loadselected(Skills[i]);
 			}
 			if(Skills[i].name=="HelpSkill"){
 				Skills[i].GetComponent<Canvas>().sortingOrder=2;
@@ -735,17 +750,17 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Skills.Length;i++){
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("HelpSkill1")!=null){
-							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("HelpSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("HelpSkill1").GetComponent<Button>());
 						}
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(AttackSkill,false,0);
@@ -757,17 +772,17 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Skills.Length;i++){
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
 						
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("CureSkill1")!=null){
-							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("CureSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("CureSkill1").GetComponent<Button>());
 						}
 					}
 				}
@@ -781,16 +796,16 @@ public class menu : MonoBehaviour {
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("AttackSkill1")!=null){
-							SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),GameObject.Find("AttackSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("AttackSkill1").GetComponent<Button>());
 						}
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",Skills[i].GetComponent<Button>(),Skills[i].GetComponent<Button>());
+						SetSelectedGameObjects("du",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(AttackSkill,true,1);
