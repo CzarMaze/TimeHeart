@@ -459,7 +459,7 @@ public class menu : MonoBehaviour {
 		GameObject [] q=new GameObject [SumVariable.team.Length];
 		for(int i=0;i<SumVariable.team.Length;i++){
 			if(SumVariable.teamban[i]){
-				q[j]=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-1026.5f+187*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
+				q[j]=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-752f+746.9f*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
 				q[j].transform.SetParent (Icon.gameObject.transform,false);
 				q[j].name = "icon"+SumVariable.team[i];
 				if(j>0){
