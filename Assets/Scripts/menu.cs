@@ -258,12 +258,15 @@ public class menu : MonoBehaviour {
 						switch(es.currentSelectedGameObject.gameObject.name){
 							case "icon1":
 								AttackSkillmode();
+								lastpointcheck("AttackSkill",SumVariable.charactorlv[1][0]);
 							break;
 							case "icon2":
 								HelpSkillmode();
+								lastpointcheck("HelpSkill",SumVariable.charactorlv[2][0]);
 							break;
 							case "icon3":
 								CureSkillmode();
+								lastpointcheck("CureSkill",SumVariable.charactorlv[3][0]);
 							break;
 							default:
 							break;
@@ -297,7 +300,23 @@ public class menu : MonoBehaviour {
 				}
 			}
 		}
-
+	private void lastpointcheck(string list,int lv){
+		GameObject YN=GameObject.Find("SkillSelect");
+		Text PointNumber=GameObject.Find("PointNumber").GetComponent<Text>();
+		int tmplv=1;
+		YN.GetComponent<buttonlevelup>().cache=lv;
+		while(GameObject.Find(list+tmplv)!=null){
+				YN.GetComponent<buttonlevelup>().cache=YN.GetComponent<buttonlevelup>().cache-Int32.Parse(GameObject.Find(list+tmplv).transform.GetChild(1).GetComponent<Text>().text);
+				tmplv++;
+			}
+		if(YN.GetComponent<buttonlevelup>().cache!=0){
+			YN.GetComponent<buttonlevelup>().point=YN.GetComponent<buttonlevelup>().cache;
+			PointNumber.text=YN.GetComponent<buttonlevelup>().cache.ToString();
+		}else{
+			PointNumber.text="0";
+			point=0;
+		}
+	}
 	private void OnDisable(){
 		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
 		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
@@ -488,7 +507,7 @@ public class menu : MonoBehaviour {
 			upcharactor[i].transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=SumVariable.charactorlv[Int32.Parse(a)][0].ToString();
 			upcharactor[i].transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][2]/(float)SumVariable.charactorlv[Int32.Parse(a)][1]),0,0);
 			upcharactor[i].transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][4]/(float)SumVariable.charactorlv[Int32.Parse(a)][3]),0,0);
-			//upcharactor[i].transform.GetChild(4).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][6]/(float)SumVariable.charactorlv[Int32.Parse(a)][5]),0,0);----這行增加完經驗值後把這行註解清掉
+			upcharactor[i].transform.GetChild(4).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)SumVariable.charactorlv[Int32.Parse(a)][6]/(float)SumVariable.charactorlv[Int32.Parse(a)][5]),0,0);
 		}
 	}
 

@@ -7,28 +7,18 @@ public class buttonlevelup : MonoBehaviour {
 	protected EventSystem es;
 	protected GameObject YN;
 	protected Text PointNumber;
-	public GameObject tmp,cache;
-	public int point=0;
+	public GameObject tmp;
+	public int cache=0,point=0;
 	void Start () {
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		YN=GameObject.Find("SkillSelect");
 		PointNumber=GameObject.Find("PointNumber").GetComponent<Text>();
-		if(PlayerPrefs.GetInt("point")!=0){
-			YN.GetComponent<buttonlevelup>().point=PlayerPrefs.GetInt("point");
-			PointNumber.text=PlayerPrefs.GetInt("point").ToString();
-		}else{
-			PointNumber.text="0";
-			point=0;
-		}
+		//YN.GetComponent<buttonlevelup>().cache=SumVariable.charactorlv[][0]
+		PointNumber.text="0";
+		point=0;
 	}
-	private void OnDisable(){
-		PlayerPrefs.SetInt("point",YN.GetComponent<buttonlevelup>().point);
-		PlayerPrefs.Save();
-	}
-
-
 	public void buttoneffectsYes(){
-		if(YN.GetComponent<buttonlevelup>().point-1!=-1){
+		if(YN.GetComponent<buttonlevelup>().point-1!=-1 || Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)>10 ){
 			YN.GetComponent<buttonlevelup>().point--;
 			PointNumber.text=YN.GetComponent<buttonlevelup>().point.ToString();
 			tmp.transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)+1).ToString();
