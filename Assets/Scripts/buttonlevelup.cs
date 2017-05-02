@@ -13,12 +13,12 @@ public class buttonlevelup : MonoBehaviour {
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
 		YN=GameObject.Find("SkillSelect");
 		PointNumber=GameObject.Find("PointNumber").GetComponent<Text>();
-		//YN.GetComponent<buttonlevelup>().cache=SumVariable.charactorlv[][0]
 		PointNumber.text="0";
 		point=0;
 	}
 	public void buttoneffectsYes(){
-		if(YN.GetComponent<buttonlevelup>().point-1!=-1 || Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)>10 ){
+		if(YN.GetComponent<buttonlevelup>().point-1!=-1 && Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)<10 ){
+			Debug.Log(tmp.transform.GetChild(1).GetComponent<Text>().text);
 			YN.GetComponent<buttonlevelup>().point--;
 			PointNumber.text=YN.GetComponent<buttonlevelup>().point.ToString();
 			tmp.transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(tmp.transform.GetChild(1).GetComponent<Text>().text)+1).ToString();
