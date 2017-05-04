@@ -343,7 +343,7 @@ public class menu : MonoBehaviour {
 				for(int i=0;i<UI.Length;i++){
 					if(UI[i].name==list){//------itemList---變數2
 						for(int j=0;j<cacheMyjsonSQL.gift;j++){
-							ites[j]=Instantiate(Resources.Load ("prefabs/"+prefabsname),new Vector3(0,2430.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
+							ites[j]=Instantiate(Resources.Load ("prefabs/"+prefabsname),new Vector3(0,2400.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
 							ites[j].transform.SetParent (UI[i].gameObject.transform,false);//526.5784f
 							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
 							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
@@ -392,7 +392,7 @@ public class menu : MonoBehaviour {
 						for(int j=0;j<=cacheMyjsonSQL.gift;j++){
 							if(cacheMyjsonSQL.gift==j||cacheMyjsonSQL.gift==0){
 								cacheMyjsonSQL.gift++;			
-								GameObject ites=Instantiate(Resources.Load("prefabs/"+prefabsname), new Vector3(0,2430.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
+								GameObject ites=Instantiate(Resources.Load("prefabs/"+prefabsname), new Vector3(0,2400.3300f-137.5072f*(cacheMyjsonSQL.gift-1),0),Quaternion.Euler(0,0,0)) as GameObject;
 								ites.transform.SetParent (UI[i].gameObject.transform,false);//new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0)
 								ites.name = buttonnames+(cacheMyjsonSQL.gift);
 								ites.transform.GetChild(0).GetComponent<Text>().text=addthings;
@@ -491,7 +491,7 @@ public class menu : MonoBehaviour {
 		GameObject [] q=new GameObject [SumVariable.team.Length];
 		for(int i=0;i<SumVariable.team.Length;i++){
 			if(SumVariable.teamban[i]){
-				q[j]=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3((-752f+746.9f*j),-1.6f,0),Quaternion.Euler(0,0,180)) as GameObject;
+				q[j]=Instantiate(Resources.Load ("prefabs/team/icon" + SumVariable.team[i]),new Vector3(-850f,(-200f-270f*j),0),Quaternion.Euler(0,0,180)) as GameObject;
 				q[j].transform.SetParent (Icon.gameObject.transform,false);
 				q[j].name = "icon"+SumVariable.team[i];
 				if(j>0){
@@ -557,7 +557,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Status"){
-					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
 				}
 		}
 		arraygameobjectbutton(upcharactor,true,1);
@@ -569,7 +569,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Team"){
-					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
 				}
 		}
 		arraygameobjectbutton(battleteam,true,1);
@@ -631,7 +631,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Item"){
-					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
 				}
 		}
 		arraygameobjectbutton(Items,true,1);
@@ -731,7 +731,7 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<leftlist.Length;i++){
 				leftlist[i].GetComponent<Button> ().interactable = false;
 				if(leftlist[i].name=="Skill"){
-					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUILight") as Sprite;
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
 				}
 		}
 		arraygameobjectbutton(Skills,true,1);
