@@ -7,14 +7,14 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx;
 	protected Image Itemimage,Skillimage;
 	protected int mode=0,point=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
-	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave;
+	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave,tasksSave;
 
 	protected String setteam;
 	void startfind(){
@@ -59,6 +59,10 @@ public class menu : MonoBehaviour {
 		ass=Resources.LoadAll<Sprite>("chatboxpicture/TeamCH");
 		YN=GameObject.Find("Selectitem");
 		SYN=GameObject.Find("SkillSelect");
+		//------------------------------------------------------------
+		tasks=GameObject.FindGameObjectsWithTag("tasks");
+		taskmains=GameObject.FindGameObjectsWithTag("taskmains");
+		tasksecs=GameObject.FindGameObjectsWithTag("tasksecs");
 	}
 	void Start () {
 		startfind();
@@ -78,13 +82,12 @@ public class menu : MonoBehaviour {
 		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
 		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
 		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
+		tasksSave=taskstartread("cachetasksSave");
 		
 	}
 	void Update () {
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
-				if(GameObject.Find("icon1")==null){
-					startmenu();
-				}
+				startmenu();
 				charactormenu(1.ToString());
 				backgroundUI.interactable=true;
 				loadselected(leftlist[2]);
@@ -94,6 +97,11 @@ public class menu : MonoBehaviour {
 				arraygameobjectbutton(leftlist,true,1);
 				StartCoroutine(Sumthing.view(backgroundUI,0,1,0.0625,0.005f));
 			}else if(Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 1 && leftlist[0].GetComponent<Button>().interactable==true){
+					for(int i=1;i<=3;i++){
+						if(GameObject.Find("icon"+i)!=null){
+							Destroy(GameObject.Find("icon"+i));
+						}
+					}
 					StartCoroutine(Sumthing.notview(backgroundUI,1,0,0.0625,0.005f));
 					SumVariable.keyboardopen = true;
 					arraygameobjectbutton(leftlist,false,0);
@@ -109,7 +117,7 @@ public class menu : MonoBehaviour {
 					mode=0;
 					StartCoroutine(exitupchar(upcharactor,1));
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==2){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==2){//------------------隊伍模式
 				if(Input.GetKeyUp (KeyCode.Escape)){
 					mode=0;
 					for(int i=0;i<battleteam.Length;i++){
@@ -119,7 +127,7 @@ public class menu : MonoBehaviour {
 					charactormenu(1.ToString());
 					StartCoroutine(exitupchar(battleteam,0));
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==3){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==3){//--------------------選擇隊友
 				//----------
 				if(es.currentSelectedGameObject!=null){
 					string a=es.currentSelectedGameObject.name.Substring(4);
@@ -173,7 +181,7 @@ public class menu : MonoBehaviour {
 					StopAllCoroutines();
 					*/
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==4){//-------------物品
 				if(YN.GetComponent<CanvasGroup>().alpha==1){
 					if(GameObject.Find("itemUI").GetComponent<Button> ().interactable==true){
 						GameObject.Find("friendsUI").GetComponent<Button>().interactable=false;
@@ -227,7 +235,7 @@ public class menu : MonoBehaviour {
 						StartCoroutine(exitupchar(Items,0));
 					}
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==5){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==5){//----------------技能
 				if(SYN.GetComponent<CanvasGroup>().alpha==1){
 					if(GameObject.Find("AttackSkill").GetComponent<Button> ().interactable==true){
 						GameObject.Find("AttackSkill").GetComponent<Button>().interactable=false;
@@ -298,6 +306,15 @@ public class menu : MonoBehaviour {
 						StartCoroutine(exitupchar(Skills,0));
 					}
 				}
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==6){//----------------------------------任務
+				if(Input.GetKeyUp (KeyCode.Escape)){
+					mode=0;
+					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+					for(int i=0;i<tasks.Length;i++){
+							Skills[i].GetComponent<Canvas>().sortingOrder=0;
+						}
+					StartCoroutine(exitupchar(tasks,0));
+				}
 			}
 		}
 	private void lastpointcheck(string list,int lv){
@@ -324,6 +341,7 @@ public class menu : MonoBehaviour {
 		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
 		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
 		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
+		tasksOnDisable(tasksSave,"cachetasksSave");
 		PlayerPrefs.Save();
 	}
 	private void OnApplicationQuit(){
@@ -495,7 +513,7 @@ public class menu : MonoBehaviour {
 				q[j].transform.SetParent (Icon.gameObject.transform,false);
 				q[j].name = "icon"+SumVariable.team[i];
 				if(j>0){
-					SetSelectedGameObjects("rl",q[j-1].gameObject.GetComponent<Button>(),q[j].gameObject.GetComponent<Button>());
+					SetSelectedGameObjects("du",q[j-1].gameObject.GetComponent<Button>(),q[j].gameObject.GetComponent<Button>());
 				}
 				j++;
 			}
@@ -769,17 +787,17 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Skills.Length;i++){
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("HelpSkill1")!=null){
-							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("HelpSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("rl",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("HelpSkill1").GetComponent<Button>());
 						}
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(AttackSkill,false,0);
@@ -791,17 +809,17 @@ public class menu : MonoBehaviour {
 		for(int i=0;i<Skills.Length;i++){
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon1").GetComponent<Button>(),GameObject.Find("icon1").GetComponent<Button>());
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
 						
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("CureSkill1")!=null){
-							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("CureSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("rl",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("CureSkill1").GetComponent<Button>());
 						}
 					}
 				}
@@ -815,23 +833,196 @@ public class menu : MonoBehaviour {
 					if(Skills[i].name=="AttackSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=102;
 						if(GameObject.Find("AttackSkill1")!=null){
-							SetSelectedGameObjects("du",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("AttackSkill1").GetComponent<Button>());
+							SetSelectedGameObjects("rl",es.currentSelectedGameObject.gameObject.GetComponent<Button>(),GameObject.Find("AttackSkill1").GetComponent<Button>());
 						}
 					}
 					if(Skills[i].name=="HelpSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon2").GetComponent<Button>(),GameObject.Find("icon2").GetComponent<Button>());
 					}
 					if(Skills[i].name=="CureSkill"){
 						Skills[i].GetComponent<Canvas>().sortingOrder=2;
-						SetSelectedGameObjects("du",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
+						SetSelectedGameObjects("rl",GameObject.Find("icon3").GetComponent<Button>(),GameObject.Find("icon3").GetComponent<Button>());
 					}
 				}
 		arraygameobjectbutton(AttackSkill,true,1);
 		arraygameobjectbutton(HelpSkill,false,0);
 		arraygameobjectbutton(CureSkill,false,0);
 	}
+	public void taskmode(){
+		mode=6;
+		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
+		for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Task"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(tasks,true,1);
+		arraygameobjectbutton(taskmains,true,1);
+		arraygameobjectbutton(tasksecs,false,0);
+		
+		for(int i=0;i<tasks.Length;i++){
+			if(tasks[i].name=="TaskUI"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=1;
+			}
+			if(tasks[i].name=="TaskMain"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=50;
+				loadselected(tasks[i]);
+			}
+			if(tasks[i].name=="TaskSecondary"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+		}
+	}
+	public void taskmainmode(){
+		for(int i=0;i<tasks.Length;i++){
+			if(tasks[i].name=="TaskMain"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+			if(tasks[i].name=="TaskSecondary"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+		}
+		arraygameobjectbutton(taskmains,true,1);
+		arraygameobjectbutton(tasksecs,false,0);
+	}
+	public void tasksecmode(){
+		for(int i=0;i<tasks.Length;i++){
+			if(tasks[i].name=="TaskMain"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+			}
+			if(tasks[i].name=="TaskSecondary"){
+				tasks[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+		}
+		arraygameobjectbutton(taskmains,false,0);
+		arraygameobjectbutton(tasksecs,true,1);
+	}
+	//--------------------------------------------------------------
+	//搜索
+	public static bool taskexist(string list,string searchnumber){
+		string listname="";
+		switch(list){
+			case "main":
+			listname="TaskMainName";
+			break;
+			case "second":
+			listname="TaskSecondaryName";
+			break;
+		}
+		for(int i=1;i<9;i++){
+			if(GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number==searchnumber){
+				return true;
+			}
+		}
+        return false;
+	}
+	//增加
+	public static void taskwords(string list,string searchnumber,string maintest){
+		string listname="";
+		switch(list){
+			case "main":
+			listname="TaskMainName";
+			break;
+			case "second":
+			listname="TaskSecondaryName";
+			break;
+		}
+		for(int i=1;1<9;i++){
+			if(GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number==""){
+				GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number=searchnumber;
+				GameObject.Find(listname+i).GetComponent<Text>().text=maintest;
+                break;
+			}
+		}
+	}
+	//減少
+	public static void deltask(string list,string number){
+		string listname="";
+		switch(list){
+			case "main":
+			listname="TaskMainName";
+			break;
+			case "second":
+			listname="TaskSecondaryName";
+			break;
+		}
+		for(int i=1;1<9;i++){
+			if(GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number==number){
+				GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number="";
+				GameObject.Find(listname+i).GetComponent<Text>().text="";
+			}
+		}
+	}
+	//儲存
+	void tasksOnDisable(MyjsonSQL cacheMyjsonSQL,string cachesave){
+			cacheMyjsonSQL.main=new MyjsonSQL.Mains[17];
+				for(int i=0;i<taskmains.Length;i++){
+					if(taskmains[i].name.Length>=12){
+						if(taskmains[i].name.Substring(0,12)=="TaskMainName"){		
+            				if (taskmains[i].GetComponent<tasknumbercachesave>().number != "")
+           					 {
+               					 cacheMyjsonSQL.main[Int32.Parse(taskmains[i].name.Substring(12))].number = Int32.Parse(taskmains[i].GetComponent<tasknumbercachesave>().number);
+               					 cacheMyjsonSQL.main[Int32.Parse(taskmains[i].name.Substring(12))].Name = taskmains[i].GetComponent<Text>().text;
+           					 }else{
+               					 cacheMyjsonSQL.main[Int32.Parse(taskmains[i].name.Substring(12))].number = 0;
+                				 cacheMyjsonSQL.main[Int32.Parse(taskmains[i].name.Substring(12))].Name = "";
+            				}
+						}
+					}
+			}
+            for(int i=0;i<tasksecs.Length;i++){
+			  if(taskmains[i].name.Length>=17){
+             	 if (tasksecs[i].name.Substring(0,17)=="TaskSecondaryName"){
+			 		 if(tasksecs[i].GetComponent<tasknumbercachesave>().number != "") { 
+                		cacheMyjsonSQL.main[Int32.Parse(tasksecs[i].name.Substring(17))+8].number = Int32.Parse(tasksecs[i].GetComponent<tasknumbercachesave>().number);
+                		cacheMyjsonSQL.main[Int32.Parse(tasksecs[i].name.Substring(17))+8].Name = tasksecs[i].GetComponent<Text>().text;
+              		}else{
+                		cacheMyjsonSQL.main[Int32.Parse(tasksecs[i].name.Substring(17))+8].number = 0;
+               			cacheMyjsonSQL.main[Int32.Parse(tasksecs[i].name.Substring(17))+8].Name = "";
+             		}
+				  }
+			  }
+        }
+		var cacheitemSave=JsonUtility.ToJson(cacheMyjsonSQL);
+		PlayerPrefs.SetString(cachesave,cacheitemSave);
+	}
 
+	//讀取
+	MyjsonSQL taskstartread(string cachesave){
+		MyjsonSQL cacheMyjsonSQL;
+		if(PlayerPrefs.GetString(cachesave)!=""){//--cacheitemSave--變數1
+			var cacheitemSave=PlayerPrefs.GetString(cachesave);//->-cacheitemSave--變數1
+			cacheMyjsonSQL=JsonUtility.FromJson<MyjsonSQL>(cacheitemSave);//--------itemSave 變數0
+			for(int i=1;i<=8;i++){
+                if (cacheMyjsonSQL.main[i].number != 0)
+                {
+                    GameObject.Find("TaskMainName" + i).GetComponent<tasknumbercachesave>().number = cacheMyjsonSQL.main[i].number.ToString();
+                    GameObject.Find("TaskMainName" + i).GetComponent<Text>().text = cacheMyjsonSQL.main[i].Name;
+                }else{
+                    GameObject.Find("TaskMainName" + i).GetComponent<tasknumbercachesave>().number = "";
+                    GameObject.Find("TaskMainName" + i).GetComponent<Text>().text = "";
+                }
+			}
+			for(int i=1;i<=8;i++){
+                if (cacheMyjsonSQL.main[i].number != 0) { 
+                    GameObject.Find("TaskSecondaryName"+i).GetComponent<tasknumbercachesave>().number=cacheMyjsonSQL.main[(8+i)].number.ToString();
+			    	GameObject.Find("TaskSecondaryName"+i).GetComponent<Text>().text=cacheMyjsonSQL.main[(8+i)].Name;
+                }else{
+                    GameObject.Find("TaskSecondaryName" + i).GetComponent<tasknumbercachesave>().number = "";
+                    GameObject.Find("TaskSecondaryName" + i).GetComponent<Text>().text = "";
+                }
+            }
+			PlayerPrefs.DeleteKey(cachesave);//--cacheitemSave--變數1
+		}else{
+			cacheMyjsonSQL=new MyjsonSQL();
+			cacheMyjsonSQL.gift=0;
+			cacheMyjsonSQL.main=new MyjsonSQL.Mains[0];
+		}
+		return cacheMyjsonSQL;
+	}
+	//--------------------------------------------------------------
 	[System.Serializable]
 	public struct MyjsonSQL
 	{	

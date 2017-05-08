@@ -4,6 +4,10 @@ public class action : MonoBehaviour {
     private double Yposition;
     private double Xposition;
     private double speed = 0.022;
+	Rigidbody2D move;
+	void Start(){
+		move=GetComponent<Rigidbody2D>();
+	}
 	void Update () {
 		if (SumVariable.keyboardopen) {
 			Xposition = transform.position.x;
@@ -20,8 +24,11 @@ public class action : MonoBehaviour {
 			if (Input.GetKey (KeyCode.DownArrow)) {
 				Yposition = Yposition - speed;
 			}
-
-			transform.position = new Vector3 ((float)Xposition, (float)Yposition, (float)Yposition);
+			transform.position=new Vector3 ((float)Xposition,(float)Yposition,(float)Yposition);
+			//transform.position = new Vector3 ((float)Xposition, (float)Yposition, (float)Yposition);
 		}
     }
+	/*void LateUpdate(){
+		move.MovePosition( new Vector2 ((float)Xposition, (float)Yposition));
+	}*/
 }

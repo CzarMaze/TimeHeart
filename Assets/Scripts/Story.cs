@@ -120,20 +120,12 @@ public abstract class Story : MonoBehaviour
         dbcon = null;
     }
     //---------------------------------------------------------------------------------
-	protected IEnumerator meet(string a,string s)
+	protected void meet(string a,string s)
 	{
-		yield return new WaitForSeconds(0.01f);
-		if (Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl))
-		{
-			StopAllCoroutines();
-			open(a,s);
-			SumVariable.keyboardopen = false;
-			StartCoroutine(Sumthing.view(box,0, 1, 0.0625,0.005f));
-			StartCoroutine(word());
-			yield return null;
-		}
-		StartCoroutine(meet(a,s));
-		yield return null;
+		open(a,s);
+		SumVariable.keyboardopen = false;
+		StartCoroutine(Sumthing.view(box,0, 1, 0.0625,0.005f));
+		StartCoroutine(word());
 	}
 
 	//----------------------------------------------------
