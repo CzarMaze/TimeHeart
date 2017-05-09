@@ -206,15 +206,18 @@ public abstract class Story : MonoBehaviour
                 }else if(Z.getsay(road).Substring(i, 2)=="{/"){
                     if(Z.getsay(road).Substring(i, 4)=="{/e}"){
                         i+=4;
+                        if(Z.getsay(road).Length==i){
+                            break;
+                        }
                         colorlock=false;
                     }
 
                 }
-                    if(colorlock){
-                        s.text+="<b><color="+colorcolor+">"+Z.getsay(road).Substring(i, 1)+"</color></b>";
-                    }else{
-                        s.text += Z.getsay(road).Substring(i, 1);
-                    }
+                 if(colorlock){
+                    s.text+="<b><color="+colorcolor+">"+Z.getsay(road).Substring(i, 1)+"</color></b>";
+                  }else{
+                    s.text += Z.getsay(road).Substring(i, 1);
+                 }
 
                 yield return new WaitForSeconds(0.1f);//文字顯示速度
 				if(Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl)){
