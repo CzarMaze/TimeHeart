@@ -1,3 +1,7 @@
+#Folder skip
+Temp/
+Library/
+
 # Windows image file caches
 Thumbs.db
 ehthumbs.db
@@ -46,6 +50,3 @@ Network Trash Folder
 Temporary Items
 .apdisk
 
-#Folder skip
-Temp/
-Library/
