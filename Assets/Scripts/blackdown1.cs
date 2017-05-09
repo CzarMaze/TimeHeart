@@ -3,7 +3,7 @@ public class blackdown1 : Story {
 	int i=1;//這邊先宣告資料表最小數值
 	void OnCollisionEnter2D(Collision2D other){
 		if (other.gameObject.name == "Player") {
-			StartCoroutine (meet ("A",this.gameObject.name+i));//你可以看到左邊 ( ) 內的 this.gameObject.name  +  i 這個格式
+			//StartCoroutine (meet ("A",this.gameObject.name+i));//你可以看到左邊 ( ) 內的 this.gameObject.name  +  i 這個格式
 			/*
 			 * this.gameObject.name 為你的((物件名字)) 你原本打  黑地下室1  後面的1是多打的 我已經全部改掉 以後請務必記得不要打沒必要的數字
 			 * 

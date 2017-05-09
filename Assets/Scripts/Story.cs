@@ -120,20 +120,12 @@ public abstract class Story : MonoBehaviour
         dbcon = null;
     }
     //---------------------------------------------------------------------------------
-	protected IEnumerator meet(string a,string s)
+	protected void meet(string a,string s)
 	{
-		yield return new WaitForSeconds(0.01f);
-		if (Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl))
-		{
-			StopAllCoroutines();
-			open(a,s);
-			SumVariable.keyboardopen = false;
-			StartCoroutine(Sumthing.view(box,0, 1, 0.0625,0.005f));
-			StartCoroutine(word());
-			yield return null;
-		}
-		StartCoroutine(meet(a,s));
-		yield return null;
+		open(a,s);
+		SumVariable.keyboardopen = false;
+		StartCoroutine(Sumthing.view(box,0, 1, 0.0625,0.005f));
+		StartCoroutine(word());
 	}
 
 	//----------------------------------------------------
@@ -203,9 +195,30 @@ public abstract class Story : MonoBehaviour
         }
         else
         {
+            bool colorlock=false;
+            string colorcolor="";
             for (int i = 0; i < Z.getsay(road).Length; i++)
             {
-                s.text += Z.getsay(road).Substring(i, 1);
+                if(Z.getsay(road).Substring(i, 2)=="{#"){
+                    colorlock=true;
+                    colorcolor=Z.getsay(road).Substring(i+1, 9);
+                    i=i+11;
+                }else if(Z.getsay(road).Substring(i, 2)=="{/"){
+                    if(Z.getsay(road).Substring(i, 4)=="{/e}"){
+                        i+=4;
+                        if(Z.getsay(road).Length==i){
+                            break;
+                        }
+                        colorlock=false;
+                    }
+
+                }
+                 if(colorlock){
+                    s.text+="<b><color="+colorcolor+">"+Z.getsay(road).Substring(i, 1)+"</color></b>";
+                  }else{
+                    s.text += Z.getsay(road).Substring(i, 1);
+                 }
+
                 yield return new WaitForSeconds(0.1f);//文字顯示速度
 				if(Input.GetKeyDown(KeyCode.Space)||Input.GetKey(KeyCode.Space)||Input.GetKey(KeyCode.LeftControl)){
                     s.text=Z.getsay(road);
