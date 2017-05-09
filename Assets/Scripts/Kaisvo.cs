@@ -22,5 +22,5 @@ public class Kaisvo : Story {
 	void logindele(){
 		Destroy (this.gameObject);
 	}
-		
+
 }
