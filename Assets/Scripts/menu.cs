@@ -949,9 +949,12 @@ public class menu : MonoBehaviour {
 			break;
 		}
 		for(int i=1;1<9;i++){
+			Debug.Log(GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number);
+			Debug.Log(number);
 			if(GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number==number){
 				GameObject.Find(listname+i).GetComponent<tasknumbercachesave>().number="";
 				GameObject.Find(listname+i).GetComponent<Text>().text="";
+				break;
 			}
 		}
 	}

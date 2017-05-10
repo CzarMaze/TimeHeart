@@ -173,11 +173,15 @@ public abstract class Story : MonoBehaviour
         road = 1;
         button1.interactable = false;
         button2.interactable = false;
+        button1.GetComponent<Canvas>().overrideSorting=false;
+        button2.GetComponent<Canvas>().overrideSorting=false;
     }
     protected void OnClick2(){
         road = 2;
         button1.interactable = false;
         button2.interactable = false;
+        button1.GetComponent<Canvas>().overrideSorting=true;
+        button2.GetComponent<Canvas>().overrideSorting=true;
     }
     protected IEnumerator word()
     {
@@ -190,6 +194,8 @@ public abstract class Story : MonoBehaviour
             buttons.GetComponent<CanvasGroup>().alpha = 1;
             buttonText1.GetComponent<Text>().text = Z.getsay(1);
             buttonText2.GetComponent<Text>().text = Z.getsay(2);
+            button1.GetComponent<Canvas>().overrideSorting=true;
+            button2.GetComponent<Canvas>().overrideSorting=true;
             button1.interactable = true;
             button2.interactable = true;
         }
