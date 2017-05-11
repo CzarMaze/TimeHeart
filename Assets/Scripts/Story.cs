@@ -253,11 +253,14 @@ public abstract class Story : MonoBehaviour
             }
         }
 		Z = Z.n();
-		if (Z.getsay (road) == "finish" || Z.getsay (road) == "" || Z.getsay (road) == null) {
+		if (Z.getsay (road) == "" || Z.getsay (road) == null) {
 			StartCoroutine (Sumthing.notview (box, 1, 0, 0.5, 0.07f));
 			Invoke ("endthing", 0.2f);
+        } else if(Z.getsay (road) == "finish"){
+            StartCoroutine (Sumthing.notview (box, 1, 0, 0.5, 0.07f));
+			Invoke ("endthing", 0.2f);
 			otherthing ();
-        } else {
+        }else{
 			StartCoroutine (word ());
 		}
         yield return null;

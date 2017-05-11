@@ -53,6 +53,7 @@
      <Compile Include="Assets\Scripts\Sumthing.cs" />
      <Compile Include="Assets\Scripts\X.cs" />
      <Compile Include="Assets\Scripts\Y.cs" />
+     <Compile Include="Assets\Scripts\Z.cs" />
      <Compile Include="Assets\Scripts\action.cs" />
      <Compile Include="Assets\Scripts\animate.cs" />
      <Compile Include="Assets\Scripts\animeaction.cs" />

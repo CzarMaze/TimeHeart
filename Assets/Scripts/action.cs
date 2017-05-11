@@ -4,10 +4,6 @@ public class action : MonoBehaviour {
     private double Yposition;
     private double Xposition;
     private double speed = 0.022;
-	Rigidbody2D move;
-	void Start(){
-		move=GetComponent<Rigidbody2D>();
-	}
 	void Update () {
 		if (SumVariable.keyboardopen) {
 			Xposition = transform.position.x;
