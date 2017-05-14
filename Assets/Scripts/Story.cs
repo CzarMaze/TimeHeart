@@ -205,13 +205,13 @@ public abstract class Story : MonoBehaviour
             string colorcolor="";
             for (int i = 0; i < Z.getsay(road).Length; i++)
             {
-                if(Z.getsay(road).Substring(i, 1)=="{" && !colorlock){
+				if(Z.getsay(road).Substring(i, 1)=="<" && !colorlock){
                     colorlock=true;
-                    colorcolor=Z.getsay(road).Substring(i+1, 9);
-                    i=i+11;
-                }else if(Z.getsay(road).Substring(i, 1)=="{" && colorlock){
-                    if(Z.getsay(road).Substring(i, 4)=="{/e}"){
-                        i+=4;
+                    colorcolor=Z.getsay(road).Substring(i+1, 15);
+					i = i + 17;
+                }else if(Z.getsay(road).Substring(i, 1)=="<" && colorlock){
+                    if(Z.getsay(road).Substring(i, 8)=="</color>"){
+						i += 8;
                         if(Z.getsay(road).Length==i){
                             break;
                         }
@@ -220,7 +220,7 @@ public abstract class Story : MonoBehaviour
 
                 }
                  if(colorlock){
-                    s.text+="<b><color="+colorcolor+">"+Z.getsay(road).Substring(i, 1)+"</color></b>";
+                    s.text+="<"+colorcolor+">"+Z.getsay(road).Substring(i, 1)+"</color>";
                   }else{
                     s.text += Z.getsay(road).Substring(i, 1);
                  }

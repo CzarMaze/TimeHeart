@@ -3,7 +3,7 @@
 public class action : MonoBehaviour {
     private double Yposition;
     private double Xposition;
-    private double speed = 0.022;
+    private double speed = 0.028;
 	void Update () {
 		if (SumVariable.keyboardopen) {
 			Xposition = transform.position.x;

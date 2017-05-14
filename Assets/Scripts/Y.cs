@@ -32,6 +32,7 @@ public class Y : Story {
 		x=false;
 	}
 	protected override void otherthing(){
-		menu.taskwords("main","B","跟薩雷諾說話");	
+		menu.taskwords("main","B","跟薩雷諾說話");
+		menu.taskwords ("main","L","跟薩豪說話");
 	}
 }
