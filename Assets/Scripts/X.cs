@@ -12,14 +12,6 @@ public class X : Story {
 				meet("A",this.gameObject.name+ta);
 				if (ta <=1) {
 					ta++;
-				//C>D>B
-				/*此為範例
-						meet("A",this.gameObject.name+ta);
-						if(ta<"該對話資料表最大數值"){
-							ta++;
-						}
-					}
-				 */
 			}
 			
 		}
