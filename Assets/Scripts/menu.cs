@@ -7,14 +7,14 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip;
 	protected EventSystem es;
-	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx;
-	protected Image Itemimage,Skillimage;
+	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
+	protected Image Itemimage,Skillimage,FriendImage;
 	protected int mode=0,point=0;
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
-	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave,tasksSave;
+	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave,tasksSave,FriendstipSave;
 
 	protected String setteam;
 	void startfind(){
@@ -60,9 +60,14 @@ public class menu : MonoBehaviour {
 		YN=GameObject.Find("Selectitem");
 		SYN=GameObject.Find("SkillSelect");
 		//------------------------------------------------------------
+		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
+		FriendImage=GameObject.Find("FriendImage").GetComponent<Image>();
+		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
+		//------------------------------------------------------------
 		tasks=GameObject.FindGameObjectsWithTag("tasks");
 		taskmains=GameObject.FindGameObjectsWithTag("taskmains");
 		tasksecs=GameObject.FindGameObjectsWithTag("tasksecs");
+		
 	}
 	void Start () {
 		startfind();
@@ -82,6 +87,7 @@ public class menu : MonoBehaviour {
 		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
 		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
 		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
+		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","itemitem","ListFriend");//--------------------------
 		tasksSave=taskstartread("cachetasksSave");
 		
 	}
@@ -315,6 +321,30 @@ public class menu : MonoBehaviour {
 						}
 					StartCoroutine(exitupchar(tasks,0));
 				}
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==7){
+					if(es.currentSelectedGameObject!=null){
+						if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
+							Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
+							Texture2D outima;
+							outima=new Texture2D(1,1);
+							outima.LoadImage(imabytes);
+							outima.filterMode=FilterMode.Point;
+							Rect rect = new Rect(0, 0, outima.width, outima.height);
+							FriendImage.sprite=Sprite.Create(outima,rect,new Vector2(),100f);
+							FriendExtext.text=es.currentSelectedGameObject.GetComponent<itemsbuttonps>().explanation;
+						}else{
+							FriendImage.sprite=Resources.Load<Sprite>("Image/0") as Sprite;
+							FriendExtext.text="";
+						}
+					}
+					if(Input.GetKeyUp (KeyCode.Escape)){
+							mode=0;
+							statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
+							for(int i=0;i<Friendstip.Length;i++){
+								Friendstip[i].GetComponent<Canvas>().sortingOrder=0;
+							}
+							StartCoroutine(exitupchar(Friendstip,0));
+					}
 			}
 		}
 	private void lastpointcheck(string list,int lv){
@@ -341,6 +371,7 @@ public class menu : MonoBehaviour {
 		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
 		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
 		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
+		cachearticlereadOnDisable(FriendstipSave,Friendstip,"cacheFriendstipSave","FriendList");
 		tasksOnDisable(tasksSave,"cachetasksSave");
 		PlayerPrefs.Save();
 	}
@@ -848,6 +879,26 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(AttackSkill,true,1);
 		arraygameobjectbutton(HelpSkill,false,0);
 		arraygameobjectbutton(CureSkill,false,0);
+	}
+	public void friendstipmode(){
+		mode=7;
+		for(int i=0;i<leftlist.Length;i++){
+				leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="Friends"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(Friendstip,true,1);
+		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
+		for(int i=0;i<Friendstip.Length;i++){
+			Debug.Log(Friendstip[i].name.Substring(0,5));
+			if(Friendstip[i].name.Substring(0,5)=="ListF"){
+				Debug.Log(Friendstip[i].name);
+				loadselected(Friendstip[i]);
+				break;
+			}
+		}
+	
 	}
 	public void taskmode(){
 		mode=6;
