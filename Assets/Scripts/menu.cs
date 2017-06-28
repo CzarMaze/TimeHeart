@@ -87,7 +87,7 @@ public class menu : MonoBehaviour {
 		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
 		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
 		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
-		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","itemitem","ListFriend");//--------------------------
+		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","Frienditemitem","ListFriend");//--------------------------
 		tasksSave=taskstartread("cachetasksSave");
 		
 	}
@@ -376,9 +376,14 @@ public class menu : MonoBehaviour {
 		PlayerPrefs.Save();
 	}
 	private void OnApplicationQuit(){
-		//PlayerPrefs.DeleteKey("cacheitemSave");
-		//PlayerPrefs.DeleteKey("cachefriendsSave");
-		//PlayerPrefs.DeleteKey("cachemainSave");
+		PlayerPrefs.DeleteKey("cacheitemSave");
+		PlayerPrefs.DeleteKey("cachefriendsSave");
+		PlayerPrefs.DeleteKey("cachemainSave");
+		PlayerPrefs.DeleteKey("cacheCureSkillSave");
+		PlayerPrefs.DeleteKey("cacheHelpSkillSave");
+		PlayerPrefs.DeleteKey("cacheAttackSkillSave");
+		PlayerPrefs.DeleteKey("cacheFriendstipSave");
+		PlayerPrefs.DeleteKey("cachetasksSave");
 	}
 
 //----------------------------------------------------------------------------------------------------------------------
@@ -394,9 +399,12 @@ public class menu : MonoBehaviour {
 						for(int j=0;j<cacheMyjsonSQL.gift;j++){
 							ites[j]=Instantiate(Resources.Load ("prefabs/"+prefabsname),new Vector3(0,2400.3300f-137.5072f*j,0),Quaternion.Euler(0,0,0)) as GameObject;
 							ites[j].transform.SetParent (UI[i].gameObject.transform,false);//526.5784f
-							ites[j].name = buttonnames+(j+1);//-----itemitem----變數3
+							ites[j].name = buttonnames + (j + 1);//-----itemitem----變數3
+                            if (prefabsname != "Frienditemitem")
+                            {
+                                ites[j].transform.GetChild(1).GetComponent<Text>().text = cacheMyjsonSQL.main[j].number.ToString();
+                            }
 							ites[j].transform.GetChild(0).GetComponent<Text>().text=cacheMyjsonSQL.main[j].Name;
-							ites[j].transform.GetChild(1).GetComponent<Text>().text=cacheMyjsonSQL.main[j].number.ToString();
 							ites[j].GetComponent<itemsbuttonps>().image=cacheMyjsonSQL.main[j].image;
 							ites[j].GetComponent<itemsbuttonps>().explanation=cacheMyjsonSQL.main[j].explanation;
 							ites[j].tag=UI[0].tag;
@@ -423,7 +431,10 @@ public class menu : MonoBehaviour {
 					if(UI[i].name==list){
 						while(cacheMyjsonSQL.gift>q){
 							cacheMyjsonSQL.main[q].Name= UI[i].transform.GetChild(q).transform.GetChild(0).GetComponent<Text>().text;
-							cacheMyjsonSQL.main[q].number=Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text);
+                            if (cachesave != "cacheFriendstipSave")
+                             {
+                                cacheMyjsonSQL.main[q].number = Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text);
+                            }
 							cacheMyjsonSQL.main[q].image=UI[i].transform.GetChild(q).GetComponent<itemsbuttonps>().image;
 							cacheMyjsonSQL.main[q].explanation=UI[i].transform.GetChild(q).GetComponent<itemsbuttonps>().explanation;
 							q++;
@@ -445,7 +456,9 @@ public class menu : MonoBehaviour {
 								ites.transform.SetParent (UI[i].gameObject.transform,false);//new Vector3(0.0004882813f,526.5784f-137.5072f*(cacheMyjsonSQL.gift-1),0)
 								ites.name = buttonnames+(cacheMyjsonSQL.gift);
 								ites.transform.GetChild(0).GetComponent<Text>().text=addthings;
-								ites.transform.GetChild(1).GetComponent<Text>().text=addnum.ToString();
+								if(prefabsname!="Frienditemitem"){
+									ites.transform.GetChild(1).GetComponent<Text>().text=addnum.ToString();
+								}
 								ites.GetComponent<itemsbuttonps>().image=im;
 								ites.GetComponent<itemsbuttonps>().explanation=ex;
 								ites.tag=UI[0].tag;
@@ -462,7 +475,8 @@ public class menu : MonoBehaviour {
 								}
 								break;
 							}else if(UI[i].transform.GetChild(j).transform.GetChild(0).GetComponent<Text>().text==addthings ){
-								if(prefabsname != "skllskill"){
+								if(prefabsname != "skllskill" && prefabsname != "Frienditemitem")
+                                  {
 									UI[i].transform.GetChild(j).transform.GetChild(1).GetComponent<Text>().text=(Int32.Parse(UI[i].transform.GetChild(0).transform.GetChild(1).GetComponent<Text>().text)+addnum).ToString();
 								}
 								break;
@@ -891,9 +905,7 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Friendstip,true,1);
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
 		for(int i=0;i<Friendstip.Length;i++){
-			Debug.Log(Friendstip[i].name.Substring(0,5));
 			if(Friendstip[i].name.Substring(0,5)=="ListF"){
-				Debug.Log(Friendstip[i].name);
 				loadselected(Friendstip[i]);
 				break;
 			}
