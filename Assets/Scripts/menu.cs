@@ -340,9 +340,10 @@ public class menu : MonoBehaviour {
 					if(Input.GetKeyUp (KeyCode.Escape)){
 							mode=0;
 							statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
-							for(int i=0;i<Friendstip.Length;i++){
+							arraygameobjectbutton(Friendstip,false,0);
+							/*for(int i=0;i<Friendstip.Length;i++){
 								Friendstip[i].GetComponent<Canvas>().sortingOrder=0;
-							}
+							}*/
 							StartCoroutine(exitupchar(Friendstip,0));
 					}
 			}
@@ -902,6 +903,7 @@ public class menu : MonoBehaviour {
 					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
 				}
 		}
+		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
 		arraygameobjectbutton(Friendstip,true,1);
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
 		for(int i=0;i<Friendstip.Length;i++){

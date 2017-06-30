@@ -123,6 +123,10 @@ public abstract class Story : MonoBehaviour
 	protected void meet(string a,string s)
 	{
 		open(a,s);
+        button1.GetComponent<Canvas>().sortingOrder=2;
+        button2.GetComponent<Canvas>().sortingOrder=2;
+        GameObject.Find("Panel").GetComponent<Canvas>().sortingOrder=10;
+        GameObject.Find("talkbox").GetComponent<Canvas>().sortingOrder=1;
 		SumVariable.keyboardopen = false;
 		StartCoroutine(Sumthing.view(box,0, 1, 0.0625,0.005f));
 		StartCoroutine(word());
