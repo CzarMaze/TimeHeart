@@ -951,7 +951,7 @@ public class menu : MonoBehaviour {
 				tasks[i].GetComponent<Canvas>().sortingOrder=50;
 			}
 			if(tasks[i].name=="TaskSecondary"){
-				tasks[i].GetComponent<Canvas>().sortingOrder=3;
+				tasks[i].GetComponent<Canvas>().sortingOrder=4;
 			}
 		}
 		arraygameobjectbutton(taskmains,true,1);
