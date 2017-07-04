@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,FriendstipMain;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
 	protected Image Itemimage,Skillimage,FriendImage;
@@ -61,6 +61,7 @@ public class menu : MonoBehaviour {
 		SYN=GameObject.Find("SkillSelect");
 		//------------------------------------------------------------
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
+		//FriendstipMain=GameObject.FindGameObjectsWithTag("FriendstipMain");
 		FriendImage=GameObject.Find("FriendImage").GetComponent<Image>();
 		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
 		//------------------------------------------------------------
@@ -341,9 +342,11 @@ public class menu : MonoBehaviour {
 							mode=0;
 							statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
 							arraygameobjectbutton(Friendstip,false,0);
-							/*for(int i=0;i<Friendstip.Length;i++){
-								Friendstip[i].GetComponent<Canvas>().sortingOrder=0;
-							}*/
+							for(int i=0;i<Friendstip.Length;i++){
+								if(Friendstip[i].name=="FriendstipMain"){
+									Friendstip[i].GetComponent<Canvas>().sortingOrder=0;
+								}
+							}
 							StartCoroutine(exitupchar(Friendstip,0));
 					}
 			}
@@ -907,9 +910,11 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Friendstip,true,1);
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
 		for(int i=0;i<Friendstip.Length;i++){
+			if(Friendstip[i].name=="FriendstipMain"){
+				Friendstip[i].GetComponent<Canvas>().sortingOrder=50;
+			}
 			if(Friendstip[i].name.Substring(0,5)=="ListF"){
 				loadselected(Friendstip[i]);
-				break;
 			}
 		}
 	
