@@ -318,7 +318,7 @@ public class menu : MonoBehaviour {
 					mode=0;
 					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
 					for(int i=0;i<tasks.Length;i++){
-							Skills[i].GetComponent<Canvas>().sortingOrder=0;
+							tasks[i].GetComponent<Canvas>().sortingOrder=0;
 						}
 					StartCoroutine(exitupchar(tasks,0));
 				}
