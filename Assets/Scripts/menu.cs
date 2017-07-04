@@ -715,10 +715,10 @@ public class menu : MonoBehaviour {
 				loadselected(Items[i]);
 			}
 			if(Items[i].name=="friendsUI"){
-				Items[i].GetComponent<Canvas>().sortingOrder=2;
+				Items[i].GetComponent<Canvas>().sortingOrder=4;
 			}
 			if(Items[i].name=="mainUI"){
-				Items[i].GetComponent<Canvas>().sortingOrder=2;
+				Items[i].GetComponent<Canvas>().sortingOrder=4;
 			}
 		}
 
@@ -727,11 +727,11 @@ public class menu : MonoBehaviour {
 		mode=4;
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="mainUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="itemUI"){
@@ -749,7 +749,7 @@ public class menu : MonoBehaviour {
 		mode=4;
 		for(int i=0;i<Items.Length;i++){
 					if(Items[i].name=="friendsUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="mainUI"){
@@ -759,7 +759,7 @@ public class menu : MonoBehaviour {
 						}
 					}
 					if(Items[i].name=="itemUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 				}
@@ -777,11 +777,11 @@ public class menu : MonoBehaviour {
 						}
 					}
 					if(Items[i].name=="mainUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 					if(Items[i].name=="itemUI"){
-						Items[i].GetComponent<Canvas>().sortingOrder=2;
+						Items[i].GetComponent<Canvas>().sortingOrder=4;
 						SetSelectedGameObjects("du",Items[i].GetComponent<Button>(),Items[i].GetComponent<Button>());
 					}
 				}
@@ -941,7 +941,7 @@ public class menu : MonoBehaviour {
 				loadselected(tasks[i]);
 			}
 			if(tasks[i].name=="TaskSecondary"){
-				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+				tasks[i].GetComponent<Canvas>().sortingOrder=4;
 			}
 		}
 	}
@@ -951,7 +951,7 @@ public class menu : MonoBehaviour {
 				tasks[i].GetComponent<Canvas>().sortingOrder=50;
 			}
 			if(tasks[i].name=="TaskSecondary"){
-				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+				tasks[i].GetComponent<Canvas>().sortingOrder=3;
 			}
 		}
 		arraygameobjectbutton(taskmains,true,1);
@@ -960,7 +960,7 @@ public class menu : MonoBehaviour {
 	public void tasksecmode(){
 		for(int i=0;i<tasks.Length;i++){
 			if(tasks[i].name=="TaskMain"){
-				tasks[i].GetComponent<Canvas>().sortingOrder=2;
+				tasks[i].GetComponent<Canvas>().sortingOrder=4;
 			}
 			if(tasks[i].name=="TaskSecondary"){
 				tasks[i].GetComponent<Canvas>().sortingOrder=50;
