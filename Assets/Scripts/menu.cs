@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,FriendstipMain;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
 	protected Image Itemimage,Skillimage,FriendImage;
@@ -65,6 +65,8 @@ public class menu : MonoBehaviour {
 		FriendImage=GameObject.Find("FriendImage").GetComponent<Image>();
 		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
 		//------------------------------------------------------------
+		Systemset=GameObject.FindGameObjectsWithTag("Systemset");
+		//--------------------------------------------------------------
 		tasks=GameObject.FindGameObjectsWithTag("tasks");
 		taskmains=GameObject.FindGameObjectsWithTag("taskmains");
 		tasksecs=GameObject.FindGameObjectsWithTag("tasksecs");
@@ -322,7 +324,7 @@ public class menu : MonoBehaviour {
 						}
 					StartCoroutine(exitupchar(tasks,0));
 				}
-			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==7){
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==7){//-------------------------------友誼
 					if(es.currentSelectedGameObject!=null){
 						if(es.currentSelectedGameObject.GetComponent<itemsbuttonps>()!=null){	
 							Byte[] imabytes=Convert.FromBase64String(es.currentSelectedGameObject.GetComponent<itemsbuttonps>().image);
@@ -349,6 +351,17 @@ public class menu : MonoBehaviour {
 							}
 							StartCoroutine(exitupchar(Friendstip,0));
 					}
+			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==8){//---------------------系統
+				if(Input.GetKeyUp(KeyCode.Escape)){
+					mode=0;
+					for(int i=0;i<Systemset.Length;i++){
+						if(Systemset[i].GetComponent<Button>()!=null){
+							Systemset[i].GetComponent<Canvas>().sortingOrder=0;
+						}
+					}
+					StartCoroutine(exitupchar(Systemset,1));
+				}
+
 			}
 		}
 	private void lastpointcheck(string list,int lv){
@@ -910,14 +923,29 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Friendstip,true,1);
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
 		for(int i=0;i<Friendstip.Length;i++){
-			if(Friendstip[i].name=="FriendstipMain"){
-				Friendstip[i].GetComponent<Canvas>().sortingOrder=50;
-			}
 			if(Friendstip[i].name.Substring(0,5)=="ListF"){
 				loadselected(Friendstip[i]);
 			}
 		}
 	
+	}
+	public void systemsetting(){
+		mode=8;
+		for(int i=0;i<leftlist.Length;i++){
+			leftlist[i].GetComponent<Button> ().interactable = false;
+				if(leftlist[i].name=="System"){
+					leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListLight") as Sprite;
+				}
+		}
+		arraygameobjectbutton(Systemset,true,1);
+		for(int i=0;i<Systemset.Length;i++){
+			if(Systemset[i].GetComponent<Button>()!=null){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=50;
+			}
+			if(Systemset[i].name=="Save"){
+				loadselected(Systemset[i]);
+			}
+		}
 	}
 	public void taskmode(){
 		mode=6;
