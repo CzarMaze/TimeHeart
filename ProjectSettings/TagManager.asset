@@ -22,6 +22,7 @@ TagManager:
   - tasksecs
   - Friendstip
   - Systemset
+  - SystemExit
   layers:
   - Default
   - TransparentFX

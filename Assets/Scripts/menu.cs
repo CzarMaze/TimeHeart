@@ -354,14 +354,14 @@ public class menu : MonoBehaviour {
 			}else if(leftlist[0].GetComponent<Button>().interactable==false && mode==8){//---------------------系統
 				if(Input.GetKeyUp(KeyCode.Escape)){
 					mode=0;
+					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
 					for(int i=0;i<Systemset.Length;i++){
 						if(Systemset[i].GetComponent<Button>()!=null){
 							Systemset[i].GetComponent<Canvas>().sortingOrder=0;
 						}
 					}
-					StartCoroutine(exitupchar(Systemset,1));
+					StartCoroutine(exitupchar(Systemset,0));
 				}
-
 			}
 		}
 	private void lastpointcheck(string list,int lv){
@@ -938,12 +938,35 @@ public class menu : MonoBehaviour {
 				}
 		}
 		arraygameobjectbutton(Systemset,true,1);
+		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
 		for(int i=0;i<Systemset.Length;i++){
 			if(Systemset[i].GetComponent<Button>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=50;
 			}
 			if(Systemset[i].name=="Save"){
 				loadselected(Systemset[i]);
+			}
+		}
+			//GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
+			//GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
+	}
+	public void systemquit(){
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=false;
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),true,1);
+		loadselected(GameObject.Find("ExitYes"));
+	}
+	public void systemquitcheck(bool check){
+		if(check){
+			Application.Quit();
+		}else{
+			GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=1;
+			GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
+			arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
+			for(int i=0;i<Systemset.Length;i++){
+				if(Systemset[i].name=="Save"){
+					loadselected(Systemset[i]);
+				}
 			}
 		}
 	}

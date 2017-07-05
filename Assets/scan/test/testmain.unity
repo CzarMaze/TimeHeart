@@ -781,7 +781,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 1
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!225 &56186470
 CanvasGroup:
@@ -790,7 +790,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 56186466}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -907,7 +907,7 @@ GameObject:
   - 114: {fileID: 59734332}
   m_Layer: 5
   m_Name: Systemimage
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1134,6 +1134,7 @@ RectTransform:
   - {fileID: 767032995}
   - {fileID: 1641543743}
   - {fileID: 56186467}
+  - {fileID: 159556951}
   - {fileID: 267040920}
   - {fileID: 1885672390}
   m_Father: {fileID: 464710435}
@@ -1150,7 +1151,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 72689607}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -1171,7 +1172,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 21
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!1 &78419842
 GameObject:
@@ -2707,7 +2708,7 @@ RectTransform:
   - {fileID: 767544201}
   - {fileID: 1394382960}
   m_Father: {fileID: 1641543743}
-  m_RootOrder: 3
+  m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 1241.9001, y: -478.91428}
@@ -4956,7 +4957,7 @@ GameObject:
   - 225: {fileID: 159556956}
   m_Layer: 5
   m_Name: SaveMaskUI
-  m_TagString: Untagged
+  m_TagString: Systemset
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -4969,7 +4970,7 @@ RectTransform:
   m_GameObject: {fileID: 159556950}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.830242, y: 1.0944874, z: 0.92249656}
+  m_LocalScale: {x: 0.53099686, y: 0.7, z: 0.5899999}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 421089954}
@@ -4977,11 +4978,11 @@ RectTransform:
   - {fileID: 642763971}
   - {fileID: 1876858926}
   - {fileID: 428037854}
-  m_Father: {fileID: 1641543743}
-  m_RootOrder: 2
+  m_Father: {fileID: 72689608}
+  m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 1230.0002, y: -488.9143}
+  m_AnchoredPosition: {x: 376.66974, y: -657.69434}
   m_SizeDelta: {x: 2200, y: 1140}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &159556953
@@ -6621,7 +6622,7 @@ GameObject:
   - 225: {fileID: 248958870}
   m_Layer: 5
   m_Name: ExitImage
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6802,7 +6803,7 @@ RectTransform:
   - {fileID: 419023401}
   - {fileID: 685449541}
   m_Father: {fileID: 72689608}
-  m_RootOrder: 3
+  m_RootOrder: 4
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -410, y: -658}
@@ -6867,7 +6868,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 26
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!225 &267040923
 CanvasGroup:
@@ -6876,7 +6877,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 267040919}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -6926,7 +6927,7 @@ GameObject:
   - 114: {fileID: 270294808}
   m_Layer: 5
   m_Name: ExitYes
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -6989,7 +6990,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 270294809}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 464710440}
+        m_MethodName: systemquitcheck
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &270294809
@@ -7037,7 +7049,7 @@ GameObject:
   - 114: {fileID: 270784755}
   m_Layer: 5
   m_Name: text
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -7782,7 +7794,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2138445640}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8139,8 +8151,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180034999}
   m_HandleRect: {fileID: 180034998}
   m_Direction: 2
-  m_Value: 0.99999887
-  m_Size: 0.625
+  m_Value: 0.9999982
+  m_Size: 0.6249998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8377,7 +8389,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 916977415}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859998
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8537,7 +8549,7 @@ GameObject:
   - 114: {fileID: 378608074}
   m_Layer: 5
   m_Name: ExitNo
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -8600,7 +8612,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 378608075}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 464710440}
+        m_MethodName: systemquitcheck
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!114 &378608075
@@ -10564,7 +10587,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1639034627}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.22859995
+  m_Size: 0.22859994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -15196,7 +15219,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!114 &767032998
 MonoBehaviour:
@@ -18429,7 +18452,7 @@ GameObject:
   - 225: {fileID: 964173886}
   m_Layer: 5
   m_Name: ExitSelect
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -18662,7 +18685,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504009697}
   m_Direction: 2
   m_Value: 0.9999998
-  m_Size: 0.62500006
+  m_Size: 0.625
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19547,7 +19570,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1825263198}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859998
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23674,7 +23697,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 84131748}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23942,7 +23965,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 210196211}
   m_HandleRect: {fileID: 210196209}
   m_Direction: 2
-  m_Value: 0.00000090556597
+  m_Value: 0.00000081500923
   m_Size: 0.6433862
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -29908,7 +29931,6 @@ RectTransform:
   m_Children:
   - {fileID: 78419843}
   - {fileID: 754461976}
-  - {fileID: 159556951}
   - {fileID: 138551950}
   m_Father: {fileID: 72689608}
   m_RootOrder: 1
@@ -29976,7 +29998,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 4
+  m_SortingOrder: 0
   m_TargetDisplay: 0
 --- !u!225 &1641543746
 CanvasGroup:
@@ -29985,7 +30007,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1641543742}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -32817,7 +32839,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1544776848}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.48231506
+  m_Size: 0.48231512
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -36298,7 +36320,7 @@ RectTransform:
   - {fileID: 2093014004}
   - {fileID: 964173884}
   m_Father: {fileID: 72689608}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: -410, y: -817}
@@ -36343,7 +36365,18 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 1885672394}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls: []
+      m_Calls:
+      - m_Target: {fileID: 464710440}
+        m_MethodName: systemquit
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
 --- !u!223 &1885672392
@@ -36372,7 +36405,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1885672389}
   m_Enabled: 1
-  m_Alpha: 1
+  m_Alpha: 0
   m_Interactable: 0
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -40137,7 +40170,7 @@ RectTransform:
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 15, y: -374.9994}
+  m_AnchoredPosition: {x: 15, y: -374.9989}
   m_SizeDelta: {x: 2500, y: 2000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &2076973564
@@ -40555,7 +40588,7 @@ GameObject:
   - 225: {fileID: 2093014006}
   m_Layer: 5
   m_Name: DarkImage
-  m_TagString: Untagged
+  m_TagString: SystemExit
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41075,7 +41108,7 @@ CanvasGroup:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 2100819210}
   m_Enabled: 1
-  m_Alpha: 0
+  m_Alpha: 1
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
@@ -41397,7 +41430,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1244029360}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
