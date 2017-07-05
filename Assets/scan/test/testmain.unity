@@ -7794,7 +7794,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2138445640}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8152,7 +8152,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 180034998}
   m_Direction: 2
   m_Value: 0.9999982
-  m_Size: 0.6249998
+  m_Size: 0.62499994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8389,7 +8389,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 916977415}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859995
+  m_Size: 0.22859998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10587,7 +10587,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1639034627}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.22859994
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -16398,6 +16398,109 @@ CanvasRenderer:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 839821690}
+--- !u!1 &844030880
+GameObject:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 4
+  m_Component:
+  - 4: {fileID: 844030882}
+  - 82: {fileID: 844030881}
+  m_Layer: 0
+  m_Name: ESOUND
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!82 &844030881
+AudioSource:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844030880}
+  m_Enabled: 1
+  serializedVersion: 4
+  OutputAudioMixerGroup: {fileID: 0}
+  m_audioClip: {fileID: 0}
+  m_PlayOnAwake: 1
+  m_Volume: 0.15
+  m_Pitch: 1
+  Loop: 1
+  Mute: 0
+  Spatialize: 0
+  Priority: 128
+  DopplerLevel: 1
+  MinDistance: 1.0932941
+  MaxDistance: 500
+  Pan2D: 0
+  rolloffMode: 0
+  BypassEffects: 0
+  BypassListenerEffects: 0
+  BypassReverbZones: 0
+  rolloffCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    - time: 1
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  panLevelCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+  spreadCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 0
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 4
+  reverbZoneMixCustomCurve:
+    serializedVersion: 2
+    m_Curve:
+    - time: 0
+      value: 1.1
+      inSlope: 0
+      outSlope: 0
+      tangentMode: 0
+    m_PreInfinity: 2
+    m_PostInfinity: 2
+    m_RotationOrder: 0
+--- !u!4 &844030882
+Transform:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 844030880}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: -1.043, y: -3.594, z: -30}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 9
 --- !u!1 &856221699
 GameObject:
   m_ObjectHideFlags: 0
@@ -18685,7 +18788,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504009697}
   m_Direction: 2
   m_Value: 0.9999998
-  m_Size: 0.625
+  m_Size: 0.62500006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19570,7 +19673,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1825263198}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859995
+  m_Size: 0.22859998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23697,7 +23800,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 84131748}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23965,7 +24068,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 210196211}
   m_HandleRect: {fileID: 210196209}
   m_Direction: 2
-  m_Value: 0.00000081500923
+  m_Value: 0.00000090556597
   m_Size: 0.6433862
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -32839,7 +32942,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1544776848}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.48231512
+  m_Size: 0.48231506
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -41430,7 +41533,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1244029360}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
