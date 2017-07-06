@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset,Systemvoise;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
 	protected Image Itemimage,Skillimage,FriendImage;
@@ -66,6 +66,7 @@ public class menu : MonoBehaviour {
 		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
 		//------------------------------------------------------------
 		Systemset=GameObject.FindGameObjectsWithTag("Systemset");
+		Systemvoise=GameObject.FindGameObjectsWithTag("Systemvoise");
 		//--------------------------------------------------------------
 		tasks=GameObject.FindGameObjectsWithTag("tasks");
 		taskmains=GameObject.FindGameObjectsWithTag("taskmains");
@@ -82,6 +83,17 @@ public class menu : MonoBehaviour {
 						break;
 					}
 				}
+			}
+		}
+		for(int i=0;i<Systemvoise.Length;i++){//------------------------------------------事前載入音量設定
+			if(Systemvoise[i].name=="Music"){
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("MUSIC").GetComponent<AudioSource>().volume;
+			}
+			if(Systemvoise[i].name=="Sound"){
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("talkbox").GetComponent<AudioSource>().volume;
+			}
+			if(Systemvoise[i].name=="ESound"){
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("ESOUND").GetComponent<AudioSource>().volume;
 			}
 		}	
 		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
@@ -361,6 +373,17 @@ public class menu : MonoBehaviour {
 						}
 					}
 					StartCoroutine(exitupchar(Systemset,0));
+				}
+				for(int i=0;i<Systemvoise.Length;i++){
+					if(Systemvoise[i].name=="Music"){
+						GameObject.Find("MUSIC").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+					}
+					if(Systemvoise[i].name=="Sound"){
+						GameObject.Find("talkbox").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+					}
+					if(Systemvoise[i].name=="ESound"){
+						GameObject.Find("ESOUND").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+					}
 				}
 			}
 		}
@@ -941,19 +964,30 @@ public class menu : MonoBehaviour {
 		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
 		for(int i=0;i<Systemset.Length;i++){
 			if(Systemset[i].GetComponent<Button>()!=null){
-				Systemset[i].GetComponent<Canvas>().sortingOrder=50;
+				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 			}
 			if(Systemset[i].name=="Save"){
 				loadselected(Systemset[i]);
 			}
 		}
-			//GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
-			//GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),false,0);
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=1;
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
 	}
 	public void systemquit(){
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=false;
 		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),true,1);
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),false,0);
+		for(int i=0;i<Systemset.Length;i++){
+			if(Systemset[i].GetComponent<Button>()!=null){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
+			}
+			if(Systemset[i].name=="Exit"){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
+			}
+		}
 		loadselected(GameObject.Find("ExitYes"));
 	}
 	public void systemquitcheck(bool check){
@@ -964,9 +998,24 @@ public class menu : MonoBehaviour {
 			GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
 			arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
 			for(int i=0;i<Systemset.Length;i++){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 				if(Systemset[i].name=="Save"){
 					loadselected(Systemset[i]);
 				}
+			}
+		}
+	}
+	public void systemvoise(){
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
+		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=false;
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),true,1);
+		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
+		for(int i=0;i<Systemset.Length;i++){
+			if(Systemset[i].GetComponent<Button>()!=null){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
+			}
+			if(Systemset[i].name=="System" && Systemset[i].GetComponent<Button>()!=null){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
 			}
 		}
 	}

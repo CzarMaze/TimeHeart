@@ -23,6 +23,7 @@ TagManager:
   - Friendstip
   - Systemset
   - SystemExit
+  - Systemvoise
   layers:
   - Default
   - TransparentFX
