@@ -5057,7 +5057,7 @@ Canvas:
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 49
+  m_SortingOrder: 50
   m_TargetDisplay: 0
 --- !u!222 &159556955
 CanvasRenderer:
@@ -7078,7 +7078,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
     m_TypeName: UnityEngine.UI.Button+ButtonClickedEvent, UnityEngine.UI, Version=1.0.0.0,
       Culture=neutral, PublicKeyToken=null
@@ -7907,7 +7907,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2138445640}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8264,8 +8264,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180034999}
   m_HandleRect: {fileID: 180034998}
   m_Direction: 2
-  m_Value: 0.99999917
-  m_Size: 0.62499994
+  m_Value: 0.99999887
+  m_Size: 0.6249998
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8502,7 +8502,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 916977415}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859998
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10737,7 +10737,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1639034627}
   m_Direction: 2
   m_Value: 0.9999999
-  m_Size: 0.22859995
+  m_Size: 0.22859994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -18937,8 +18937,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 504009698}
   m_HandleRect: {fileID: 504009697}
   m_Direction: 2
-  m_Value: 1
-  m_Size: 0.62500006
+  m_Value: 0.9999998
+  m_Size: 0.625
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -19823,7 +19823,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1825263198}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22859998
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -23950,7 +23950,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 84131748}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -24218,7 +24218,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 210196211}
   m_HandleRect: {fileID: 210196209}
   m_Direction: 2
-  m_Value: 0.00000090556597
+  m_Value: 0.00000081500923
   m_Size: 0.6433862
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -33131,7 +33131,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1544776848}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.48231506
+  m_Size: 0.48231512
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -41655,7 +41655,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1244029360}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:

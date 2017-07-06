@@ -7,7 +7,7 @@ using UnityEngine.EventSystems;
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
 	protected GameObject Icon,statusUI,YN,SYN;
-	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset,Systemvoise;
+	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset,Systemvoise,SystemExit;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
 	protected Image Itemimage,Skillimage,FriendImage;
@@ -66,6 +66,7 @@ public class menu : MonoBehaviour {
 		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
 		//------------------------------------------------------------
 		Systemset=GameObject.FindGameObjectsWithTag("Systemset");
+		SystemExit=GameObject.FindGameObjectsWithTag("SystemExit");
 		Systemvoise=GameObject.FindGameObjectsWithTag("Systemvoise");
 		//--------------------------------------------------------------
 		tasks=GameObject.FindGameObjectsWithTag("tasks");
@@ -372,6 +373,13 @@ public class menu : MonoBehaviour {
 							Systemset[i].GetComponent<Canvas>().sortingOrder=0;
 						}
 					}
+					for(int i=0;i<SystemExit.Length;i++){
+						if(SystemExit[i].GetComponent<Canvas>()!=null){
+							SystemExit[i].GetComponent<Canvas>().sortingOrder=51;
+						}
+					}
+					arraygameobjectbutton(SystemExit,false,0);
+					arraygameobjectbutton(Systemvoise,false,0);
 					StartCoroutine(exitupchar(Systemset,0));
 				}
 				for(int i=0;i<Systemvoise.Length;i++){
@@ -964,28 +972,33 @@ public class menu : MonoBehaviour {
 		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
 		for(int i=0;i<Systemset.Length;i++){
 			if(Systemset[i].GetComponent<Button>()!=null){
-				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
+				Systemset[i].GetComponent<Canvas>().sortingOrder=50;
 			}
 			if(Systemset[i].name=="Save"){
 				loadselected(Systemset[i]);
 			}
 		}
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),false,0);
+		arraygameobjectbutton(SystemExit,false,0);
+		arraygameobjectbutton(Systemvoise,false,0);
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=1;
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
 	}
 	public void systemquit(){
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=false;
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),true,1);
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),false,0);
+		arraygameobjectbutton(SystemExit,true,1);
+		arraygameobjectbutton(Systemvoise,false,0);
 		for(int i=0;i<Systemset.Length;i++){
 			if(Systemset[i].GetComponent<Button>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 			}
 			if(Systemset[i].name=="Exit"){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
+			}
+		}
+		for(int i=0;i<SystemExit.Length;i++){
+			if(SystemExit[i].GetComponent<Canvas>()!=null){
+				SystemExit[i].GetComponent<Canvas>().sortingOrder=51;
 			}
 		}
 		loadselected(GameObject.Find("ExitYes"));
@@ -996,26 +1009,36 @@ public class menu : MonoBehaviour {
 		}else{
 			GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=1;
 			GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
-			arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
+			arraygameobjectbutton(SystemExit,false,0);
 			for(int i=0;i<Systemset.Length;i++){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 				if(Systemset[i].name=="Save"){
 					loadselected(Systemset[i]);
 				}
 			}
+			for(int i=0;i<SystemExit.Length;i++){
+			if(SystemExit[i].GetComponent<Canvas>()!=null){
+				SystemExit[i].GetComponent<Canvas>().sortingOrder=49;
+			}
+		}
 		}
 	}
 	public void systemvoise(){
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=false;
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("Systemvoise"),true,1);
-		arraygameobjectbutton(GameObject.FindGameObjectsWithTag("SystemExit"),false,0);
+		arraygameobjectbutton(Systemvoise,true,1);
+		arraygameobjectbutton(SystemExit,false,0);
 		for(int i=0;i<Systemset.Length;i++){
 			if(Systemset[i].GetComponent<Button>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 			}
 			if(Systemset[i].name=="System" && Systemset[i].GetComponent<Button>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
+			}
+		}
+		for(int i=0;i<SystemExit.Length;i++){
+			if(SystemExit[i].GetComponent<Canvas>()!=null){
+				SystemExit[i].GetComponent<Canvas>().sortingOrder=49;
 			}
 		}
 	}
