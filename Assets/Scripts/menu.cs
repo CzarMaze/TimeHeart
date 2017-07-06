@@ -333,7 +333,7 @@ public class menu : MonoBehaviour {
 					mode=0;
 					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
 					for(int i=0;i<tasks.Length;i++){
-							Skills[i].GetComponent<Canvas>().sortingOrder=0;
+							tasks[i].GetComponent<Canvas>().sortingOrder=0;
 						}
 					StartCoroutine(exitupchar(tasks,0));
 				}
@@ -369,7 +369,7 @@ public class menu : MonoBehaviour {
 					mode=0;
 					statusUI.GetComponentInParent<CanvasGroup>().alpha=1;
 					for(int i=0;i<Systemset.Length;i++){
-						if(Systemset[i].GetComponent<Button>()!=null){
+						if(Systemset[i].GetComponent<Canvas>()!=null){
 							Systemset[i].GetComponent<Canvas>().sortingOrder=0;
 						}
 					}
@@ -589,7 +589,7 @@ public class menu : MonoBehaviour {
 	protected IEnumerator exitupchar(GameObject [] b,int c){
 			yield return new WaitForSeconds(0.01f);
 			for(int i=0;i<leftlist.Length;i++){
-				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/MapNameUI") as Sprite;
+				leftlist[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("Image/0") as Sprite;
 			}
 			arraygameobjectbutton(leftlist,true,1);
 			arraygameobjectbutton(b,false,c);
@@ -971,10 +971,11 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Systemset,true,1);
 		statusUI.GetComponentInParent<CanvasGroup>().alpha=0;
 		for(int i=0;i<Systemset.Length;i++){
-			if(Systemset[i].GetComponent<Button>()!=null){
+			if(Systemset[i].GetComponent<Canvas>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=50;
 			}
 			if(Systemset[i].name=="Save"){
+				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
 				loadselected(Systemset[i]);
 			}
 		}
@@ -989,7 +990,7 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(SystemExit,true,1);
 		arraygameobjectbutton(Systemvoise,false,0);
 		for(int i=0;i<Systemset.Length;i++){
-			if(Systemset[i].GetComponent<Button>()!=null){
+			if(Systemset[i].GetComponent<Canvas>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 			}
 			if(Systemset[i].name=="Exit"){
@@ -1001,7 +1002,8 @@ public class menu : MonoBehaviour {
 				SystemExit[i].GetComponent<Canvas>().sortingOrder=51;
 			}
 		}
-		loadselected(GameObject.Find("ExitYes"));
+		loadselected(GameObject.Find("ExitNo"));
+
 	}
 	public void systemquitcheck(bool check){
 		if(check){
@@ -1014,6 +1016,7 @@ public class menu : MonoBehaviour {
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 				if(Systemset[i].name=="Save"){
 					loadselected(Systemset[i]);
+					Systemset[i].GetComponent<Image>().sprite= Resources.Load<Sprite>("chatboxpicture/ListDark") as Sprite;
 				}
 			}
 			for(int i=0;i<SystemExit.Length;i++){
@@ -1029,10 +1032,10 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Systemvoise,true,1);
 		arraygameobjectbutton(SystemExit,false,0);
 		for(int i=0;i<Systemset.Length;i++){
-			if(Systemset[i].GetComponent<Button>()!=null){
+			if(Systemset[i].GetComponent<Canvas>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=49;
 			}
-			if(Systemset[i].name=="System" && Systemset[i].GetComponent<Button>()!=null){
+			if(Systemset[i].name=="System" && Systemset[i].GetComponent<Canvas>()!=null){
 				Systemset[i].GetComponent<Canvas>().sortingOrder=51;
 			}
 		}
