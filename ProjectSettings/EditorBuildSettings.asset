@@ -5,105 +5,107 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/2F\u8D70\u5ECA.unity"
-  - enabled: 0
+  - enabled: 1
     path: Assets/scan/Signin.unity
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5BA2\u5EF3.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5730\u4E0B\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5EDA\u623F.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u85A9\u96F7\u8AFE\u8207\u51F1\u65AF\u4F0F\u81E5\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5C45\u5BB6\u5BA4\u5916.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5132\u98DF\u7269\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u827E\u6190\u5A1C\u81E5\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u68B3\u6D17\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u6D74\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5EC1\u6240.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u5009\u5EAB.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u5BB6/\u70D8\u6BDB\u623F.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u6E56\u6CCA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u5C0F\u8DEFA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/Animation/\u5C45\u5BB6\u5BA4\u5916.unity"
-  - enabled: 0
+  - enabled: 1
     path: Assets/scan/loading2.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/scan/loading1.unity
-  - enabled: 0
+  - enabled: 1
     path: Assets/scan/loading3.unity
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u5C0F\u8DEFB.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730.unity"
   - enabled: 1
     path: Assets/scan/test/testmain.unity
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u5BB6/2F\u8D70\u5ECA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u5BB6/\u5BA2\u5EF3.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u5BB6/\u5C45\u5BB6\u5BA4\u5916.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u5BB6/\u827E\u6190\u5A1C\u81E5\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u5BB6/\u85A9\u96F7\u8AFE\u8207\u51F1\u65AF\u4F0F\u81E5\u5BA4.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u68EE\u6797/\u9748\u6838\u4E4B\u5730\u5C0F\u8DEFA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u68EE\u6797/\u9748\u6838\u4E4B\u5730\u6E56\u6CCA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u591C\u68EE\u6797/\u9748\u68EE\u5916\u68EE\u6797C.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1EA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1EB.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1EC.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1ED.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1EE.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1E\u7A9FA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1E\u7A9FB.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1E\u7A9FC.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u6D1E\u7A9FD.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u968E\u68AF.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838/\u9748\u6838\u968E\u68AFA.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u5BC6\u9053.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u6D1E\u7A9F.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u9748\u6838\u4E4B\u5730\u907A\u8DE1.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u57CE\u93AE.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u57CE\u93AE\u53F3\u5074.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u5916\u68EE\u6797A.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u5916\u68EE\u6797B.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u5916\u68EE\u6797C.unity"
-  - enabled: 0
+  - enabled: 1
     path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u57CE\u93AE\u6CB3\u6D41.unity"
+  - enabled: 1
+    path: "Assets/scan/\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u57CE\u93AE\u5DE6\u5074\u68EE\u6797.unity"
