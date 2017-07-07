@@ -434,6 +434,34 @@ public class menu : MonoBehaviour {
 		PlayerPrefs.DeleteKey("cachetasksSave");
 	}
 
+
+
+
+
+	public void SaveingGame(){
+		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
+		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
+		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
+		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
+		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
+		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
+		cachearticlereadOnDisable(FriendstipSave,Friendstip,"cacheFriendstipSave","FriendList");
+		tasksOnDisable(tasksSave,"cachetasksSave");
+		PlayerPrefs.Save();
+	}
+	public void loadingGame(){
+		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
+		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","itemitem","friendsitem");
+		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","itemitem","mainitem");
+		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
+		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
+		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
+		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","Frienditemitem","ListFriend");//--------------------------
+		tasksSave=taskstartread("cachetasksSave");
+	}
+
+
+	
 //----------------------------------------------------------------------------------------------------------------------
 	MyjsonSQL cachearticleread(GameObject [] UI,string cachesave,string list,string prefabsname,string buttonnames){
 		MyjsonSQL cacheMyjsonSQL;
