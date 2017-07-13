@@ -3,10 +3,11 @@ using UnityEngine;
 using UnityEngine.UI;
 using System.Collections;
 using UnityEngine.EventSystems;
+using UnityEngine.SceneManagement;
 
 public class menu : MonoBehaviour {
 	protected CanvasGroup backgroundUI;
-	protected GameObject Icon,statusUI,YN,SYN;
+	protected GameObject Icon,statusUI,YN,SYN,Player;
 	protected GameObject [] leftlist,upcharactor,battleteam,Items,itemUI,mainUI,friendsUI,Skills,AttackSkill,HelpSkill,CureSkill,tasks,taskmains,tasksecs,Friendstip,Systemset,Systemvoise,SystemExit;
 	protected EventSystem es;
 	protected Text StatusName,LVStatus,HPStatus,MPStatus,EXPStatus,STRStatus,MDEFStatus,INTStatus,SPDStatus,DEFStatus,AGIStatus,ItemEx,SkillEx,FriendExtext;
@@ -72,9 +73,15 @@ public class menu : MonoBehaviour {
 		tasks=GameObject.FindGameObjectsWithTag("tasks");
 		taskmains=GameObject.FindGameObjectsWithTag("taskmains");
 		tasksecs=GameObject.FindGameObjectsWithTag("tasksecs");
-		
+
+		Player=GameObject.Find("Player");
 	}
 	void Start () {
+		if(PlayerPrefs.GetFloat("Music")!=0 || PlayerPrefs.GetFloat("Sound")!=0 || PlayerPrefs.GetFloat("ESound")!=0){
+			SumVariable.Music=PlayerPrefs.GetFloat("Music");
+			SumVariable.Sound=PlayerPrefs.GetFloat("Sound");
+			SumVariable.ESound=PlayerPrefs.GetFloat("ESound");
+		}
 		startfind();
 		for(int i=0;i<battleteam.Length;i++){
 			if(battleteam[i].name=="STeam1"||battleteam[i].name=="STeam2"||battleteam[i].name=="STeam3"){
@@ -88,13 +95,16 @@ public class menu : MonoBehaviour {
 		}
 		for(int i=0;i<Systemvoise.Length;i++){//------------------------------------------事前載入音量設定
 			if(Systemvoise[i].name=="Music"){
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("MUSIC").GetComponent<AudioSource>().volume;
+				GameObject.Find("MUSIC").GetComponent<AudioSource>().volume=SumVariable.Music;
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Music;
 			}
 			if(Systemvoise[i].name=="Sound"){
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("talkbox").GetComponent<AudioSource>().volume;
+				GameObject.Find("talkbox").GetComponent<AudioSource>().volume=SumVariable.Sound;
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Sound;
 			}
 			if(Systemvoise[i].name=="ESound"){
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=GameObject.Find("ESOUND").GetComponent<AudioSource>().volume;
+				GameObject.Find("ESOUND").GetComponent<AudioSource>().volume=SumVariable.ESound;
+				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.ESound;
 			}
 		}	
 		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
@@ -105,7 +115,6 @@ public class menu : MonoBehaviour {
 		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
 		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","Frienditemitem","ListFriend");//--------------------------
 		tasksSave=taskstartread("cachetasksSave");
-		
 	}
 	void Update () {
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
@@ -385,14 +394,18 @@ public class menu : MonoBehaviour {
 				for(int i=0;i<Systemvoise.Length;i++){
 					if(Systemvoise[i].name=="Music"){
 						GameObject.Find("MUSIC").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+						SumVariable.Music=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
 					}
 					if(Systemvoise[i].name=="Sound"){
 						GameObject.Find("talkbox").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+						SumVariable.Sound=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
 					}
 					if(Systemvoise[i].name=="ESound"){
 						GameObject.Find("ESOUND").GetComponent<AudioSource>().volume=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
+						SumVariable.ESound=Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value;
 					}
 				}
+				
 			}
 		}
 	private void lastpointcheck(string list,int lv){
@@ -413,6 +426,9 @@ public class menu : MonoBehaviour {
 		}
 	}
 	private void OnDisable(){
+		PlayerPrefs.SetFloat("Music",SumVariable.Music);
+		PlayerPrefs.SetFloat("Sound",SumVariable.Sound);
+		PlayerPrefs.SetFloat("ESound",SumVariable.ESound);
 		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
 		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
 		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
@@ -439,25 +455,51 @@ public class menu : MonoBehaviour {
 
 
 	public void SaveingGame(){
-		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
-		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
-		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
-		cachearticlereadOnDisable(CureSkillSave,CureSkill,"cacheCureSkillSave","CureList");
-		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"cacheHelpSkillSave","HelpList");
-		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
-		cachearticlereadOnDisable(FriendstipSave,Friendstip,"cacheFriendstipSave","FriendList");
-		tasksOnDisable(tasksSave,"cachetasksSave");
+        PlayerPrefs.SetString("ScanSave", SceneManager.GetActiveScene().path.Split(new string[] {"scan/"},StringSplitOptions.RemoveEmptyEntries)[1].Split('.')[0]);
+		PlayerPrefs.SetString("charactorSave",SumVariable.charactor);
+		PlayerPrefsX.SetBoolArray("banSave",SumVariable.teamban);
+		PlayerPrefsX.SetIntArray("battleteamSave",SumVariable.battleteam);
+		PlayerPrefs.SetInt("keySave",SumVariable.key);
+		PlayerPrefsX.SetVector3("nextadSave",Player.transform.position);
+		PlayerPrefsX.SetIntArray("charactorlv1",SumVariable.charactorlv[1]);
+		PlayerPrefsX.SetIntArray("charactorlv2",SumVariable.charactorlv[2]);
+		PlayerPrefsX.SetIntArray("charactorlv3",SumVariable.charactorlv[3]);
+		PlayerPrefs.SetString("address",GameObject.Find("MapName").transform.GetChild(0).GetComponent<Text>().text);
+		PlayerPrefs.SetString("Day",DateTime.Now.ToShortDateString().ToString());
+		PlayerPrefs.SetString("Time",DateTime.Now.ToLongTimeString().ToString());
+		cachearticlereadOnDisable(itemSave,itemUI,"itemSave","itemList");//道具
+		cachearticlereadOnDisable(friendsSave,friendsUI,"friendsSave","friendsList");//禮物
+		cachearticlereadOnDisable(mainSave,mainUI,"mainSave","mainList");//重要
+		cachearticlereadOnDisable(CureSkillSave,CureSkill,"CureSkillSave","CureList");//凱斯伏
+		cachearticlereadOnDisable(HelpSkillSave,HelpSkill,"HelpSkillSave","HelpList");//薩雷諾
+		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"AttackSkillSave","AttackList");//艾憐娜
+		cachearticlereadOnDisable(FriendstipSave,Friendstip,"FriendstipSave","FriendList");//友誼
+		tasksOnDisable(tasksSave,"tasksSave");//任務
 		PlayerPrefs.Save();
+		Savedimage();
 	}
 	public void loadingGame(){
-		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
-		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","itemitem","friendsitem");
-		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","itemitem","mainitem");
-		CureSkillSave=cachearticleread(CureSkill,"cacheCureSkillSave","CureList","skllskill","CureSkill");
-		HelpSkillSave=cachearticleread(HelpSkill,"cacheHelpSkillSave","HelpList","skllskill","HelpSkill");
-		AttackSkillSave=cachearticleread(AttackSkill,"cacheAttackSkillSave","AttackList","skllskill","AttackSkill");
-		FriendstipSave=cachearticleread(Friendstip,"cacheFriendstipSave","FriendList","Frienditemitem","ListFriend");//--------------------------
-		tasksSave=taskstartread("cachetasksSave");
+		if(PlayerPrefs.GetString("ScanSave")!=""){
+			SumVariable.nextlevel=PlayerPrefs.GetString("ScanSave");
+			SumVariable.nextad=PlayerPrefsX.GetVector3("nextadSave");
+			SumVariable.nextdt="down";
+			SumVariable.teamban=PlayerPrefsX.GetBoolArray("banSave");
+			SumVariable.battleteam=PlayerPrefsX.GetIntArray("battleteamSave");
+			SumVariable.charactor=PlayerPrefs.GetString("charactorSave");
+			SumVariable.key=PlayerPrefs.GetInt("keySave");
+			SumVariable.charactorlv[1]=PlayerPrefsX.GetIntArray("charactorlv1");
+			SumVariable.charactorlv[2]=PlayerPrefsX.GetIntArray("charactorlv2");
+			SumVariable.charactorlv[3]=PlayerPrefsX.GetIntArray("charactorlv3");
+			itemSave=cachearticleread(itemUI,"itemSave","itemList","itemitem","itemitem");//道具
+			friendsSave=cachearticleread(friendsUI,"friendsSave","friendsList","itemitem","friendsitem");//禮物
+			mainSave=cachearticleread(mainUI,"mainSave","mainList","itemitem","mainitem");//重要
+			CureSkillSave=cachearticleread(CureSkill,"CureSkillSave","CureList","skllskill","CureSkill");//凱斯伏
+			HelpSkillSave=cachearticleread(HelpSkill,"HelpSkillSave","HelpList","skllskill","HelpSkill");//薩雷諾
+			AttackSkillSave=cachearticleread(AttackSkill,"AttackSkillSave","AttackList","skllskill","AttackSkill");//艾憐娜
+			FriendstipSave=cachearticleread(Friendstip,"FriendstipSave","FriendList","Frienditemitem","ListFriend");//友誼
+			tasksSave=taskstartread("tasksSave");//任務
+			SceneManager.LoadScene ("scan/loading1");
+		}
 	}
 
 
@@ -1011,6 +1053,28 @@ public class menu : MonoBehaviour {
 		arraygameobjectbutton(Systemvoise,false,0);
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=1;
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().interactable=true;
+		if(PlayerPrefs.GetString("Day")!=""){
+			Savedimage();
+		}
+	}
+	private void Savedimage(){//-------------------------------------------------------------------------------
+		GameObject.Find("SaveDaytext").GetComponent<Text>().text=PlayerPrefs.GetString("Day");
+		GameObject.Find("SaveTimetext").GetComponent<Text>().text=PlayerPrefs.GetString("Time");
+		GameObject.Find("SaveMaptext").GetComponent<Text>().text=PlayerPrefs.GetString("address");
+		for(int i=1;i<=3;i++){
+			GameObject.Find("SaveTeam"+i).transform.GetChild(0).GetComponent<Image>().sprite=ass[PlayerPrefsX.GetIntArray("battleteamSave")[i-1]];
+		}
+		for(int i=1;i<=3;i++){
+			Saveicons(i);
+		}
+	}
+	private void Saveicons(int i){
+		GameObject tmpsaveicon=GameObject.Find("Saveicon"+i);//i=1
+		int [] tmparray=PlayerPrefsX.GetIntArray("charactorlv"+i);
+		tmpsaveicon.transform.GetChild(1).transform.GetChild(0).GetComponent<Text>().text=tmparray[0].ToString();
+		tmpsaveicon.transform.GetChild(2).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)tmparray[2]/(float)tmparray[1]),0,0);
+		tmpsaveicon.transform.GetChild(3).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)tmparray[4]/(float)tmparray[3]),0,0);
+		tmpsaveicon.transform.GetChild(4).transform.GetChild(0).GetComponent<RectTransform>().localPosition=new Vector3((500-500*(float)tmparray[6]/(float)tmparray[5]),0,0);
 	}
 	public void systemquit(){
 		GameObject.Find("SaveMaskUI").GetComponent<CanvasGroup>().alpha=0;

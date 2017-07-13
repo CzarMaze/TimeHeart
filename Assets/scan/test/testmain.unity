@@ -799,7 +799,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 464710440}
-        m_MethodName: systemsetting
+        m_MethodName: loadingGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -7603,7 +7603,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2138445640}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7960,8 +7960,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180034999}
   m_HandleRect: {fileID: 180034998}
   m_Direction: 2
-  m_Value: 0.9999987
-  m_Size: 0.6249998
+  m_Value: 0.9999985
+  m_Size: 0.62499994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -10294,7 +10294,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1639034627}
   m_Direction: 2
   m_Value: 0.99999964
-  m_Size: 0.22859998
+  m_Size: 0.22859995
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -17965,7 +17965,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504009697}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.62500006
+  m_Size: 0.625
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -22064,7 +22064,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 84131748}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -27517,7 +27517,7 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 464710440}
-        m_MethodName: systemsetting
+        m_MethodName: SaveingGame
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -37692,7 +37692,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1244029360}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764389
+  m_Size: 0.22764388
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
