@@ -438,7 +438,7 @@ public class menu : MonoBehaviour {
 		cachearticlereadOnDisable(FriendstipSave,Friendstip,"cacheFriendstipSave","FriendList");
 		tasksOnDisable(tasksSave,"cachetasksSave");
 		PlayerPrefs.Save();
-	}
+    }
 	private void OnApplicationQuit(){
 		PlayerPrefs.DeleteKey("cacheitemSave");
 		PlayerPrefs.DeleteKey("cachefriendsSave");
@@ -549,7 +549,7 @@ public class menu : MonoBehaviour {
 					if(UI[i].name==list){
 						while(cacheMyjsonSQL.gift>q){
 							cacheMyjsonSQL.main[q].Name= UI[i].transform.GetChild(q).transform.GetChild(0).GetComponent<Text>().text;
-                            if (cachesave != "cacheFriendstipSave")
+                            if (cachesave != "cacheFriendstipSave" && cachesave != "FriendstipSave")
                              {
                                 cacheMyjsonSQL.main[q].number = Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text);
                             }
