@@ -2662,11 +2662,11 @@ Prefab:
     m_Modifications:
     - target: {fileID: 4000013084144656, guid: 560c9989358f5a84d97bd49d22dd1d40, type: 2}
       propertyPath: m_LocalPosition.x
-      value: 5.5
+      value: -5.4
       objectReference: {fileID: 0}
     - target: {fileID: 4000013084144656, guid: 560c9989358f5a84d97bd49d22dd1d40, type: 2}
       propertyPath: m_LocalPosition.y
-      value: -5.6
+      value: 5.2
       objectReference: {fileID: 0}
     - target: {fileID: 4000013084144656, guid: 560c9989358f5a84d97bd49d22dd1d40, type: 2}
       propertyPath: m_LocalPosition.z
@@ -5401,8 +5401,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1578cce879d3084ebfc7165c9b002d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: "\u9748\u68EE\u57CE\u93AE/\u9748\u68EE\u5916\u68EE\u6797B"
-  b: {x: 1.5, y: -5.3, z: 0}
+  a: "\u883B\u65CF\u90E8\u843D/\u9B54\u754C\u6D77\u61F8\u5D16\u68EE\u6797"
+  b: {x: 3, y: -5.3, z: 0}
   c: up
 --- !u!61 &1553318707
 BoxCollider2D:
