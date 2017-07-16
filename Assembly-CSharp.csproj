@@ -48,7 +48,6 @@
      <Compile Include="Assets\Scripts\Depth.cs" />
      <Compile Include="Assets\Scripts\Kaisvo.cs" />
      <Compile Include="Assets\Scripts\PlayerPrefsX.cs" />
-     <Compile Include="Assets\Scripts\SetIntArray.cs" />
      <Compile Include="Assets\Scripts\Sharenold.cs" />
      <Compile Include="Assets\Scripts\Story.cs" />
      <Compile Include="Assets\Scripts\SumVariable.cs" />

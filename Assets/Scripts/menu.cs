@@ -93,20 +93,7 @@ public class menu : MonoBehaviour {
 				}
 			}
 		}
-		for(int i=0;i<Systemvoise.Length;i++){//------------------------------------------事前載入音量設定
-			if(Systemvoise[i].name=="Music"){
-				GameObject.Find("MUSIC").GetComponent<AudioSource>().volume=SumVariable.Music;
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Music;
-			}
-			if(Systemvoise[i].name=="Sound"){
-				GameObject.Find("talkbox").GetComponent<AudioSource>().volume=SumVariable.Sound;
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Sound;
-			}
-			if(Systemvoise[i].name=="ESound"){
-				GameObject.Find("ESOUND").GetComponent<AudioSource>().volume=SumVariable.ESound;
-				Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.ESound;
-			}
-		}	
+		
 		itemSave=cachearticleread(itemUI,"cacheitemSave","itemList","itemitem","itemitem");
 		friendsSave=cachearticleread(friendsUI,"cachefriendsSave","friendsList","itemitem","friendsitem");
 		mainSave=cachearticleread(mainUI,"cachemainSave","mainList","itemitem","mainitem");
@@ -117,6 +104,22 @@ public class menu : MonoBehaviour {
 		tasksSave=taskstartread("cachetasksSave");
 	}
 	void Update () {
+			if(GameObject.Find("MUSIC").GetComponent<AudioSource>().volume != SumVariable.Music||GameObject.Find("talkbox").GetComponent<AudioSource>().volume!=SumVariable.Sound||GameObject.Find("ESOUND").GetComponent<AudioSource>().volume!=SumVariable.ESound){
+				for(int i=0;i<Systemvoise.Length;i++){//------------------------------------------事前載入音量設定
+					if(Systemvoise[i].name=="Music"){
+						GameObject.Find("MUSIC").GetComponent<AudioSource>().volume=SumVariable.Music;
+						Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Music;
+					}
+					if(Systemvoise[i].name=="Sound"){
+						GameObject.Find("talkbox").GetComponent<AudioSource>().volume=SumVariable.Sound;
+						Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.Sound;
+					}
+					if(Systemvoise[i].name=="ESound"){
+						GameObject.Find("ESOUND").GetComponent<AudioSource>().volume=SumVariable.ESound;
+						Systemvoise[i].transform.GetChild(1).GetComponent<Slider>().value=SumVariable.ESound;
+					}
+				}
+			}
 			if (Input.GetKeyUp (KeyCode.Escape) && backgroundUI.alpha == 0 ) {
 				startmenu();
 				charactormenu(1.ToString());
