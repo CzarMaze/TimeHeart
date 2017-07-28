@@ -351,7 +351,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   a: "\u883B\u65CF\u90E8\u843D/\u9B54\u754C\u6D77\u61F8\u5D16\u6D1E\u7A9F"
-  b: {x: 2, y: -6.8, z: 0}
+  b: {x: 2.6, y: -6.8, z: 0}
   c: up
 --- !u!61 &126570469
 BoxCollider2D:
