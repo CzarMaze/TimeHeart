@@ -1,5 +1,7 @@
 ﻿using UnityEngine;
 using System;
+using UnityEngine.SceneManagement;
+
 public class cameralimit : MonoBehaviour {
 	CanvasGroup wx;
 	protected bool x,y;
@@ -85,5 +87,31 @@ public class cameralimit : MonoBehaviour {
         {
 			y = true;
         }
+	}
+	public void LoadingGame(){
+		if(PlayerPrefs.GetString("ScanSave")!=""){
+			SumVariable.nextlevel=PlayerPrefs.GetString("ScanSave");
+			SumVariable.nextad=PlayerPrefsX.GetVector3("nextadSave");
+			SumVariable.nextdt="down";
+			SumVariable.teamban=PlayerPrefsX.GetBoolArray("banSave");
+			SumVariable.battleteam=PlayerPrefsX.GetIntArray("battleteamSave");
+			SumVariable.charactor=PlayerPrefs.GetString("charactorSave");
+			SumVariable.key=PlayerPrefs.GetInt("keySave");
+			SumVariable.charactorlv[1]=PlayerPrefsX.GetIntArray("charactorlv1");
+			SumVariable.charactorlv[2]=PlayerPrefsX.GetIntArray("charactorlv2");
+			SumVariable.charactorlv[3]=PlayerPrefsX.GetIntArray("charactorlv3");
+			PlayerPrefs.SetString("cacheitemSave",PlayerPrefs.GetString("itemSave"));
+			PlayerPrefs.SetString("cachefriendsSave",PlayerPrefs.GetString("friendsSave"));
+			PlayerPrefs.SetString("cachemainSave",PlayerPrefs.GetString("mainSave"));
+			PlayerPrefs.SetString("cacheCureSkillSave",PlayerPrefs.GetString("CureSkillSave"));
+			PlayerPrefs.SetString("cacheHelpSkillSave",PlayerPrefs.GetString("HelpSkillSave"));
+			PlayerPrefs.SetString("cacheAttackSkill",PlayerPrefs.GetString("AttackSkill"));
+			PlayerPrefs.SetString("cacheFriendstipSave",PlayerPrefs.GetString("FriendstipSave"));
+			PlayerPrefs.SetString("cachetasksSave",PlayerPrefs.GetString("tasksSave"));
+			SceneManager.LoadScene ("scan/loading1");
+		}
+	}
+	public void ExitGame(){
+		Application.Quit();
 	}
 }

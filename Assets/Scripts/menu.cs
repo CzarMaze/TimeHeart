@@ -62,7 +62,6 @@ public class menu : MonoBehaviour {
 		SYN=GameObject.Find("SkillSelect");
 		//------------------------------------------------------------
 		Friendstip=GameObject.FindGameObjectsWithTag("Friendstip");
-		//FriendstipMain=GameObject.FindGameObjectsWithTag("FriendstipMain");
 		FriendImage=GameObject.Find("FriendImage").GetComponent<Image>();
 		FriendExtext=GameObject.Find("FriendExtext").GetComponent<Text>();
 		//------------------------------------------------------------
