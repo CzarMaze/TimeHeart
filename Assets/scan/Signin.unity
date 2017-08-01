@@ -2046,14 +2046,14 @@ RectTransform:
   m_GameObject: {fileID: 249351907}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 0.8398071, y: 0.83980715, z: 0.83980715}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children: []
   m_Father: {fileID: 2086068491}
   m_RootOrder: 0
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 120}
+  m_AnchoredPosition: {x: -315, y: 279}
   m_SizeDelta: {x: 500, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &249351910
@@ -2280,7 +2280,7 @@ RectTransform:
   m_GameObject: {fileID: 407082771}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: -0.8, y: 0.8, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1112408577}
@@ -2288,7 +2288,7 @@ RectTransform:
   m_RootOrder: 2
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -80}
+  m_AnchoredPosition: {x: -334, y: 0}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &407082773
@@ -2645,7 +2645,7 @@ RectTransform:
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 100, y: 100}
+  m_SizeDelta: {x: 300, y: 100}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!225 &625319771
 CanvasGroup:
@@ -2664,7 +2664,7 @@ MonoBehaviour:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 625319769}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: -765806418, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
@@ -2929,7 +2929,7 @@ RectTransform:
   m_GameObject: {fileID: 1007459164}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: -0.8, y: 0.8, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 1714183976}
@@ -2937,7 +2937,7 @@ RectTransform:
   m_RootOrder: 3
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -140}
+  m_AnchoredPosition: {x: -334, y: -100}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1007459166
@@ -3611,10 +3611,10 @@ MonoBehaviour:
   m_Script: {fileID: 1980459831, guid: f5f67c52d1564df4a8936ccd202a3bd8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  m_UiScaleMode: 0
-  m_ReferencePixelsPerUnit: 100
+  m_UiScaleMode: 1
+  m_ReferencePixelsPerUnit: 32
   m_ScaleFactor: 1
-  m_ReferenceResolution: {x: 800, y: 600}
+  m_ReferenceResolution: {x: 1920, y: 1080}
   m_ScreenMatchMode: 0
   m_MatchWidthOrHeight: 0
   m_PhysicalUnit: 3
@@ -3632,13 +3632,13 @@ Canvas:
   m_RenderMode: 0
   m_Camera: {fileID: 0}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
   m_SortingBucketNormalizedSize: 0
   m_SortingLayerID: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 1
   m_TargetDisplay: 0
 --- !u!224 &1512492338
 RectTransform:
@@ -4168,7 +4168,7 @@ RectTransform:
   m_GameObject: {fileID: 1789646367}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: -0.5, y: 0.5, z: 0.5}
+  m_LocalScale: {x: -0.8, y: 0.8, z: 1}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_Children:
   - {fileID: 149666579}
@@ -4177,7 +4177,7 @@ RectTransform:
   m_RootOrder: 1
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -50, y: -20}
+  m_AnchoredPosition: {x: -334, y: 100}
   m_SizeDelta: {x: 600, y: 160}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1789646369
@@ -4277,7 +4277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1578cce879d3084ebfc7165c9b002d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: test/testmain
+  a: Animation/A/A1/A1
   b: {x: 0, y: 0, z: 0}
   c: down
 --- !u!114 &1789646373
