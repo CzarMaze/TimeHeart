@@ -105,9 +105,10 @@ public class cameralimit : MonoBehaviour {
 			PlayerPrefs.SetString("cachemainSave",PlayerPrefs.GetString("mainSave"));
 			PlayerPrefs.SetString("cacheCureSkillSave",PlayerPrefs.GetString("CureSkillSave"));
 			PlayerPrefs.SetString("cacheHelpSkillSave",PlayerPrefs.GetString("HelpSkillSave"));
-			PlayerPrefs.SetString("cacheAttackSkill",PlayerPrefs.GetString("AttackSkill"));
+			PlayerPrefs.SetString("cacheAttackSkill",PlayerPrefs.GetString("AttackSkillSave"));
 			PlayerPrefs.SetString("cacheFriendstipSave",PlayerPrefs.GetString("FriendstipSave"));
 			PlayerPrefs.SetString("cachetasksSave",PlayerPrefs.GetString("tasksSave"));
+			PlayerPrefs.Save();
 			SceneManager.LoadScene ("scan/loading1");
 		}
 	}

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: "Assets/scan/\u6FA4\u80AF/\u5CA9\u77F3\u5730\u5E36C.unity"
+- path: Assets/scan/test/testmain.unity
   isLoaded: 1
   isActive: 1

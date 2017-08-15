@@ -16,6 +16,7 @@ public class menu : MonoBehaviour {
 	protected Sprite [] ass;
 	protected RectTransform valueStatusHP,valueStatusMP,valueStatusEXP;
 	public static MyjsonSQL itemSave,friendsSave,mainSave,CureSkillSave,HelpSkillSave,AttackSkillSave,tasksSave,FriendstipSave;
+	protected bool loadingtime=false;
 
 	protected String setteam;
 	void startfind(){
@@ -427,10 +428,12 @@ public class menu : MonoBehaviour {
 			point=0;
 		}
 	}
+
 	private void OnDisable(){
 		PlayerPrefs.SetFloat("Music",SumVariable.Music);
 		PlayerPrefs.SetFloat("Sound",SumVariable.Sound);
 		PlayerPrefs.SetFloat("ESound",SumVariable.ESound);
+		if(!loadingtime){
 		cachearticlereadOnDisable(itemSave,itemUI,"cacheitemSave","itemList");
 		cachearticlereadOnDisable(friendsSave,friendsUI,"cachefriendsSave","friendsList");
 		cachearticlereadOnDisable(mainSave,mainUI,"cachemainSave","mainList");
@@ -439,6 +442,7 @@ public class menu : MonoBehaviour {
 		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"cacheAttackSkillSave","AttackList");
 		cachearticlereadOnDisable(FriendstipSave,Friendstip,"cacheFriendstipSave","FriendList");
 		tasksOnDisable(tasksSave,"cachetasksSave");
+		}
 		PlayerPrefs.Save();
     }
 	private void OnApplicationQuit(){
@@ -451,7 +455,7 @@ public class menu : MonoBehaviour {
 		PlayerPrefs.DeleteKey("cacheFriendstipSave");
 		PlayerPrefs.DeleteKey("cachetasksSave");
 	}
-
+	
 
 
 
@@ -477,11 +481,13 @@ public class menu : MonoBehaviour {
 		cachearticlereadOnDisable(AttackSkillSave,AttackSkill,"AttackSkillSave","AttackList");//艾憐娜
 		cachearticlereadOnDisable(FriendstipSave,Friendstip,"FriendstipSave","FriendList");//友誼
 		tasksOnDisable(tasksSave,"tasksSave");//任務
+		Debug.Log(PlayerPrefs.GetString("itemSave"));
 		PlayerPrefs.Save();
 		Savedimage();
 	}
 	public void loadingGame(){
 		if(PlayerPrefs.GetString("ScanSave")!=""){
+			loadingtime=true;
 			SumVariable.nextlevel=PlayerPrefs.GetString("ScanSave");
 			SumVariable.nextad=PlayerPrefsX.GetVector3("nextadSave");
 			SumVariable.nextdt="down";
@@ -492,14 +498,15 @@ public class menu : MonoBehaviour {
 			SumVariable.charactorlv[1]=PlayerPrefsX.GetIntArray("charactorlv1");
 			SumVariable.charactorlv[2]=PlayerPrefsX.GetIntArray("charactorlv2");
 			SumVariable.charactorlv[3]=PlayerPrefsX.GetIntArray("charactorlv3");
-			itemSave=cachearticleread(itemUI,"itemSave","itemList","itemitem","itemitem");//道具
-			friendsSave=cachearticleread(friendsUI,"friendsSave","friendsList","itemitem","friendsitem");//禮物
-			mainSave=cachearticleread(mainUI,"mainSave","mainList","itemitem","mainitem");//重要
-			CureSkillSave=cachearticleread(CureSkill,"CureSkillSave","CureList","skllskill","CureSkill");//凱斯伏
-			HelpSkillSave=cachearticleread(HelpSkill,"HelpSkillSave","HelpList","skllskill","HelpSkill");//薩雷諾
-			AttackSkillSave=cachearticleread(AttackSkill,"AttackSkillSave","AttackList","skllskill","AttackSkill");//艾憐娜
-			FriendstipSave=cachearticleread(Friendstip,"FriendstipSave","FriendList","Frienditemitem","ListFriend");//友誼
-			tasksSave=taskstartread("tasksSave");//任務
+			PlayerPrefs.SetString("cacheitemSave",PlayerPrefs.GetString("itemSave"));
+			PlayerPrefs.SetString("cachefriendsSave",PlayerPrefs.GetString("friendsSave"));
+			PlayerPrefs.SetString("cachemainSave",PlayerPrefs.GetString("mainSave"));
+			PlayerPrefs.SetString("cacheCureSkillSave",PlayerPrefs.GetString("CureSkillSave"));
+			PlayerPrefs.SetString("cacheHelpSkillSave",PlayerPrefs.GetString("HelpSkillSave"));
+			PlayerPrefs.SetString("cacheAttackSkill",PlayerPrefs.GetString("AttackSkillSave"));
+			PlayerPrefs.SetString("cacheFriendstipSave",PlayerPrefs.GetString("FriendstipSave"));
+			PlayerPrefs.SetString("cachetasksSave",PlayerPrefs.GetString("tasksSave"));
+			PlayerPrefs.Save();
 			SceneManager.LoadScene ("scan/loading1");
 		}
 	}
@@ -554,6 +561,7 @@ public class menu : MonoBehaviour {
                             if (cachesave != "cacheFriendstipSave" && cachesave != "FriendstipSave")
                              {
                                 cacheMyjsonSQL.main[q].number = Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text);
+								Debug.Log(Int32.Parse(UI[i].transform.GetChild(q).transform.GetChild(1).GetComponent<Text>().text));
                             }
 							cacheMyjsonSQL.main[q].image=UI[i].transform.GetChild(q).GetComponent<itemsbuttonps>().image;
 							cacheMyjsonSQL.main[q].explanation=UI[i].transform.GetChild(q).GetComponent<itemsbuttonps>().explanation;
