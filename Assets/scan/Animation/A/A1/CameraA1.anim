@@ -24,12 +24,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -54,12 +54,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -84,12 +84,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -114,25 +114,30 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 1
         inSlope: -0.25
         outSlope: -0.25
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: -0.25
         outSlope: -0.25
         tangentMode: 10
-      - time: 10
+      - time: 12
         value: 0
-        inSlope: 0.05153061
-        outSlope: 0.05153061
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 18
+        value: 0
+        inSlope: 0.25
+        outSlope: 0.25
         tangentMode: 10
       - time: 20
-        value: 1.0306122
-        inSlope: 0.10306122
-        outSlope: 0.10306122
+        value: 1
+        inSlope: 0.5
+        outSlope: 0.5
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -203,12 +208,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -233,12 +238,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -263,12 +268,12 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 0
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: 0
         outSlope: 0
@@ -293,25 +298,30 @@ AnimationClip:
         inSlope: 0
         outSlope: 0
         tangentMode: 10
-      - time: 7
+      - time: 9
         value: 1
         inSlope: -0.25
         outSlope: -0.25
         tangentMode: 10
-      - time: 9
+      - time: 11
         value: 0
         inSlope: -0.25
         outSlope: -0.25
         tangentMode: 10
-      - time: 10
+      - time: 12
         value: 0
-        inSlope: 0.05153061
-        outSlope: 0.05153061
+        inSlope: 0
+        outSlope: 0
+        tangentMode: 10
+      - time: 18
+        value: 0
+        inSlope: 0.25
+        outSlope: 0.25
         tangentMode: 10
       - time: 20
-        value: 1.0306122
-        inSlope: 0.10306122
-        outSlope: 0.10306122
+        value: 1
+        inSlope: 0.5
+        outSlope: 0.5
         tangentMode: 10
       m_PreInfinity: 2
       m_PostInfinity: 2
@@ -325,13 +335,6 @@ AnimationClip:
   m_HasMotionFloatCurves: 0
   m_GenerateMotionCurves: 0
   m_Events:
-  - time: 0
-    functionName: 
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
   - time: 3
     functionName: Print
     data: AnimationA,AnimationA11

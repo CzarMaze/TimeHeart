@@ -76,6 +76,9 @@ TagManager:
   - name: player
     uniqueID: 4167369667
     locked: 0
+  - name: light
+    uniqueID: 1766787045
+    locked: 0
   - name: limit
     uniqueID: 2175958981
     locked: 0
