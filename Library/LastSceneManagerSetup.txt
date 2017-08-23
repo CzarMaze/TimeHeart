@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scan/test/testmain.unity
+- path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11J.unity"
   isLoaded: 1
   isActive: 1
