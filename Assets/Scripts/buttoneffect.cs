@@ -40,6 +40,9 @@ public class buttoneffect : MonoBehaviour
                 case "單人補血":
                     StartCoroutine(choicechr("血量+50"));
                     break;
+				case "小生命藥劑":
+					StartCoroutine(choicechr("血量+200"));
+					break;
                 default:
                     StartCoroutine(errbox());
                     break;

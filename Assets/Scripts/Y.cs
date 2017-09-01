@@ -13,19 +13,11 @@ public class Y : Story {
 				menu.deltask("main","D");//-------------"main"=>主線	"123456"=>編號123456 刪除目標提示
 				meet("A","DA");//----------------------當擁有符合上述的目標提示 此對話改為另一個對話
 			}else{
-				meet("A",this.gameObject.name);
-				if (ta <1) {
+				meet("A",this.gameObject.name+ta);
+				if (ta <=1) {
 					ta++;
 				}
-				/*此為範例
-						meet("A",this.gameObject.name+ta);
-						if(ta<"該對話資料表最大數值"){
-							ta++;
-						}
-					}
-				 */
 			}
-			
 		}
 	}
 	void OnCollisionExit2D(Collision2D other){

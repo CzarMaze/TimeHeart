@@ -7005,7 +7005,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 0
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: "\u9748  \u6838  \u6D1E  \u7A9F"
+  m_Text: "\u9748     \u6838"
 --- !u!222 &2028374610
 CanvasRenderer:
   m_ObjectHideFlags: 0

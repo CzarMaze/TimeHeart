@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using UnityEngine.SceneManagement;
+
 public class loadLevel : MonoBehaviour {
 	CanvasGroup wx;
 	public string a;
