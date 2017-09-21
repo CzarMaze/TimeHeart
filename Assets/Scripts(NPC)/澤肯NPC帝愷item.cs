@@ -6,12 +6,15 @@ public class 澤肯NPC帝愷item: Story {
 	int ta=1;
 	void OnCollisionEnter2D(Collision2D other){
 		x=true;
+		GameObject.Find("Emoticons").GetComponent<Animator>().enabled=true;
 	}
 	void LateUpdate(){
 		if(Input.GetKeyUp(KeyCode.Space)&&x){
 			x=false;
 			itemUI=GameObject.FindGameObjectsWithTag("itemUI");
 			meet("澤肯NPC",this.gameObject.name+ta); 
+			GameObject.Find("Emoticons").GetComponent<Animator>().enabled=false;
+			GameObject.Find("Emoticons").GetComponent<SpriteRenderer>().enabled=false;
 			if (ta == 3) {
 				ta -- ;
 			}
@@ -21,7 +24,9 @@ public class 澤肯NPC帝愷item: Story {
 		}
 	}
 	void OnCollisionExit2D(Collision2D other){
-		x=false;
+		GameObject.Find ("Emoticons").GetComponent<Animator> ().enabled = false;
+		GameObject.Find ("Emoticons").GetComponent<SpriteRenderer> ().enabled = false;
+		x = false;
 	}
 	protected override void otherthing(){
 		menu.itemSave.gift=menu.Addnewitems(menu.itemSave,itemUI,"itemList","itemitem","itemitem","大生命藥劑",1,

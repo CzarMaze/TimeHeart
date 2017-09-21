@@ -65,16 +65,16 @@ public class cameralimit : MonoBehaviour {
     }
 	void OnTriggerStay2D(Collider2D other){
 		if(other.name == "limitup_right"){
-			xx=(float)(xx-0.0005);
+			xx=(float)(xx-0.003);
 		}
 		if(other.name == "limitup_left"){
-			xx=(float)(xx+0.0005);
+			xx=(float)(xx+0.003);
 		}
 		if(other.name == "limitup_up"){
-			yy=(float)(yy-0.0005);
+			yy=(float)(yy-0.003);
 		}
 		if(other.name == "limitup_down"){
-			yy=(float)(yy+0.0005);
+			yy=(float)(yy+0.003);
 		}
 	}
     void OnTriggerExit2D(Collider2D other)

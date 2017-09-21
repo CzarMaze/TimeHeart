@@ -7601,7 +7601,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 2138445640}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -7958,8 +7958,8 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 180034999}
   m_HandleRect: {fileID: 180034998}
   m_Direction: 2
-  m_Value: 0.9999969
-  m_Size: 0.625
+  m_Value: 0.9999967
+  m_Size: 0.62499994
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -8614,7 +8614,6 @@ GameObject:
   - 212: {fileID: 391948144}
   - 61: {fileID: 391948143}
   - 50: {fileID: 391948142}
-  - 114: {fileID: 391948145}
   - 114: {fileID: 391948140}
   - 114: {fileID: 391948141}
   m_Layer: 0
@@ -8723,17 +8722,6 @@ SpriteRenderer:
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
---- !u!114 &391948145
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 391948138}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 273c787adeb5e2540bed488455d05218, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!1 &393957928
 GameObject:
   m_ObjectHideFlags: 0
@@ -17527,7 +17515,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 504009697}
   m_Direction: 2
   m_Value: 0.99999905
-  m_Size: 0.62499994
+  m_Size: 0.62500006
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21436,7 +21424,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 59679593}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.23920003
+  m_Size: 0.2392
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21626,7 +21614,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 84131748}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
@@ -21820,7 +21808,7 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 210196211}
   m_HandleRect: {fileID: 210196209}
   m_Direction: 2
-  m_Value: 0.0000007244528
+  m_Value: 0.0000009055658
   m_Size: 0.6433862
   m_NumberOfSteps: 0
   m_OnValueChanged:
@@ -37106,7 +37094,7 @@ MonoBehaviour:
   m_HandleRect: {fileID: 1244029360}
   m_Direction: 2
   m_Value: 1
-  m_Size: 0.22764388
+  m_Size: 0.22764389
   m_NumberOfSteps: 0
   m_OnValueChanged:
     m_PersistentCalls:
