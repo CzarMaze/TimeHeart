@@ -6,9 +6,9 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/scan/Signin.unity
-  - enabled: 1
     path: "Assets/scan/\u5BB6/2F\u8D70\u5ECA.unity"
+  - enabled: 1
+    path: Assets/scan/Signin.unity
   - enabled: 1
     path: "Assets/scan/\u5BB6/\u5BA2\u5EF3.unity"
   - enabled: 1
@@ -142,9 +142,9 @@ EditorBuildSettings:
   - enabled: 1
     path: Assets/scan/Animation/A/A5/A5.unity
   - enabled: 1
-    path: Assets/scan/Animation/A/A6/A6.unity
-  - enabled: 1
     path: "Assets/scan/\u6FA4\u80AF/\u6FA4\u80AF\u4E0A\u68EE\u6797B.unity"
+  - enabled: 1
+    path: Assets/scan/Animation/A/A6/A6.unity
   - enabled: 1
     path: "Assets/scan/\u6FA4\u80AF/\u5CA9\u77F3\u5730\u5E36.unity"
   - enabled: 1
@@ -169,3 +169,65 @@ EditorBuildSettings:
     path: "Assets/scan/\u6FA4\u80AF/\u9F8D\u8332\u4F4F\u6240\u5916\u68EE\u6797.unity"
   - enabled: 1
     path: "Assets/scan/\u6FA4\u80AF/\u9F8D\u8332\u4F4F\u6240.unity"
+  - enabled: 1
+    path: "Assets/scan/\u591C\u68EE\u6797/\u9748\u68EE\u5916\u68EE\u6797B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u591C\u68EE\u6797/\u9748\u68EE\u5916\u68EE\u6797A.unity"
+  - enabled: 1
+    path: "Assets/scan/\u591C\u57CE\u5E02/\u9748\u68EE\u57CE\u93AE.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u883B\u65CF\u90E8\u843D\u4E0B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u6FA4\u80AF/\u6FA4\u80AF\u4E0A\u68EE\u6797A.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11A.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11C.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11D.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11E.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11F.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11G.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11H.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11I.unity"
+  - enabled: 1
+    path: "Assets/scan/\u9748\u6838\u4E4B\u5730/\u6A39\u5C4B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u883B\u65CF\u90E8\u843D/\u5167/\u883B\u65CF\u5C45\u6C11J.unity"
+  - enabled: 1
+    path: "Assets/scan/\u6FA4\u80AF/\u6FA4\u80AF.unity"
+  - enabled: 1
+    path: "Assets/scan/\u6FA4\u80AF/\u5C01\u5370\u6D1E\u7A9F.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u754C\u75D5\u88C2\u7E2B\u68EE\u6797B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u754C\u75D5\u88C2\u7E2B\u68EE\u6797A.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u754C\u75D5\u88C2\u7E2B\u68EE\u6797.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u754C\u75D5\u88C2\u7E2B\u7BA1\u8F44\u5340.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u9B54\u754C\u754C\u75D5\u88C2\u7E2B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u9B54\u754C\u754C\u75D5\u88C2\u7E2B\u4E0B\u5C64.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u9B54\u754C\u754C\u75D5\u88C2\u7E2B\u6A13\u68AF.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u539F\u754C/\u539F\u754C\u754C\u75D5\u88C2\u7E2B\u7BA1\u8F44\u5340.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u539F\u754C/\u539F\u754C\u754C\u75D5\u88C2\u7E2B\u6A13\u68AF.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u539F\u754C/\u539F\u754C\u754C\u75D5\u88C2\u7E2B\u4E0B\u5C64.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u539F\u754C/\u539F\u754C\u754C\u75D5\u88C2\u7E2B.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u52D5\u756B/\u9B54\u754C\u88C2\u7E2B\u4E0B\u5C64.unity"
+  - enabled: 1
+    path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u52D5\u756B/\u539F\u754C\u88C2\u7E2B\u4E0B\u5C64.unity"
