@@ -1,5 +1,6 @@
 ﻿using UnityEngine;
 using System.Collections;
+using UnityEngine.SceneManagement;
 public class X : Story {
 	bool x=false;
 	int ta=1;
@@ -21,5 +22,7 @@ public class X : Story {
 	}
 	protected override void otherthing(){
 		menu.taskwords("main","D","跟婊子說話");
+
+		Instantiate(Resources.Load("PrefabsMainGame/D"),new Vector3(0.3f,-1,0),Quaternion.Euler(0,0,0));
 	}
 }

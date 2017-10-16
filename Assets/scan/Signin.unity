@@ -4277,7 +4277,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d1578cce879d3084ebfc7165c9b002d4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  a: Animation/A/A1/A1
+  a: "\u5BB6/\u5BA2\u5EF3"
   b: {x: 0, y: 0, z: 0}
   c: down
 --- !u!114 &1789646373
