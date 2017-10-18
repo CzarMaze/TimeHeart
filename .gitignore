@@ -52,3 +52,4 @@ Temporary Items
 Temp/
 Library/metadata/**/*
 Library/ShaderCache/**/*
+Assets/Editor/

@@ -444,6 +444,7 @@ public class menu : MonoBehaviour {
 		tasksOnDisable(tasksSave,"cachetasksSave");
 		}
 		PlayerPrefs.Save();
+		Resources.UnloadUnusedAssets();
     }
 	private void OnApplicationQuit(){
 		PlayerPrefs.DeleteKey("cacheitemSave");
