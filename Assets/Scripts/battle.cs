@@ -7,24 +7,30 @@ using UnityEngine.UI;
 public class battle : MonoBehaviour {
 	List <Animator> team=new List<Animator>();
 	EventSystem es;
-	string [] battlename={"Team1","Team2","Team3","ETeam1","ETeam3"};
-	private int num=0;
+	GameObject E1,E3;
+		
+	string [] battlename={"Team1","Team2","Team3"};
+	string [] Ebattle={"ETeam1","ETeam3"};
+	public static int num=0;
 	// Use this for initialization
 	void Start () {
 		for(int i=0;i<battlename.Length;i++ ){
 			team.Add(GameObject.Find(battlename[i]).gameObject.transform.GetChild(0).GetComponent<Animator>());
 		}
 		es = GameObject.Find("EventSystem").GetComponent<EventSystem>();
-		loadselected(GameObject.Find("EnemyButton1"));
+		E1=GameObject.Find("EnemyButton1");
+		E3=GameObject.Find("EnemyButton3");
+		loadselected(E1);
 		//SetSelectedGameObjects("du",GameObject.Find("EnemyButton1").GetComponent<Button>(),GameObject.Find("EnemyButton3").GetComponent<Button>());
 	}
 	void Update(){
-		if(es.currentSelectedGameObject!=null){	
-			GameObject.Find("EnemyButton1").GetComponent<CanvasGroup>().alpha=0;
-			GameObject.Find("EnemyButton3").GetComponent<CanvasGroup>().alpha=0;				
+		if(es.currentSelectedGameObject!=null && es.currentSelectedGameObject.gameObject.name.Substring(0,7)=="EnemyBu"){
+			E1.GetComponent<CanvasGroup>().alpha=0;
+			E3.GetComponent<CanvasGroup>().alpha=0;				
 			es.currentSelectedGameObject.GetComponent<CanvasGroup>().alpha=1;
+			battleplay.EA=GameObject.Find("ETeam"+es.currentSelectedGameObject.gameObject.name.Substring(11)).gameObject.transform.GetChild(0).GetComponent<Animator>();
 		}
-		if(num==5){
+		if(num==3){
 			num=0;
 		}
 	}
@@ -57,7 +63,6 @@ public class battle : MonoBehaviour {
 	// Update is called once per frame
 	public void attrack(){
 		team[num].Play(Animator.StringToHash("Attack"));
-		num++;
 	}
 	public void DEF(){
 		team[num].Play(Animator.StringToHash("DEF"));
