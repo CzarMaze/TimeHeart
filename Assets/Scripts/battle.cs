@@ -12,7 +12,7 @@ public class battle : MonoBehaviour {
 	EventSystem es;
 	GameObject E1,E3;	
 	List<string> list = new List<string> {"Team1","Team2","Team3","ETeam1","ETeam3"};
-	string [] battlename;
+	public static string [] battlename;
 	public static int num=0;
 	// Use this for initialization
 	void Start () {	
@@ -29,6 +29,7 @@ public class battle : MonoBehaviour {
 		E1=GameObject.Find("EnemyButton1");
 		E3=GameObject.Find("EnemyButton3");
 		loadselected(E1);
+		//GameObject.Find("ChButton"+battlename[num].Substring(4)).GetComponent<CanvasGroup>().alpha=1; 
 		
 	}
     void Update()
@@ -37,7 +38,8 @@ public class battle : MonoBehaviour {
         {
             num = 0;
         }
-        if (es.currentSelectedGameObject != null)
+        if(battlename[num]!=null){
+		if (es.currentSelectedGameObject != null)
         {
             if (es.currentSelectedGameObject.gameObject.name.Substring(0, 7) == "EnemyBu")
             {
@@ -52,20 +54,21 @@ public class battle : MonoBehaviour {
             battleplay.EA = MteamAni[UnityEngine.Random.Range(0,2)];			
             attrack();
         }else{
-			if (battlename[num].Substring(0, 4) == "Team")
+                if (battlename[num].Substring(0, 4) == "Team")
                 {
-					if(GetComponent<CanvasGroup>().alpha!=1){
-						GameObject.Find("ChButton1").GetComponent<CanvasGroup>().alpha=0;
-						GameObject.Find("ChButton2").GetComponent<CanvasGroup>().alpha=0; 
-						GameObject.Find("ChButton3").GetComponent<CanvasGroup>().alpha=0;
-						GameObject.Find("ChButton"+battlename[num].Substring(4)).GetComponent<CanvasGroup>().alpha=1; 
-                    	menu(true);
-						loadselected(E1);
-					}
+                    GameObject.Find("ChButton1").GetComponent<CanvasGroup>().alpha = 0;
+                    GameObject.Find("ChButton2").GetComponent<CanvasGroup>().alpha = 0;
+                    GameObject.Find("ChButton3").GetComponent<CanvasGroup>().alpha = 0;
+                    GameObject.Find("ChButton" + battlename[num].Substring(4)).GetComponent<CanvasGroup>().alpha = 1;
+                    menu(true);
                 }
-				
-		}
 
+            }
+        }
+        else
+        {
+            num++;
+        }
 
     }
 	public static List<T> Randomize<T>(List<T> list)
