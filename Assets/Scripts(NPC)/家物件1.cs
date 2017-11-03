@@ -27,6 +27,6 @@ public class 家物件1 : Story {
 		x=false;
 	}
 	protected override void otherthing(){
-
+		loadbattle.battlestart();
 	}
 }

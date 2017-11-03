@@ -17,6 +17,8 @@ public static class SumVariable{
 	public static float Sound=(float)1;//
 	public static float ESound=(float)0.15;//
 	//---------------------------------Variable
+	public static Vector3 tempbattlead=new Vector3();
+	public static string tempbattlename="";
 	public static string [] charactorname={null,"艾憐娜","薩雷諾","凱斯伏"};
 	public static bool keyboardopen = true; //鎖定/開啟鍵盤與行動動畫
 	public static int [] team={1,2,3};

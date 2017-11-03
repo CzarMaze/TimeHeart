@@ -231,3 +231,5 @@ EditorBuildSettings:
     path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u52D5\u756B/\u9B54\u754C\u88C2\u7E2B\u4E0B\u5C64.unity"
   - enabled: 1
     path: "Assets/scan/\u754C\u75D5\u88C2\u7E2B/\u52D5\u756B/\u539F\u754C\u88C2\u7E2B\u4E0B\u5C64.unity"
+  - enabled: 1
+    path: Assets/scan/test/Battletest.unity

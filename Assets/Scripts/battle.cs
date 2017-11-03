@@ -34,8 +34,8 @@ public class battle : MonoBehaviour {
 	}
     void Update()
     {
-        if (num == 5)
-        {
+        if (num >= 5)
+        {			
             num = 0;
         }
         if(battlename[num]!=null){
@@ -65,7 +65,7 @@ public class battle : MonoBehaviour {
 
             }
         }
-        else
+        if(battlename[num]=="null")
         {
             num++;
         }
@@ -112,5 +112,6 @@ public class battle : MonoBehaviour {
 		team[0].Play(Animator.StringToHash("run"));
 		team[1].Play(Animator.StringToHash("run"));
 		team[2].Play(Animator.StringToHash("run"));
+		
 	}
 }
