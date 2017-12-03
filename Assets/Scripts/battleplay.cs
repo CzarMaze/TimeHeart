@@ -37,7 +37,7 @@ public class battleplay : MonoBehaviour {
 					}
 					if(i+1==battle.battlename.Length){
 						Debug.Log("你輸了");
-						loadbattle.battleend();
+						loadbattle.battleend();//  修改戰鬥結束後地點格式為 loadbattle.battleend("家/臥室",new Vector3(0,0,0))
 					}
 				}
 				
@@ -53,7 +53,7 @@ public class battleplay : MonoBehaviour {
 					}
 					if(i+1==battle.battlename.Length){
 						Debug.Log("你贏了");
-						loadbattle.battleend();
+						loadbattle.battleend();//  修改戰鬥結束後地點 loadbattle.battleend("家/臥室",new Vector3(0,0,0))
 					}
 				}
 			}
@@ -87,5 +87,12 @@ public class battleplay : MonoBehaviour {
 			);
 			
 	}
+	public void soundmuc(string s){
+        if (s != "")
+        {
+            GameObject.Find("talkbox").GetComponent<AudioSource>().clip = Resources.Load<AudioClip>("music/"+s) as AudioClip;
+			GameObject.Find("talkbox").GetComponent<AudioSource>().Play();
+        }
+    }
 	
 }

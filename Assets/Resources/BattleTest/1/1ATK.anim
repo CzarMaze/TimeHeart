@@ -388,16 +388,9 @@ AnimationClip:
     floatParameter: 0
     intParameter: 0
     messageOptions: 0
-  - time: 1.25
-    functionName: attrackchoice
-    data: 
-    objectReferenceParameter: {fileID: 0}
-    floatParameter: 0
-    intParameter: 0
-    messageOptions: 0
-  - time: 1.9166666
-    functionName: attrackchoice
-    data: 
+  - time: 1.7039388
+    functionName: soundmuc
+    data: 2
     objectReferenceParameter: {fileID: 0}
     floatParameter: 0
     intParameter: 0

@@ -1,4 +1,4 @@
 sceneSetups:
-- path: Assets/scan/test/Battletest.unity
+- path: "Assets/scan/\u5BB6/2F\u8D70\u5ECA.unity"
   isLoaded: 1
   isActive: 1

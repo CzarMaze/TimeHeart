@@ -14,11 +14,16 @@ public class loadbattle : MonoBehaviour {
 		SumVariable.nextlevel="test/Battletest";
 		SceneManager.LoadScene ("scan/loading"+1);
 	}
-	public static void battleend(){
+	public static void battleend(string a=null,Vector3 b=new Vector3()){
 		SumVariable.nextad=new Vector3();
-		SumVariable.nextad=SumVariable.tempbattlead;
 		SumVariable.nextlevel="";
-		SumVariable.nextlevel=SumVariable.tempbattlename;
+		if(a==null){
+			SumVariable.nextlevel=SumVariable.tempbattlename;
+			SumVariable.nextad=SumVariable.tempbattlead;
+		}else{
+			SumVariable.nextlevel=a;
+			SumVariable.nextad=b;
+		}
 		SumVariable.keyboardopen=true;
 		SumVariable.nextdt="down";
 		SceneManager.LoadScene ("scan/loading"+1);
